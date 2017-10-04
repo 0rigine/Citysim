@@ -18,7 +18,6 @@ protected:
 	int alimentation;
 	int energie;
 	int budget;
-	Tree<UNKNOWN> competences;
-	Tree<UNKNOWN> constructions;
+	//Tree<UNKNOWN> competences;
+	//Tree<UNKNOWN> constructions;
 };
-
