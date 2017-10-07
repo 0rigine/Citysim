@@ -1,7 +1,9 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <vector>
 #include "Tree.h"
+#include "structures.h"
 using namespace std;
 
 class City
@@ -21,5 +23,5 @@ protected:
 	float budget;
 	//Tree<UNKNOWN> competences;
 	//Tree<UNKNOWN> constructions;
-
+	vector<contrat> dealList;
 };

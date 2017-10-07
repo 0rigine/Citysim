@@ -146,7 +146,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="chainedList.h" />
     <ClInclude Include="City.h" />
     <ClInclude Include="Grille.h" />
     <ClInclude Include="stdafx.h" />
@@ -155,7 +154,6 @@
     <ClInclude Include="Tree.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="chainedList.cpp" />
     <ClCompile Include="City.cpp" />
     <ClCompile Include="Citysim.cpp" />
     <ClCompile Include="Grille.cpp" />
