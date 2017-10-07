@@ -14,10 +14,12 @@ protected:
 	// Attributes
 	string nom;
 	string faction;
+	int id;
 	int population;
-	int alimentation;
-	int energie;
-	int budget;
+	float alimentation;
+	float energie;
+	float budget;
 	//Tree<UNKNOWN> competences;
 	//Tree<UNKNOWN> constructions;
+
 };
