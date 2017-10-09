@@ -12,6 +12,13 @@ public:
 	City();
 	~City();
 
+	// Contrats
+	int parcourirContrats(); // renvoie une erreur au besoin
+	int makeADeal(City associate, int timeleft, float &resourceUsed, float cost, float quantity); // création d'une structure contrat ajoutée à la liste de la ville active
+	bool endADeal(contrat deal); // supprime le contrat indiqué
+	bool honorTheDeal();
+
+
 protected:
 	// Attributes
 	string nom;
