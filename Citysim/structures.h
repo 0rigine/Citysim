@@ -1,10 +1,10 @@
 #pragma once
-#include "City.h"
 
-typedef struct contrat contrat;
+
+//template <typename Class>
 struct contrat
 {
-	City associate;
+	//Class associate;
 	int timeLeft;
 	float &resourceUsed;
 	float cost;
