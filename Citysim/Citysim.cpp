@@ -1,9 +1,11 @@
 #include "stdafx.h"
 #include "Grille.h"
-
+using namespace std;
 
 int main()
 {
-	//Grille::initialize_Grid(15, 15);
+
+	system("pause");
+
     return 0;
 }

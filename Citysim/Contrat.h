@@ -8,7 +8,7 @@ public:
 
 private:
 	int timeLeft;
-	float &resourceUsed;
+	float *resourceUsed;
 	float cost;
 	float quantity;
 };
