@@ -29,7 +29,9 @@ protected:
 	float alimentation;
 	float energie;
 	float budget;
-	//Tree<UNKNOWN> competences;
+	//Tree<UNKNOWN> skillFood;
+	//Tree<UNKNOWN> skillEnergy;
+	//Tree<UNKNOWN> skillEconomy;
 	//Tree<UNKNOWN> constructions;
 	map<City*, contrat> dealList;
 };
