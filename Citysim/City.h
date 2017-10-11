@@ -4,7 +4,7 @@
 #include <vector>
 #include <map>
 #include "Tree.h"
-#include "structures.h"
+#include "Contrat.h"
 using namespace std;
 
 class City
