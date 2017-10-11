@@ -12,6 +12,11 @@ City::~City()
 {
 }
 
+int City::simulate()
+{
+	return 0;
+}
+
 int City::growth()
 {
 	while (true)

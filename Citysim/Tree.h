@@ -23,7 +23,7 @@ public:
 	Tree<dataType>* getChild() const;
 	Tree<dataType>* getBrother() const;
 
-protected:
+private:
 	// Attributes
 	static int TreeNumber;
 
