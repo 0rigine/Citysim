@@ -32,7 +32,7 @@ public:
 	int happinessGrowth();
 
 	// Estimations et mesures
-	float happinessPart();
+	float happinessPart(); // Part de population heureuse (coefficient)
 
 
 private:
