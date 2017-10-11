@@ -31,6 +31,9 @@ public:
 	int populationGrowth();
 	int happinessGrowth();
 
+	// Estimations et mesures
+	float happinessPart();
+
 
 private:
 	// Attributes
@@ -38,7 +41,10 @@ private:
 	string faction;
 	int id;
 	int population;
-	float alimentation;
+	int farmers;
+	int energizer;
+	int traders;
+	float nourriture;
 	float energie;
 	float budget;
 	float bonheur;
