@@ -2,8 +2,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 #include "Tree.h"
-#include "Contrat.h"
+#include "structures.h"
 using namespace std;
 
 class City
@@ -15,7 +16,7 @@ public:
 	// Contrats
 	int parcourirContrats(); // renvoie une erreur au besoin
 	int makeADeal(City const& associate, int timeleft, float &resourceUsed, float cost, float quantity); // création d'une structure contrat ajoutée à la liste de la ville active
-	bool endADeal(Contrat<City> &deal); // supprime le contrat indiqué
+	bool endADeal(City const& associate, contrat &deal); // supprime le contrat indiqué
 	bool honorTheDeal();
 
 
@@ -30,5 +31,5 @@ protected:
 	float budget;
 	//Tree<UNKNOWN> competences;
 	//Tree<UNKNOWN> constructions;
-	//vector<Contrat<City>> dealList;
+	map<City*, contrat> dealList;
 };

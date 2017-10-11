@@ -1,10 +1,8 @@
 #pragma once
 
-
-//template <typename Class>
+typedef struct contrat contrat;
 struct contrat
 {
-	//Class associate;
 	int timeLeft;
 	float &resourceUsed;
 	float cost;
