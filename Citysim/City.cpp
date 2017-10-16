@@ -56,15 +56,17 @@ int City::populationGrowth()
 {
 	float coefficient(1); // coefficient bonus
 	float coeffSad(1 / 3); // coefficient de population malheureuse disparaissant
-	int happy = happinessPart()*population; // habitants heureux
-	int sad = population - happy; // population dont les besoins ne sont pas tous satisfaits
+	int happy(happinessPart()*population); // habitants heureux
+	int sad(population - happy); // population dont les besoins ne sont pas tous satisfaits
 	population = (int)(happy/2)-sad*coeffSad; // population restante
 	return 0;
 }
 
 int City::happinessGrowth()
 {
-
+	float coefficient(1); // coefficient bonus
+	int happynessPop(happinessPart()*population); // population comblee
+	bonheur = bonheur + (happynessPop*coefficient) - (population - happynessPop)*coefficient; // calcul du bonheur selon la population heureuse et malheureuse
 	return 0;
 }
 

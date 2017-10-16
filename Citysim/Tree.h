@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 
-template <typename dataType>
+template <class dataType>
 class Tree
 {
 public:
@@ -34,12 +34,12 @@ private:
 
 
 // Static members
-template <typename dataType>
+template <class dataType>
 int Tree<dataType>::TreeNumber = 0;
 
 
 // Constructors & destructor
-template <typename dataType>
+template <class dataType>
 Tree<dataType>::Tree() :
 	child(0),
 	brother(0)
@@ -47,7 +47,7 @@ Tree<dataType>::Tree() :
 	++Tree<dataType>::TreeNumber;
 }
 
-template <typename dataType>
+template <class dataType>
 Tree<dataType>::Tree(dataType argdata, Tree<dataType>* argChild, Tree<dataType>* argBrother) :
 	brother(argBrother),
 	child(argChild),
@@ -56,7 +56,7 @@ Tree<dataType>::Tree(dataType argdata, Tree<dataType>* argChild, Tree<dataType>*
 	++Tree<dataType>::TreeNumber;
 }
 
-template <typename dataType>
+template <class dataType>
 Tree<dataType>::~Tree()
 {
 	if (child != 0)
@@ -72,7 +72,7 @@ Tree<dataType>::~Tree()
 
 
 // Measuring
-template<typename dataType>
+template<class dataType>
 int Tree<dataType>::heighTree(int heigh)
 {
 	int lenChild(0), lenBrother(0);
@@ -100,7 +100,7 @@ int Tree<dataType>::heighTree(int heigh)
 	return heigh;
 }
 
-template<typename dataType>
+template<class dataType>
 int Tree<dataType>::widthTree(int width)
 {
 	if (brother != 0)
@@ -113,7 +113,7 @@ int Tree<dataType>::widthTree(int width)
 
 
 // Build
-template <typename dataType>
+template <class dataType>
 int Tree<dataType>::newChild(dataType argdata)
 {
 	if (child == 0)
@@ -132,7 +132,7 @@ int Tree<dataType>::newChild(dataType argdata)
 	return 0;
 }
 
-template<typename dataType>
+template<class dataType>
 int Tree<dataType>::newBrother(dataType argdata)
 {
 	if (brother == 0)
@@ -149,19 +149,19 @@ int Tree<dataType>::newBrother(dataType argdata)
 
 
 // Get Access
-template<typename dataType>
+template<class dataType>
 int Tree<dataType>::instanceNumber()
 {
 	return Tree<dataType>::TreeNumber;
 }
 
-template<typename dataType>
+template<class dataType>
 Tree<dataType>* Tree<dataType>::getChild() const
 {
 	return child;
 }
 
-template<typename dataType>
+template<class dataType>
 Tree<dataType>* Tree<dataType>::getBrother() const
 {
 	return brother;

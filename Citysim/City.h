@@ -6,8 +6,8 @@
 using namespace std;
 
 #include "Tree.h"
+#include "Skill.h"
 
-#define UNKNOWN int
 
 class City
 {
@@ -48,9 +48,9 @@ private:
 	float energie;
 	float budget;
 	float bonheur;
-	Tree<UNKNOWN> skillFood;
-	Tree<UNKNOWN> skillEnergy;
-	Tree<UNKNOWN> skillEconomy;
-	Tree<UNKNOWN> constructions;
+	Tree<Skill> skillFood;
+	Tree<Skill> skillEnergy;
+	Tree<Skill> skillEconomy;
+	Tree<Skill> constructions;
 	//map<City*, Contrat> dealList;
 };
