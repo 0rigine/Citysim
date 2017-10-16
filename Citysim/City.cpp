@@ -34,8 +34,9 @@ int City::energyGrowth()
 {
 	float coefficient(1); // coefficient bonus
 	float quantity(50); // energie produite par habitant
-	float consommation(20);
-	float happyCoeff(happinessPart());
+	float consommation(20); // energie consommee par habitant
+	float happyCoeff(happinessPart()); // part de population heureuse
+	// Production en fonction du bonheur de la population
 	energie = (float)energie+(energizer*coefficient*quantity*happyCoeff)+(energizer*coefficient*(1-happyCoeff))-population*consommation;
 	return 0;
 }
@@ -44,8 +45,8 @@ int City::foodGrowth()
 {
 	float coefficient(1); // coefficient bonus
 	float quantity(30); // nourriture produite par habitant
-	float consommation(10);
-	float happyCoeff(happinessPart());
+	float consommation(10); // nourriture consommee par habitant
+	float happyCoeff(happinessPart()); // part de population heureuse
 	// Production en fonction du bonheur de la population
 	nourriture = (float)nourriture+(farmers*coefficient*quantity*happyCoeff)+(farmers*coefficient*(1-happyCoeff))-population*consommation;
 	return 0;
@@ -56,8 +57,8 @@ int City::populationGrowth()
 	float coefficient(1); // coefficient bonus
 	float coeffSad(1 / 3); // coefficient de population malheureuse disparaissant
 	int happy = happinessPart()*population; // habitants heureux
-	int sad = population - happy;
-	population = (int)(happy/2)-sad*coeffSad;
+	int sad = population - happy; // population dont les besoins ne sont pas tous satisfaits
+	population = (int)(happy/2)-sad*coeffSad; // population restante
 	return 0;
 }
 
@@ -69,8 +70,8 @@ int City::happinessGrowth()
 
 float City::happinessPart()
 {
-	float foodCons(10), energyCons(30), salaires(100);
-	float happyFood = (nourriture / foodCons) / population;
-	float happyEnergy = (energie / energyCons) / population;
-	return happyFood*happyEnergy;
+	float foodCons(10), energyCons(30), salaires(100); // besoins par habitant selon la ressource
+	float happyFood = (nourriture / foodCons) / population; // part de population dont les besoins en nourriture sont satisfaits
+	float happyEnergy = (energie / energyCons) / population; // part de population dont les besoins en energie sont satisfaits
+	return happyFood*happyEnergy; // part de population dont tous les besoins sont satisfaits
 }
