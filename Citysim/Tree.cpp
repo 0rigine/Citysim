@@ -5,7 +5,6 @@
 // Static members
 int Tree::TreeNumber = 0;
 
-
 // Constructors & destructor
 Tree::Tree() :
 	child(NULL),
