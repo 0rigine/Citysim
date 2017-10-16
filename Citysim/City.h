@@ -5,9 +5,7 @@
 #include <map>
 using namespace std;
 
-#include "Tree.h"
 #include "Skill.h"
-
 
 class City
 {
@@ -48,9 +46,9 @@ private:
 	float energie;
 	float budget;
 	float bonheur;
-	Tree<Skill> skillFood;
-	Tree<Skill> skillEnergy;
-	Tree<Skill> skillEconomy;
-	Tree<Skill> constructions;
+	Skill skillFood;
+	Skill skillEnergy;
+	Skill skillEconomy;
+	Skill constructions;
 	//map<City*, Contrat> dealList;
 };

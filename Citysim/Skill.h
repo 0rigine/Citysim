@@ -1,6 +1,7 @@
 #pragma once
+#include "Tree.h"
 
-class Skill
+class Skill: public Tree
 {
 public:
 	Skill();
@@ -19,11 +20,3 @@ private:
 	float cost_budget, cost_food, cost_energy, cost_happyness; // couts de developpement de la competence
 	float cost_time; // temps necessaire au developpement
 };
-
-Skill::Skill()
-{
-}
-
-Skill::~Skill()
-{
-}
