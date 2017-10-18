@@ -78,15 +78,15 @@ int Tree::newChild()
 {
 	if (child == 0)
 	{
-		child = new Tree(argdata);
+		child = new Tree();
 	}
 	else if (child->brother == NULL)
 	{
-		child->brother = new Tree(argdata);
+		child->brother = new Tree();
 	}
 	else
 	{
-		return child->brother->newBrother(argdata);
+		return child->brother->newBrother();
 	}
 
 	return 0;
