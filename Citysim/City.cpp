@@ -77,3 +77,30 @@ float City::happinessPart()
 	float happyEnergy = (energie / energyCons) / population; // part de population dont les besoins en energie sont satisfaits
 	return happyFood*happyEnergy; // part de population dont tous les besoins sont satisfaits
 }
+
+int set_Farmers(int toSet)
+{
+	int freePopulation(population-energizer-traders);
+	int maximum(skillFood.ceil());
+	if(toSet < 0 || toSet > maximum || toSet > freePopulation) return ATTRIBUTION_ERROR;
+	farmers = toSet;
+	return ATTRIBUTION_OK;
+}
+
+int set_Energize(int toSet)
+{
+	int freePopulation(population-farmers-traders);
+	int maximum(skillEnergy.ceil());
+	if(toSet < 0 || toSet > maximum || toSet > freePopulation) return ATTRIBUTION_ERROR;
+	energizer = toSet;
+	return ATTRIBUTION_OK;
+}
+
+int set_Traders(int toSet)
+{
+	int freePopulation(population-farmers-energizer);
+	int maximum(skillEconomy.ceil());
+	if(toSet < 0 || toSet > maximum || toSet > freePopulation) return ATTRIBUTION_ERROR;
+	traders = toSet;
+	return ATTRIBUTION_OK;
+}
