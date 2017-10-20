@@ -7,6 +7,8 @@ public:
 	Skill();
 	~Skill();
 
+	ceil(); // calcul du plafond de personnel autorisé selon les compétences acquises
+
 private:
 	// Statut
 	int statut; // 2 si debloque, 1 si en developpement, 0 sinon
