@@ -7,6 +7,10 @@ using namespace std;
 
 #include "Skill.h"
 
+// Définitions des retours d'erreurs
+#define ATTRIBUTION_OK 0 // réussite d'attribution d'employés
+#define ATTRIBUTION_ERROR 1 // erreur d'attribution d'employés
+
 class City
 {
 public:
@@ -23,32 +27,40 @@ public:
 	*/
 
 	// Croissance de la ville
-	int growth();
-	int energyGrowth();
-	int foodGrowth();
-	int populationGrowth();
-	int happinessGrowth();
+	int growth(); // appel des fonctions de croissance
+	int energyGrowth(); // croissance de l'énergie
+	int foodGrowth(); // croissance de la nourriture
+	int populationGrowth(); // croissance de la population
+	int happinessGrowth(); // croissance du bonheur
 
 	// Estimations et mesures
 	float happinessPart(); // Part de population heureuse (coefficient)
 
+	// Gestion de la ville
+	int set_Farmers(int toSet); // indiquer le nombre de fermiers actifs
+	int set_Energize(int toSet); // indiquer le nombre de producteur d'énergie actifs
+	int set_Traders(int toSet); // indiquer le nombre de traders actifs
 
 private:
 	// Attributes
-	string nom;
-	string faction;
-	int id;
-	int population;
-	int farmers;
-	int energizer;
-	int traders;
-	float nourriture;
-	float energie;
-	float budget;
-	float bonheur;
-	Skill skillFood;
-	Skill skillEnergy;
-	Skill skillEconomy;
-	Skill constructions;
+	string nom; // nom de la ville
+	string faction; // faction de la ville
+	int id; // id de la ville
+
+	int population; // population totale
+	int farmers; // fermiers
+	int energizer; // producteurs d'énergie
+	int traders; // employés dans la finance
+
+	float nourriture; // stock de nourriture
+	float energie; // stock d'énergie
+	float budget; // argent disponible
+	float bonheur; // bonheur accumulé
+
+	Skill skillFood; // arbre de compétences : nourriture
+	Skill skillEnergy; // arbre de compétences : énergie
+	Skill skillEconomy; // arbre de compétences : économie
+	Skill constructions; // // arbre de constructions de la ville (commisariat, caserne, mairie...)
+
 	//map<City*, Contrat> dealList;
 };
