@@ -20,13 +20,6 @@ public:
 	~City();
 
 	int simulate(); // fonction de routine, simulant l'évolution de la ville
-	// Contrats
-	/*
-	int parcourirContrats(); // renvoie une erreur au besoin
-	int makeADeal(City *associate, int timeleft, float &resourceUsed, float cost, float quantity); // création d'une structure contrat ajoutée à la liste de la ville active
-	bool endADeal(City *associate); // supprime le contrat indiqué
-	bool honorTheDeal(City *associate, Contrat &deal); // honorer le contrat
-	*/
 
 	// Croissance de la ville
 	int growth(); // appel des fonctions de croissance
@@ -44,9 +37,12 @@ public:
 	int set_Energize(int toSet); // indiquer le nombre de producteur d'énergie actifs
 	int set_Traders(int toSet); // indiquer le nombre de traders actifs
 
+	// Conquete
+	void estAchetee(string newFaction); // fonction de vente de la ville
+	void acheterVille(City & vendue, float prix = 10); // fonction d'achat de la ville
+
 private:
 	
-
 	// Attributes
 	string nom; // nom de la ville
 	string faction; // faction de la ville
@@ -62,10 +58,10 @@ private:
 	float budget; // argent disponible
 	float bonheur; // bonheur accumulé
 
+	/*
 	Skill skillFood; // arbre de compétences : nourriture
 	Skill skillEnergy; // arbre de compétences : énergie
 	Skill skillEconomy; // arbre de compétences : économie
 	Skill constructions; // // arbre de constructions de la ville (commisariat, caserne, mairie...)
-
-	//map<City*, Contrat> dealList;
+	*/
 };

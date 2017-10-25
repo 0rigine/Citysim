@@ -20,11 +20,22 @@ City::City():
 	faction = nom;
 	id = City::cityNumber;
 	++City::cityNumber;
+
+
 }
 
-City::City(string name, float arg_bonheur, int arg_population, float arg_nourriture, float arg_energie, float arg_budget)
+City::City(string name, float arg_bonheur, int arg_population, float arg_nourriture, float arg_energie, float arg_budget):
+	bonheur(0),
+	population(100),
+	nourriture(2000),
+	energie(10000),
+	budget(200000),
+	farmers(0),
+	energizer(0),
+	traders(0)
 {
-	City::City();
+	id = City::cityNumber;
+	++City::cityNumber;
 	nom = name;
 	faction = name;
 	population = arg_population;
@@ -120,11 +131,21 @@ float City::happinessPart()
 	return happyFood*happyEnergy; // part de population dont tous les besoins sont satisfaits
 }
 
-/*
+void City::estAchetee(string newFaction)
+{
+	faction = newFaction;
+}
+
+void City::acheterVille(City & vendue, float prix)
+{
+	budget -= prix;
+	vendue.estAchetee(faction);
+}
+
 int City::set_Farmers(int toSet)
 {
 	int freePopulation(population-energizer-traders);
-	int maximum(skillFood.ceil());
+	int maximum(100);
 	if(toSet < 0 || toSet > maximum || toSet > freePopulation) return ATTRIBUTION_ERROR;
 	farmers = toSet;
 	return ATTRIBUTION_OK;
@@ -133,7 +154,7 @@ int City::set_Farmers(int toSet)
 int City::set_Energize(int toSet)
 {
 	int freePopulation(population-farmers-traders);
-	int maximum(skillEnergy.ceil());
+	int maximum(100);
 	if(toSet < 0 || toSet > maximum || toSet > freePopulation) return ATTRIBUTION_ERROR;
 	energizer = toSet;
 	return ATTRIBUTION_OK;
@@ -142,9 +163,8 @@ int City::set_Energize(int toSet)
 int City::set_Traders(int toSet)
 {
 	int freePopulation(population-farmers-energizer);
-	int maximum(skillEconomy.ceil());
+	int maximum(100);
 	if(toSet < 0 || toSet > maximum || toSet > freePopulation) return ATTRIBUTION_ERROR;
 	traders = toSet;
 	return ATTRIBUTION_OK;
 }
-*/

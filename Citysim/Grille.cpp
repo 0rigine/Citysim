@@ -19,7 +19,7 @@ vector<vector<City>> Grille::initialize_Grid(int sizex, int sizey)
 		grille.push_back(vector<City>(0));
 		for (int j = 0; j < sizey; j++)
 		{
-			grille[i].push_back(City("JulienCity"));
+			grille[i].push_back(City("Test"));
 		}
 	}
 
