@@ -3,8 +3,33 @@
 #include <thread>
 using namespace std;
 
-City::City()
+City::cityNumber(0);
+
+
+City::City():
+	population(100),
+	nourriture(2000),
+	energie(10000),
+	budget(200000),
+	farmers(0),
+	energizer(0),
+	traders(0)
 {
+	nom("Prout");
+	faction(nom);
+	id(City::cityNumber);
+	++City::cityNumber;
+}
+
+City::City(string name, int arg_population, float arg_nourriture, float arg_energie, float arg_budget)
+{
+	City::City();
+	nom = name;
+	faction = name;
+	population = arg_population;
+	nourriture = arg_nourriture;
+	energie = arg_energie;
+	budget = arg_budget;
 }
 
 
@@ -55,10 +80,17 @@ int City::foodGrowth()
 int City::populationGrowth()
 {
 	float coefficient(1); // coefficient bonus
-	float coeffSad(1 / 3); // coefficient de population malheureuse disparaissant
+	float coeffSad(1 / bonheur); // coefficient de population malheureuse disparaissant
+	float coeffWorker(1);
+	int newPopulation(0),travailleurs(0);
 	int happy(happinessPart()*population); // habitants heureux
 	int sad(population - happy); // population dont les besoins ne sont pas tous satisfaits
-	population = (int)(happy/2)-sad*coeffSad; // population restante
+	newPopulation = (int)population+(happy/2)-sad*coeffSad; // population restante
+	travailleurs = farmers + energizer + traders;
+	if (travailleurs > newPopulation)
+	{
+		coeffWorker = (travailleurs - newPopulation) / newPopulation;
+	}
 	return 0;
 }
 
@@ -70,15 +102,24 @@ int City::happinessGrowth()
 	return 0;
 }
 
+int City::budgetGrowth()
+{
+	float salaire(2.5),coeffTraders(20.5);
+	int travailleurs = farmers + energizer + traders;
+	budget = budget + traders*coeffTraders - salaire*travailleurs;
+	return 0;
+}
+
 float City::happinessPart()
 {
-	float foodCons(10), energyCons(30), salaires(100); // besoins par habitant selon la ressource
+	float foodCons(10), energyCons(30); // besoins par habitant selon la ressource
 	float happyFood = (nourriture / foodCons) / population; // part de population dont les besoins en nourriture sont satisfaits
 	float happyEnergy = (energie / energyCons) / population; // part de population dont les besoins en energie sont satisfaits
 	return happyFood*happyEnergy; // part de population dont tous les besoins sont satisfaits
 }
 
-int set_Farmers(int toSet)
+/*
+int City::set_Farmers(int toSet)
 {
 	int freePopulation(population-energizer-traders);
 	int maximum(skillFood.ceil());
@@ -87,7 +128,7 @@ int set_Farmers(int toSet)
 	return ATTRIBUTION_OK;
 }
 
-int set_Energize(int toSet)
+int City::set_Energize(int toSet)
 {
 	int freePopulation(population-farmers-traders);
 	int maximum(skillEnergy.ceil());
@@ -96,7 +137,7 @@ int set_Energize(int toSet)
 	return ATTRIBUTION_OK;
 }
 
-int set_Traders(int toSet)
+int City::set_Traders(int toSet)
 {
 	int freePopulation(population-farmers-energizer);
 	int maximum(skillEconomy.ceil());
@@ -104,3 +145,4 @@ int set_Traders(int toSet)
 	traders = toSet;
 	return ATTRIBUTION_OK;
 }
+*/

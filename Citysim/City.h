@@ -15,6 +15,7 @@ class City
 {
 public:
 	City();
+	City(string name, int arg_population = 100, float arg_nourriture = 2000, float arg_energie = 10000, float arg_budget = 200000);
 	~City();
 
 	int simulate(); // fonction de routine, simulant l'évolution de la ville
@@ -32,6 +33,7 @@ public:
 	int foodGrowth(); // croissance de la nourriture
 	int populationGrowth(); // croissance de la population
 	int happinessGrowth(); // croissance du bonheur
+	int budgetGrowth(); // croissance du budget
 
 	// Estimations et mesures
 	float happinessPart(); // Part de population heureuse (coefficient)
@@ -42,6 +44,8 @@ public:
 	int set_Traders(int toSet); // indiquer le nombre de traders actifs
 
 private:
+	static int cityNumber;
+
 	// Attributes
 	string nom; // nom de la ville
 	string faction; // faction de la ville
