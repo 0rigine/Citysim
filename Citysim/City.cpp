@@ -1,7 +1,11 @@
 #include "stdafx.h"
-#include "City.h"
+
 #include <thread>
 using namespace std;
+
+#include "Faction.h"
+#include "City.h"
+
 
 int City::cityNumber = 0;
 
@@ -63,6 +67,7 @@ int City::growth()
 		foodGrowth();
 		happinessGrowth();
 		populationGrowth();
+		budgetGrowth();
 		this_thread::sleep_for(3s);
 	}
 	return 0;
@@ -136,9 +141,9 @@ void City::estAchetee(Faction *newFaction)
 	faction = newFaction;
 }
 
-void City::acheterVille(City const & achetee, float prix)
+void City::acheterVille(City & achetee, float prix)
 {
-	faction.acheterVille(achetee, prix);
+	faction->acheterVille(achetee, prix);
 }
 
 int City::set_Farmers(int toSet)

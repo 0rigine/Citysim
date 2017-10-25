@@ -4,12 +4,13 @@
 #include <vector>
 using namespace std;
 
+
 #include "Skill.h"
-#include "Faction.h"
 
 // Définitions des retours d'erreurs
 #define ATTRIBUTION_OK 0 // réussite d'attribution d'employés
 #define ATTRIBUTION_ERROR 1 // erreur d'attribution d'employés
+class Faction;
 
 class City
 {
@@ -39,7 +40,7 @@ public:
 
 	// Conquete
 	void estAchetee(Faction *newFaction); // fonction de vente de la ville
-	void acheterVille(City const& achetee, float prix = 10);
+	void acheterVille(City & achetee, float prix = 10);
 
 private:
 	
