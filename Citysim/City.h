@@ -2,10 +2,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <map>
 using namespace std;
 
 #include "Skill.h"
+#include "Faction.h"
 
 // Définitions des retours d'erreurs
 #define ATTRIBUTION_OK 0 // réussite d'attribution d'employés
@@ -38,14 +38,14 @@ public:
 	int set_Traders(int toSet); // indiquer le nombre de traders actifs
 
 	// Conquete
-	void estAchetee(string newFaction); // fonction de vente de la ville
-	void acheterVille(City & vendue, float prix = 10); // fonction d'achat de la ville
+	void estAchetee(Faction *newFaction); // fonction de vente de la ville
+	void acheterVille(City const& achetee, float prix = 10);
 
 private:
 	
 	// Attributes
 	string nom; // nom de la ville
-	string faction; // faction de la ville
+	Faction *faction; // faction de la ville
 	int id; // id de la ville
 
 	int population; // population totale

@@ -17,7 +17,7 @@ City::City():
 	traders(0)
 {
 	nom = "Prout";
-	faction = nom;
+	faction = new Faction(nom);
 	id = City::cityNumber;
 	++City::cityNumber;
 
@@ -37,7 +37,7 @@ City::City(string name, float arg_bonheur, int arg_population, float arg_nourrit
 	id = City::cityNumber;
 	++City::cityNumber;
 	nom = name;
-	faction = name;
+	faction = new Faction(nom);
 	population = arg_population;
 	nourriture = arg_nourriture;
 	energie = arg_energie;
@@ -131,15 +131,14 @@ float City::happinessPart()
 	return happyFood*happyEnergy; // part de population dont tous les besoins sont satisfaits
 }
 
-void City::estAchetee(string newFaction)
+void City::estAchetee(Faction *newFaction)
 {
 	faction = newFaction;
 }
 
-void City::acheterVille(City & vendue, float prix)
+void City::acheterVille(City const & achetee, float prix)
 {
-	budget -= prix;
-	vendue.estAchetee(faction);
+	faction.acheterVille(achetee, prix);
 }
 
 int City::set_Farmers(int toSet)
