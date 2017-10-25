@@ -14,8 +14,9 @@ using namespace std;
 class City
 {
 public:
+	static int cityNumber;
 	City();
-	City(string name, int arg_population = 100, float arg_nourriture = 2000, float arg_energie = 10000, float arg_budget = 200000);
+	City(string name, float arg_bonheur = 0, int arg_population = 100, float arg_nourriture = 2000, float arg_energie = 10000, float arg_budget = 200000);
 	~City();
 
 	int simulate(); // fonction de routine, simulant l'évolution de la ville
@@ -44,7 +45,7 @@ public:
 	int set_Traders(int toSet); // indiquer le nombre de traders actifs
 
 private:
-	static int cityNumber;
+	
 
 	// Attributes
 	string nom; // nom de la ville

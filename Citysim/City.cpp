@@ -3,10 +3,11 @@
 #include <thread>
 using namespace std;
 
-City::cityNumber(0);
+int City::cityNumber = 0;
 
 
 City::City():
+	bonheur(0),
 	population(100),
 	nourriture(2000),
 	energie(10000),
@@ -15,13 +16,13 @@ City::City():
 	energizer(0),
 	traders(0)
 {
-	nom("Prout");
-	faction(nom);
-	id(City::cityNumber);
+	nom = "Prout";
+	faction = nom;
+	id = City::cityNumber;
 	++City::cityNumber;
 }
 
-City::City(string name, int arg_population, float arg_nourriture, float arg_energie, float arg_budget)
+City::City(string name, float arg_bonheur, int arg_population, float arg_nourriture, float arg_energie, float arg_budget)
 {
 	City::City();
 	nom = name;
@@ -30,6 +31,7 @@ City::City(string name, int arg_population, float arg_nourriture, float arg_ener
 	nourriture = arg_nourriture;
 	energie = arg_energie;
 	budget = arg_budget;
+	bonheur = arg_bonheur;
 }
 
 
