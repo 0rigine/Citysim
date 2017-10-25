@@ -1,20 +1,25 @@
 #include "stdafx.h"
 #include "Faction.h"
 
+int Faction::factionNumber = 0;
 
 Faction::Faction():
 	nourriture(0),
 	energie(0),
-	budget(0)
+	budget(0),
+	id(factionNumber)
 {
+	++factionNumber;
 }
 
 Faction::Faction(string arg_name):
 	nourriture(0),
 	energie(0),
-	budget(0)
+	budget(0),
+	id(factionNumber)
 {
 	name = arg_name;
+	++factionNumber;
 }
 
 

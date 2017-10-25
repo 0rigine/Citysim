@@ -1,10 +1,8 @@
 #include "stdafx.h"
 
-#include <thread>
-using namespace std;
-
 #include "Faction.h"
 #include "City.h"
+#include "RandomName.h"
 
 
 int City::cityNumber = 0;
@@ -20,7 +18,7 @@ City::City():
 	energizer(0),
 	traders(0)
 {
-	nom = "Prout";
+	nom = RandomName::generate();
 	faction = new Faction(nom);
 	id = City::cityNumber;
 	++City::cityNumber;
@@ -61,15 +59,11 @@ int City::simulate()
 
 int City::growth()
 {
-	while (true)
-	{
-		energyGrowth();
-		foodGrowth();
-		happinessGrowth();
-		populationGrowth();
-		budgetGrowth();
-		this_thread::sleep_for(3s);
-	}
+	energyGrowth();
+	foodGrowth();
+	happinessGrowth();
+	populationGrowth();
+	budgetGrowth();
 	return 0;
 }
 
