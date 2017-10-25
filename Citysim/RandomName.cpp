@@ -25,7 +25,7 @@
 	"educ",
 	"equis",
 	"extr",
-	"guius",
+	"guis",
 	"hann",
 	"equit",
 	"amoran",
@@ -47,7 +47,7 @@
 	"ath",
 	"um",
 	"ator",
-	"orygine",
+	"ory",
 	"one",
 	"ais",
 	"uch"
