@@ -17,14 +17,13 @@ Grille::~Grille()
 
 vector<vector<City*>> Grille::initialize_Grid(int sizex, int sizey)
 {
-	auto engine = default_random_engine{};
 	vector<vector<City*>> grille;
 	vector<City*> towns;
 	int u(0), v(0), len(sizex*sizey);
 	towns.push_back(new Player());
 	for (int i = 1; i < len; ++i) towns.push_back(new Autonomy());
 
-	shuffle(towns.begin(), towns.end(), engine);
+	random_shuffle(towns.begin(), towns.end());
 
 	grille.push_back(vector<City*>(0));
 	for each (City* town in towns)
