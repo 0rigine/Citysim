@@ -9,5 +9,5 @@ public:
 	Autonomy();
 	virtual ~Autonomy();
 
-	virtual void turn();
+	virtual void turn(); // tour de jeu
 };

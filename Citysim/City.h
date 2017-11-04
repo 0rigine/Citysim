@@ -20,8 +20,10 @@ public:
 	City(string name, float arg_bonheur = 0, int arg_population = 100, float arg_nourriture = 2000, float arg_energie = 10000, float arg_budget = 200000);
 	virtual ~City();
 
+	// Interface
 	void presentation();
-	virtual void turn() = 0;
+	virtual void working(); // affichage des employés
+	virtual void turn() = 0; // tour de jeu
 
 	// Croissance de la ville
 	int growth(); // appel des fonctions de croissance
@@ -45,6 +47,7 @@ public:
 
 	// Accesseurs
 	const string getName() const; // Accesseur de nom
+	const Faction* getFaction() const; // Accesseur de faction
 
 private:
 	
