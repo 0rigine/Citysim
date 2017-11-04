@@ -1,15 +1,12 @@
 #include "stdafx.h"
 #include "Faction.h"
 
-int Faction::factionNumber = 0;
-
 Faction::Faction():
 	nourriture(0),
 	energie(0),
 	budget(0),
 	id(factionNumber)
 {
-	++factionNumber;
 }
 
 Faction::Faction(string arg_name):
@@ -27,6 +24,14 @@ Faction::~Faction()
 {
 }
 
+void Faction::update()
+{
+	for each (City* town in cities)
+	{
+
+	}
+}
+
 void Faction::sum_nourriture(float arg_nourriture)
 {
 }
@@ -39,8 +44,9 @@ void Faction::sum_budget(float arg_budget)
 {
 }
 
-void Faction::acheterVille(City & vendue, float prix)
+void Faction::acheterVille(City *vendue, float prix)
 {
 	budget -= prix;
-	vendue.estAchetee(this);
+	vendue->estAchetee(this);
+	cities.push_back(vendue);
 }

@@ -102,6 +102,9 @@ int City::populationGrowth()
 	if (travailleurs > newPopulation)
 	{
 		coeffWorker = (travailleurs - newPopulation) / newPopulation;
+		energizer *= coeffWorker;
+		farmers *= coeffWorker;
+		traders *= coeffWorker;
 	}
 	return 0;
 }
@@ -135,7 +138,7 @@ void City::estAchetee(Faction *newFaction)
 	faction = newFaction;
 }
 
-void City::acheterVille(City & achetee, float prix)
+void City::acheterVille(City *achetee, float prix)
 {
 	faction->acheterVille(achetee, prix);
 }

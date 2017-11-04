@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 using namespace std;
 
 #include "City.h"
@@ -10,6 +11,8 @@ public:
 	Faction();
 	Faction(string arg_name);
 	~Faction();
+	// Tour
+	void update();
 
 	// Somme des ressources
 	void sum_nourriture(float arg_nourriture); // ajout nourriture à la faction
@@ -17,14 +20,14 @@ public:
 	void sum_budget(float arg_budget); // ajout budget à la faction
 
 	// Achats / Vente
-	void acheterVille(City & vendue, float prix = 10); // fonction d'achat de la ville
+	void acheterVille(City *vendue, float prix = 10); // fonction d'achat de la ville
 
 private:
-	static int factionNumber;
 	string name;
 	int id;
 	float nourriture; // stock de nourriture
 	float energie; // stock d'énergie
 	float budget; // argent disponible
+	vector<City*> cities;
 };
 

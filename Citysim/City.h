@@ -40,7 +40,7 @@ public:
 
 	// Conquete
 	void estAchetee(Faction *newFaction); // fonction de vente de la ville
-	void acheterVille(City & achetee, float prix = 10);
+	void acheterVille(City *achetee, float prix = 10);
 
 private:
 	
