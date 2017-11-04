@@ -10,7 +10,7 @@ int main()
 	vector< vector<City*>> test = Grille::initialize_Grid(1, 1);
 	//test[0].push_back(new City());
 	//test[0][0]->acheterVille(test[0][1]);
-
+	//test[0][0]->presentation();
 	system("pause");
     return 0;
 }

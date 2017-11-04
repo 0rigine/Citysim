@@ -20,7 +20,7 @@ public:
 	City(string name, float arg_bonheur = 0, int arg_population = 100, float arg_nourriture = 2000, float arg_energie = 10000, float arg_budget = 200000);
 	virtual ~City();
 
-	int simulate(); // fonction de routine, simulant l'évolution de la ville
+	void presentation();
 
 	// Croissance de la ville
 	int growth(); // appel des fonctions de croissance

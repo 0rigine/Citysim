@@ -3,7 +3,8 @@
 #include "Faction.h"
 #include "City.h"
 #include "RandomName.h"
-
+#include <iostream>
+using namespace std;
 
 int City::cityNumber = 0;
 
@@ -52,9 +53,9 @@ City::~City()
 {
 }
 
-int City::simulate()
+void City::presentation()
 {
-	return 0;
+	cout << nom << "Abrite " << population << " habitants" << endl;
 }
 
 int City::growth()
