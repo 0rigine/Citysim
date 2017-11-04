@@ -22,6 +22,7 @@ int main()
 			(*jt)->turn();
 		}
 	}
+
 	system("pause");
     return 0;
 }

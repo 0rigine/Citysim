@@ -11,4 +11,5 @@ public:
 
 	// Interface
 	virtual void turn();
+	void setEmployes(string jobName, int (City::*setter)(int)); // fonction d'assignation des employés
 };

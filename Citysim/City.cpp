@@ -115,7 +115,7 @@ int City::populationGrowth()
 	int sad(population - happy); // population dont les besoins ne sont pas tous satisfaits
 	newPopulation = (int)population+(happy/2)-sad*coeffSad; // population restante
 	travailleurs = farmers + energizer + traders;
-	if (travailleurs > newPopulation)
+	if (travailleurs > newPopulation) // ajustement des travailleurs à la population restante si inférieure
 	{
 		coeffWorker = (travailleurs - newPopulation) / newPopulation;
 		energizer *= coeffWorker;
