@@ -55,7 +55,11 @@ City::~City()
 
 void City::presentation()
 {
-	cout << nom << " abrite " << population << " habitants" << endl;
+	cout << "[" << faction->getName() << "] " << nom << " abrite " << population << " habitants" << endl;
+	cout << "Elle possede :" << endl;
+	cout << nourriture << " nourriture" << endl;
+	cout << energie << " energie" << endl;
+	cout << budget << " de budget\n" << endl;
 }
 
 int City::growth()
@@ -142,6 +146,11 @@ void City::estAchetee(Faction *newFaction)
 void City::acheterVille(City *achetee, float prix)
 {
 	faction->acheterVille(achetee, prix);
+}
+
+const string City::getName() const
+{
+	return nom;
 }
 
 int City::set_Farmers(int toSet)

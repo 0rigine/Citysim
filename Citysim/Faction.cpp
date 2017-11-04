@@ -62,3 +62,8 @@ void Faction::vendreVille(City * vendue, float prix)
 	cities.erase(remove(cities.begin(), cities.end(), vendue), cities.end());
 	budget += prix;
 }
+
+const string Faction::getName() const
+{
+	return name;
+}

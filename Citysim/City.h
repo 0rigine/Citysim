@@ -42,6 +42,9 @@ public:
 	void estAchetee(Faction *newFaction); // fonction de vente de la ville
 	void acheterVille(City *achetee, float prix = 10);
 
+	// Accesseurs
+	const string getName() const; // Accesseur de nom
+
 private:
 	
 	// Attributes
