@@ -21,6 +21,7 @@ public:
 	virtual ~City();
 
 	void presentation();
+	virtual void turn() = 0;
 
 	// Croissance de la ville
 	int growth(); // appel des fonctions de croissance

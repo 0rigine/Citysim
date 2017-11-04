@@ -8,4 +8,6 @@ class Autonomy :
 public:
 	Autonomy();
 	virtual ~Autonomy();
+
+	virtual void turn();
 };

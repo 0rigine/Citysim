@@ -10,5 +10,5 @@ public:
 	virtual ~Player();
 
 	// Interface
-	void turn();
+	virtual void turn();
 };
