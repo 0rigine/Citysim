@@ -20,7 +20,7 @@ City::City():
 	traders(0)
 {
 	nom = RandomName::generate();
-	faction = new Faction(nom);
+	faction = new Faction(nom, this);
 	id = City::cityNumber;
 	++City::cityNumber;
 
@@ -40,7 +40,7 @@ City::City(string name, float arg_bonheur, int arg_population, float arg_nourrit
 	id = City::cityNumber;
 	++City::cityNumber;
 	nom = name;
-	faction = new Faction(nom);
+	faction = new Faction(nom, this);
 	population = arg_population;
 	nourriture = arg_nourriture;
 	energie = arg_energie;
@@ -55,7 +55,7 @@ City::~City()
 
 void City::presentation()
 {
-	cout << nom << "Abrite " << population << " habitants" << endl;
+	cout << nom << " abrite " << population << " habitants" << endl;
 }
 
 int City::growth()

@@ -14,13 +14,14 @@ Faction::Faction():
 	++factionNumber;
 }
 
-Faction::Faction(string arg_name):
+Faction::Faction(string arg_name, City* capitale):
 	nourriture(0),
 	energie(0),
 	budget(0),
 	id(factionNumber)
 {
 	name = arg_name;
+	cities.push_back(capitale);
 	++factionNumber;
 }
 

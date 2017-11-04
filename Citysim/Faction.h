@@ -9,8 +9,9 @@ class Faction
 {
 public:
 	Faction();
-	Faction(string arg_name);
+	Faction(string arg_name, City* capitale);
 	~Faction();
+
 	// Tour
 	void update();
 
