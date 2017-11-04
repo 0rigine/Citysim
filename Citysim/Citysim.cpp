@@ -11,7 +11,6 @@ int main()
 {
 	srand(time(NULL));
 	vector< vector<City*> > test = Grille::initialize_Grid(2, 2);
-	//test[0].push_back(new Autonomy());
 	vector<vector<City*>>::iterator it;
 	vector<City*>::iterator jt;
 	for (it = test.begin(); it != test.end(); ++it)
@@ -19,7 +18,6 @@ int main()
 		for (jt = it->begin(); jt != it->end(); ++jt)
 		{
 			(*jt)->presentation();
-			(*jt)->turn();
 		}
 	}
 
