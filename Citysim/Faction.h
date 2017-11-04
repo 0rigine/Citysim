@@ -21,8 +21,10 @@ public:
 
 	// Achats / Vente
 	void acheterVille(City *vendue, float prix = 10); // fonction d'achat de la ville
+	void vendreVille(City *vendue, float prix = 10); // fonction de vente d'une ville
 
 private:
+	static int factionNumber;
 	string name;
 	int id;
 	float nourriture; // stock de nourriture
