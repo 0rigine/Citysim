@@ -146,10 +146,12 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Autonomy.h" />
     <ClInclude Include="City.h" />
     <ClInclude Include="Contrat.h" />
     <ClInclude Include="Faction.h" />
     <ClInclude Include="Grille.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="RandomName.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="stdafx.h" />
@@ -157,11 +159,13 @@
     <ClInclude Include="Tree.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Autonomy.cpp" />
     <ClCompile Include="City.cpp" />
     <ClCompile Include="Citysim.cpp" />
     <ClCompile Include="Contrat.cpp" />
     <ClCompile Include="Faction.cpp" />
     <ClCompile Include="Grille.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="RandomName.cpp" />
     <ClCompile Include="Skill.cpp" />
     <ClCompile Include="stdafx.cpp">

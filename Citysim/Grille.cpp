@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Grille.h"
-
+#include <random>
+#include <algorithm>
+using namespace std;
 
 Grille::Grille()
 {
@@ -11,15 +13,16 @@ Grille::~Grille()
 {
 }
 
-vector<vector<City>> Grille::initialize_Grid(int sizex, int sizey)
+vector<vector<City*>> Grille::initialize_Grid(int sizex, int sizey)
 {
-	vector<vector<City>> grille;
-	for (int i = 0; i < sizex; i++)
+	vector<vector<City*>> grille;
+	vector::iterator i,j;
+	for (i = grille.begin(); i != grille.end(); ++i)
 	{
 		grille.push_back(vector<City>(0));
-		for (int j = 0; j < sizey; j++)
+		for (j = (*i)->begin(); j != (*i)->end(); ++j)
 		{
-			grille[i].push_back(City());
+			(*i)->push_back(new City());
 		}
 	}
 

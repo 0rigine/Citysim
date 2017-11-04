@@ -10,5 +10,5 @@ public:
 	~Grille();
 
 	// Instanciation de la grille
-	static vector<vector<City>> initialize_Grid(int sizex, int sizey);
+	static vector<vector<City*>> initialize_Grid(int sizex, int sizey);
 };
