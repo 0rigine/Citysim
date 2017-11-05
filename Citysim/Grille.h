@@ -29,4 +29,4 @@ private:
 	vector<Faction*> factionsList;
 };
 
-void do_join(thread& process);
+void do_join(thread& process); // faire un join() sur le thread donné

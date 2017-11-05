@@ -12,8 +12,8 @@ Autonomy::~Autonomy()
 
 void Autonomy::turn()
 {
-	set_Farmers(60);
-	set_Energize(40);
+	set_Farmers(50);
+	set_Energize(50);
 
 	growth(); // croissance de la ville en fin de tour
 }
