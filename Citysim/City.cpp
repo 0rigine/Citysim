@@ -146,10 +146,14 @@ void City::budgetGrowth()
 float City::happinessPart()
 {
 	float foodCons(10), energyCons(20); // besoins par habitant selon la ressource
+
 	float happyFood = (nourriture / foodCons) / population; // part de population dont les besoins en nourriture sont satisfaits
+	if (happyFood > 1.0) happyFood = 1.0; // controle du pourcentage de population satisfaite en nourriture
+
 	float happyEnergy = (energie / energyCons) / population; // part de population dont les besoins en energie sont satisfaits
+	if (happyEnergy > 1.0) happyEnergy = 1.0; // controle du pourcentage de population satisfaite en énergie
 	float hapinnessTotal(happyFood*happyEnergy);
-	if (hapinnessTotal > 1.0) hapinnessTotal = 1.0; // controle du pourcentage de population satisfait
+
 	return hapinnessTotal; // part de population dont tous les besoins sont satisfaits
 }
 
