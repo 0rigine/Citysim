@@ -91,7 +91,7 @@ void City::energyGrowth()
 	float consommation(20); // energie consommee par habitant
 	float happyCoeff(happinessPart()); // part de population heureuse
 	// Production en fonction du bonheur de la population
-	energie = (float)energie+(energizer*coefficient*quantity*happyCoeff)+(energizer*coefficient*(1-happyCoeff))-population*consommation;
+	energie += (energizer*coefficient*quantity*happyCoeff)+(energizer*coefficient*(1-happyCoeff))-population*consommation;
 }
 
 void City::foodGrowth()
@@ -101,7 +101,7 @@ void City::foodGrowth()
 	float consommation(10); // nourriture consommee par habitant
 	float happyCoeff(happinessPart()); // part de population heureuse
 	// Production en fonction du bonheur de la population
-	nourriture = (float)nourriture+(farmers*coefficient*quantity*happyCoeff)+(farmers*coefficient*(1-happyCoeff))-population*consommation;
+	nourriture += (farmers*coefficient*quantity*happyCoeff)+(farmers*coefficient*(1-happyCoeff))-population*consommation;
 }
 
 void City::populationGrowth()
@@ -123,6 +123,7 @@ void City::populationGrowth()
 		farmers *= coeffWorker;
 		traders *= coeffWorker;
 	}
+	population = newPopulation;
 }
 
 void City::happinessGrowth()

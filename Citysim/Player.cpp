@@ -26,7 +26,7 @@ void Player::turn()
 	}
 	working();
 
-	growth();
+	growth(); // croissance de la ville en fin de tour
 }
 
 void Player::setEmployes(string jobName, int (City::*setter)(int))

@@ -2,6 +2,7 @@
 #include "Grille.h"
 #include <random>
 #include <algorithm>
+#include <thread>
 using namespace std;
 #include "Player.h"
 #include "Autonomy.h"
@@ -34,9 +35,23 @@ void Grille::afficherVilles()
 	}
 }
 
+void do_join(thread& process)
+{
+	process.join();
+}
+
+void Grille::playATurn()
+{
+	vector<thread> processus;
+	for each (City *town in towns)
+	{
+		processus.push_back(thread(&City::turn,town));
+	}
+	for_each(processus.begin(), processus.end(), do_join);
+}
+
 int Grille::initialize_Grid(int sizex, int sizey)
 {
-	vector<City*> towns;
 	int row(0), column(0), len(sizex*sizey); // colonnes et lignes pour la taille limite ainsi que le nombre de villes devant être créées
 	towns.push_back(new Player()); // on crée la ville du joueur
 	for (int i = 1; i < len; ++i) towns.push_back(new Autonomy()); // on ajoute à la liste les villes IA
