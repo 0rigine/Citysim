@@ -148,7 +148,9 @@ float City::happinessPart()
 	float foodCons(10), energyCons(30); // besoins par habitant selon la ressource
 	float happyFood = (nourriture / foodCons) / population; // part de population dont les besoins en nourriture sont satisfaits
 	float happyEnergy = (energie / energyCons) / population; // part de population dont les besoins en energie sont satisfaits
-	return happyFood*happyEnergy; // part de population dont tous les besoins sont satisfaits
+	float hapinnessTotal(happyFood*happyEnergy);
+	if (hapinnessTotal > 1.0) hapinnessTotal = 1.0; // controle du pourcentage de population satisfait
+	return hapinnessTotal; // part de population dont tous les besoins sont satisfaits
 }
 
 // Achat/Vente de villes
