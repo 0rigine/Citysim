@@ -53,6 +53,7 @@ City::~City()
 {
 }
 
+// Affichages
 void City::presentation()
 {
 	cout << "[" << faction->getName() << "] " << nom << "\n" << endl;
@@ -73,17 +74,17 @@ void City::working()
 	cout << endl;
 }
 
-int City::growth()
+//Croissance
+void City::growth()
 {
 	energyGrowth();
 	foodGrowth();
 	happinessGrowth();
 	populationGrowth();
 	budgetGrowth();
-	return 0;
 }
 
-int City::energyGrowth()
+void City::energyGrowth()
 {
 	float coefficient(1); // coefficient bonus
 	float quantity(50); // energie produite par habitant
@@ -91,10 +92,9 @@ int City::energyGrowth()
 	float happyCoeff(happinessPart()); // part de population heureuse
 	// Production en fonction du bonheur de la population
 	energie = (float)energie+(energizer*coefficient*quantity*happyCoeff)+(energizer*coefficient*(1-happyCoeff))-population*consommation;
-	return 0;
 }
 
-int City::foodGrowth()
+void City::foodGrowth()
 {
 	float coefficient(1); // coefficient bonus
 	float quantity(30); // nourriture produite par habitant
@@ -102,10 +102,9 @@ int City::foodGrowth()
 	float happyCoeff(happinessPart()); // part de population heureuse
 	// Production en fonction du bonheur de la population
 	nourriture = (float)nourriture+(farmers*coefficient*quantity*happyCoeff)+(farmers*coefficient*(1-happyCoeff))-population*consommation;
-	return 0;
 }
 
-int City::populationGrowth()
+void City::populationGrowth()
 {
 	float coefficient(1); // coefficient bonus
 	float coeffSad(1 / bonheur); // coefficient de population malheureuse disparaissant
@@ -114,7 +113,9 @@ int City::populationGrowth()
 	int happy(happinessPart()*population); // habitants heureux
 	int sad(population - happy); // population dont les besoins ne sont pas tous satisfaits
 	newPopulation = (int)population+(happy/2)-sad*coeffSad; // population restante
-	travailleurs = farmers + energizer + traders;
+
+	travailleurs = farmers + energizer + traders; // total de travailleurs
+
 	if (travailleurs > newPopulation) // ajustement des travailleurs à la population restante si inférieure
 	{
 		coeffWorker = (travailleurs - newPopulation) / newPopulation;
@@ -122,26 +123,24 @@ int City::populationGrowth()
 		farmers *= coeffWorker;
 		traders *= coeffWorker;
 	}
-	return 0;
 }
 
-int City::happinessGrowth()
+void City::happinessGrowth()
 {
 	float coefficient(1); // coefficient bonus
 	int happynessPop(happinessPart()*population); // population comblee
 	int sadnessPop(population - happynessPop); // population en manque
 	bonheur += (happynessPop - sadnessPop)*coefficient; // calcul du bonheur selon la population heureuse et malheureuse
-	return 0;
 }
 
-int City::budgetGrowth()
+void City::budgetGrowth()
 {
-	float salaire(2.5),coeffTraders(20.5);
+	float salaire(2.5),coeffTraders(25.0);
 	int travailleurs = farmers + energizer + traders;
 	budget += traders*coeffTraders - salaire*travailleurs;
-	return 0;
 }
 
+// Estimations et mesures
 float City::happinessPart()
 {
 	float foodCons(10), energyCons(30); // besoins par habitant selon la ressource
@@ -150,6 +149,7 @@ float City::happinessPart()
 	return happyFood*happyEnergy; // part de population dont tous les besoins sont satisfaits
 }
 
+// Achat/Vente de villes
 void City::estAchetee(Faction *newFaction)
 {
 	faction = newFaction;
@@ -160,6 +160,7 @@ void City::acheterVille(City *achetee, float prix)
 	faction->acheterVille(achetee, prix);
 }
 
+// Accesseurs
 const string City::getName() const
 {
 	return nom;
@@ -170,6 +171,8 @@ Faction* City::getFaction() const
 	return faction;
 }
 
+
+// Setters
 int City::set_Farmers(int toSet)
 {
 	int freePopulation(population-energizer-traders);

@@ -26,12 +26,12 @@ public:
 	virtual void turn() = 0; // tour de jeu
 
 	// Croissance de la ville
-	int growth(); // appel des fonctions de croissance
-	int energyGrowth(); // croissance de l'énergie
-	int foodGrowth(); // croissance de la nourriture
-	int populationGrowth(); // croissance de la population
-	int happinessGrowth(); // croissance du bonheur
-	int budgetGrowth(); // croissance du budget
+	void growth(); // appel des fonctions de croissance
+	void energyGrowth(); // croissance de l'énergie
+	void foodGrowth(); // croissance de la nourriture
+	void populationGrowth(); // croissance de la population
+	void happinessGrowth(); // croissance du bonheur
+	void budgetGrowth(); // croissance du budget
 
 	// Estimations et mesures
 	float happinessPart(); // Part de population heureuse (coefficient)
