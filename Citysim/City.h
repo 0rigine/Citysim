@@ -70,6 +70,5 @@ private:
 	Skill skillFood; // arbre de compétences : nourriture
 	Skill skillEnergy; // arbre de compétences : énergie
 	Skill skillEconomy; // arbre de compétences : économie
-	Skill constructions; // // arbre de constructions de la ville (commisariat, caserne, mairie...)
 	*/
 };
