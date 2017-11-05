@@ -10,7 +10,7 @@ int City::cityNumber = 0;
 
 
 City::City():
-	bonheur(0),
+	bonheur(1),
 	population(100),
 	nourriture(2000),
 	energie(10000),
@@ -28,7 +28,7 @@ City::City():
 }
 
 City::City(string name, float arg_bonheur, int arg_population, float arg_nourriture, float arg_energie, float arg_budget):
-	bonheur(0),
+	bonheur(1),
 	population(100),
 	nourriture(2000),
 	energie(10000),
@@ -80,8 +80,8 @@ void City::growth()
 	energyGrowth();
 	foodGrowth();
 	happinessGrowth();
-	populationGrowth();
 	budgetGrowth();
+	populationGrowth();
 }
 
 void City::energyGrowth()
@@ -112,7 +112,7 @@ void City::populationGrowth()
 	int newPopulation(0),travailleurs(0);
 	int happy(happinessPart()*population); // habitants heureux
 	int sad(population - happy); // population dont les besoins ne sont pas tous satisfaits
-	newPopulation = (int)population+(happy/2)-sad*coeffSad; // population restante
+	newPopulation = population+(happy/2)-sad*coeffSad; // population restante
 
 	travailleurs = farmers + energizer + traders; // total de travailleurs
 
@@ -132,6 +132,7 @@ void City::happinessGrowth()
 	int happynessPop(happinessPart()*population); // population comblee
 	int sadnessPop(population - happynessPop); // population en manque
 	bonheur += (happynessPop - sadnessPop)*coefficient; // calcul du bonheur selon la population heureuse et malheureuse
+	if (bonheur <= 0) bonheur = 1;
 }
 
 void City::budgetGrowth()
