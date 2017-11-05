@@ -67,3 +67,8 @@ const string Faction::getName() const
 {
 	return name;
 }
+
+const int Faction::getCitiesLenght() const
+{
+	return cities.size();
+}

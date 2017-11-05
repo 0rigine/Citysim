@@ -8,6 +8,12 @@ using namespace std;
 
 Grille::Grille()
 {
+	initialize_Grid(2, 2); // initialisation d'une grille avec une taille de 2x2 par défaut
+}
+
+Grille::Grille(int sizex, int sizey)
+{
+	initialize_Grid(sizex, sizey);
 }
 
 
@@ -15,28 +21,41 @@ Grille::~Grille()
 {
 }
 
-vector<vector<City*>> Grille::initialize_Grid(int sizex, int sizey)
+void Grille::afficherVilles()
 {
-	vector<vector<City*>> grille;
+	vector<vector<City*>>::iterator it;
+	vector<City*>::iterator jt;
+	for (it = grid.begin(); it != grid.end(); ++it)
+	{
+		for (jt = it->begin(); jt != it->end(); ++jt)
+		{
+			(*jt)->presentation();
+		}
+	}
+}
+
+int Grille::initialize_Grid(int sizex, int sizey)
+{
 	vector<City*> towns;
-	int u(0), v(0), len(sizex*sizey); // colonnes et lignes pour la taille limite ainsi que le nombre de villes devant être créées
+	int row(0), column(0), len(sizex*sizey); // colonnes et lignes pour la taille limite ainsi que le nombre de villes devant être créées
 	towns.push_back(new Player()); // on crée la ville du joueur
 	for (int i = 1; i < len; ++i) towns.push_back(new Autonomy()); // on ajoute à la liste les villes IA
 
 	random_shuffle(towns.begin(), towns.end()); // on mélange la liste des villes
 
-	grille.push_back(vector<City*>(0));
+	grid.push_back(vector<City*>(0));
 	for each (City* town in towns) // on distribue dans la grille la liste, leur position est aléatoire
 	{
-		if (v == sizey)
+		factionsList.push_back(town->getFaction()); // ajout de la faction à la liste des factions présentes
+		if (column == sizey)
 		{
-			++u;
-			v = 0;
-			grille.push_back(vector<City*>(0));
+			++row;
+			column = 0;
+			grid.push_back(vector<City*>(0));
 		}
-		grille[u].push_back(town);
-		++v;
+		grid[row].push_back(town);
+		++column;
 	}
 
-	return grille;
+	return GENERATION_OK;
 }

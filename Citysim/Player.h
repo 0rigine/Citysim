@@ -10,6 +10,7 @@ public:
 	virtual ~Player();
 
 	// Interface
-	virtual void turn();
+	virtual void turn(); // tour de jeu
 	void setEmployes(string jobName, int (City::*setter)(int)); // fonction d'assignation des employés
+	bool ask(string question); // fonction pour poser une question (insertion sécurisée)
 };

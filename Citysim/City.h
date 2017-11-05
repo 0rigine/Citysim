@@ -47,7 +47,7 @@ public:
 
 	// Accesseurs
 	const string getName() const; // Accesseur de nom
-	const Faction* getFaction() const; // Accesseur de faction
+	Faction* getFaction() const; // Accesseur de faction
 
 private:
 	

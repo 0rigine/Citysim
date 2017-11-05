@@ -15,15 +15,10 @@ Player::~Player()
 
 void Player::turn()
 {
-	char choice('o');
 	presentation();
 	working();
-	do
-	{
-		cout << "Changer les employes (o/n) ?" << endl;
-		cin >> choice;
-	} while (choice != 'o' && choice != 'n' && choice != 'O' && choice != 'N');
-	if (choice == 'o')
+	
+	if (ask("Changer les employes (o/n) ?"))
 	{
 		setEmployes("de fermiers", &City::set_Farmers);
 		setEmployes("de traders", &City::set_Traders);
@@ -45,4 +40,15 @@ void Player::setEmployes(string jobName, int (City::*setter)(int))
 		(this->*setter)(assigned);
 	}
 	cout << endl;
+}
+
+bool Player::ask(string question)
+{
+	char choice;
+	do
+	{
+		cout << question << endl;
+		cin >> choice;
+	} while (choice != 'o' && choice != 'n' && choice != 'O' && choice != 'N');
+	return (choice == 'o' || choice == 'O');
 }

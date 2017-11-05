@@ -26,6 +26,7 @@ public:
 
 	// Accesseurs
 	const string getName() const; // Accesseur de name
+	const int getCitiesLenght() const; // Accesseur de la longueur de cities
 
 private:
 	static int factionNumber;

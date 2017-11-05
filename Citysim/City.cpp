@@ -164,7 +164,7 @@ const string City::getName() const
 	return nom;
 }
 
-const Faction* City::getFaction() const
+Faction* City::getFaction() const
 {
 	return faction;
 }
