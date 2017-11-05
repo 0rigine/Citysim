@@ -129,7 +129,8 @@ int City::happinessGrowth()
 {
 	float coefficient(1); // coefficient bonus
 	int happynessPop(happinessPart()*population); // population comblee
-	bonheur = bonheur + (happynessPop*coefficient) - (population - happynessPop)*coefficient; // calcul du bonheur selon la population heureuse et malheureuse
+	int sadnessPop(population - happynessPop); // population en manque
+	bonheur += (happynessPop - sadnessPop)*coefficient; // calcul du bonheur selon la population heureuse et malheureuse
 	return 0;
 }
 
@@ -137,7 +138,7 @@ int City::budgetGrowth()
 {
 	float salaire(2.5),coeffTraders(20.5);
 	int travailleurs = farmers + energizer + traders;
-	budget = budget + traders*coeffTraders - salaire*travailleurs;
+	budget += traders*coeffTraders - salaire*travailleurs;
 	return 0;
 }
 

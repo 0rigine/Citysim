@@ -25,6 +25,8 @@ void Player::turn()
 		setEmployes("d'energiciens", &City::set_Energize);
 	}
 	working();
+
+	growth();
 }
 
 void Player::setEmployes(string jobName, int (City::*setter)(int))
