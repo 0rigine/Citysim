@@ -48,6 +48,7 @@ void Grille::playATurn()
 		processus.push_back(thread(&City::turn,town));
 	}
 	for_each(processus.begin(), processus.end(), do_join);
+
 }
 
 int Grille::initialize_Grid(int sizex, int sizey)

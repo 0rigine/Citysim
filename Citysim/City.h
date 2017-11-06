@@ -70,6 +70,9 @@ public:
 	const string getName() const; // Accesseur de nom
 	Faction* getFaction() const; // Accesseur de faction
 	vector<City*> get_Neighbour() const; // Accesseur de voisins 
+	float getFood() const;
+	float getEnergy() const;
+	float getWallet() const;
 
 	// Setters
 	void set_Coord(int posx, int posy); // setter de position

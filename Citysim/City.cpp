@@ -219,6 +219,21 @@ vector<City*> City::get_Neighbour() const
 	return voisines;
 }
 
+float City::getFood() const
+{
+	return nourriture;
+}
+
+float City::getEnergy() const
+{
+	return energie;
+}
+
+float City::getWallet() const
+{
+	return budget;
+}
+
 void City::set_Coord(int posx, int posy)
 {
 	coord_x = posx;
