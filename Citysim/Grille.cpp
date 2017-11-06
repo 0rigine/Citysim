@@ -59,6 +59,7 @@ void Grille::playATurn()
 		}
 		else
 		{
+			delete group;
 			factionsList.erase(remove(factionsList.begin(), factionsList.end(), group), factionsList.end());
 		}
 	}

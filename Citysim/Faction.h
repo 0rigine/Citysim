@@ -22,6 +22,7 @@ public:
 	// Accesseurs
 	const string getName() const; // Accesseur de name
 	const int getCitiesLenght() const; // Accesseur de la longueur de cities
+	vector<City*> getNeighbourhood(); // Liste des villes voisines de la faction
 
 private:
 	static int factionNumber;

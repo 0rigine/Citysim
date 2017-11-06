@@ -58,3 +58,17 @@ bool Player::ask(string question)
 	} while (choice != 'o' && choice != 'n' && choice != 'O' && choice != 'N');
 	return (choice == 'o' || choice == 'O');
 }
+
+void Player::buy()
+{
+	vector<City*> voisines;
+	if (ask("Acheter une ville (o/n) ?"))
+	{
+		voisines = getFaction()->getNeighbourhood();
+		for each (City* town in voisines)
+		{
+			town->presentation();
+			cout << endl;
+		}
+	}
+}

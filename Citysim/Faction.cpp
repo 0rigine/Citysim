@@ -65,3 +65,16 @@ const int Faction::getCitiesLenght() const
 {
 	return cities.size();
 }
+
+vector<City*> Faction::getNeighbourhood()
+{
+	vector<City*> neighbour;
+	for each (City* town in cities)
+	{
+		for each (City* voisine in town->get_Neighbour())
+		{
+			neighbour.push_back(voisine);
+		}
+	}
+	return neighbour;
+}
