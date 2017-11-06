@@ -49,6 +49,13 @@ void Grille::playATurn()
 	}
 	for_each(processus.begin(), processus.end(), do_join);
 
+	processus.clear();
+
+	for each (Faction *group in factionsList)
+	{
+		processus.push_back(thread(&Faction::update, group));
+	}
+	for_each(processus.begin(), processus.end(), do_join);
 }
 
 int Grille::initialize_Grid(int sizex, int sizey)

@@ -32,22 +32,15 @@ Faction::~Faction()
 
 void Faction::update()
 {
+	nourriture = 0;
+	energie = 0;
+	budget = 0;
 	for each (City* town in cities)
 	{
-
+		nourriture += town->getFood();
+		energie += town->getEnergy;
+		budget += town->getWallet();
 	}
-}
-
-void Faction::sum_nourriture(float arg_nourriture)
-{
-}
-
-void Faction::sum_energie(float arg_energie)
-{
-}
-
-void Faction::sum_budget(float arg_budget)
-{
 }
 
 void Faction::acheterVille(City *vendue, float prix)
