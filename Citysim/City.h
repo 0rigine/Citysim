@@ -72,6 +72,7 @@ public:
 
 	// Setters
 	void set_Coord(int posx, int posy); // setter de position
+	void set_Map(vector<vector<City*>> *arg_map);
 
 private:
 	
@@ -91,6 +92,8 @@ private:
 	float energie; // stock d'énergie
 	float budget; // argent disponible
 	float bonheur; // bonheur accumulé
+
+	vector< vector<City*> > *worldMap; // carte du monde (grille)
 
 	/*
 	Skill skillFood; // arbre de compétences : nourriture

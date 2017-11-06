@@ -204,6 +204,11 @@ void City::set_Coord(int posx, int posy)
 	coord_y = posy;
 }
 
+void City::set_Map(vector<vector<City*>>* arg_map)
+{
+	worldMap = arg_map;
+}
+
 
 // Setters
 int City::set_Farmers(int toSet)
