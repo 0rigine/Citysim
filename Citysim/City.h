@@ -69,6 +69,7 @@ public:
 	// Accesseurs
 	const string getName() const; // Accesseur de nom
 	Faction* getFaction() const; // Accesseur de faction
+	vector<City*> get_Neighbour() const; // Accesseur de voisins 
 
 	// Setters
 	void set_Coord(int posx, int posy); // setter de position
@@ -80,8 +81,8 @@ private:
 	string nom; // nom de la ville
 	Faction *faction; // faction de la ville
 	int id; // id de la ville
-	int coord_x; // coordonnées de la ville en x
-	int coord_y; // coordonnées de la ville en y
+	int coord_x; // coordonnée de la ville en x
+	int coord_y; // coordonnée de la ville en y
 
 	int population; // population totale
 	int farmers; // fermiers

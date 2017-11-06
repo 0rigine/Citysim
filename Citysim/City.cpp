@@ -198,6 +198,14 @@ Faction* City::getFaction() const
 	return faction;
 }
 
+vector<City*> City::get_Neighbour() const
+{
+	int sizex = worldMap->size();
+	int sizey = worldMap->begin()->size();
+	vector<City*> voisines; // vector contenant les villes : Ouest, Nord, Est, Sud
+
+}
+
 void City::set_Coord(int posx, int posy)
 {
 	coord_x = posx;
