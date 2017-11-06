@@ -202,8 +202,21 @@ vector<City*> City::get_Neighbour() const
 {
 	int sizex = worldMap->size();
 	int sizey = worldMap->begin()->size();
-	vector<City*> voisines; // vector contenant les villes : Ouest, Nord, Est, Sud
-
+	vector<City*> voisines; // vector contenant les villes : Sud, Ouest, Est, Nord
+	for (int i = -1; i <= 1; ++i)
+	{
+		for (int j = -1; j <= 1; ++j)
+		{
+			if ((i*i != j*j) && 0 <= coord_x + i && coord_x + i < sizex)
+			{
+				if (0 <= coord_y + j && coord_y + j < sizey)
+				{
+					voisines.push_back(worldMap[0][coord_x + i][coord_y + j]);
+				}
+			}
+		}
+	}
+	return voisines;
 }
 
 void City::set_Coord(int posx, int posy)
