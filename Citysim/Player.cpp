@@ -32,16 +32,20 @@ void Player::turn()
 void Player::setEmployes(string jobName, int (City::*setter)(int))
 {
 	int assigned(0);
+	int attribution(ATTRIBUTION_OK);
 	do
 	{
-		cout << "Saisir le nombre " << jobName << " (-1 pour ignorer) : " << endl;
-		cin >> assigned;
-	} while (assigned < -1);
-	if (assigned > -1)
-	{
-		(this->*setter)(assigned);
-	}
-	cout << endl;
+		do
+		{
+			cout << "Saisir le nombre " << jobName << " (-1 pour ignorer) : " << endl;
+			cin >> assigned;
+		} while (assigned < -1);
+		if (assigned > -1)
+		{
+			attribution = (this->*setter)(assigned);
+		}
+		cout << endl;
+	} while (attribution == ATTRIBUTION_ERROR);
 }
 
 bool Player::ask(string question)
