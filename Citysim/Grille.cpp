@@ -53,7 +53,14 @@ void Grille::playATurn()
 
 	for each (Faction *group in factionsList)
 	{
-		processus.push_back(thread(&Faction::update, group));
+		if (group->getCitiesLenght() > 0)
+		{
+			processus.push_back(thread(&Faction::update, group));
+		}
+		else
+		{
+			factionsList.erase(remove(factionsList.begin(), factionsList.end(), group), factionsList.end());
+		}
 	}
 	for_each(processus.begin(), processus.end(), do_join);
 }

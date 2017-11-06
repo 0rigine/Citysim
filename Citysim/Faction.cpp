@@ -38,7 +38,7 @@ void Faction::update()
 	for each (City* town in cities)
 	{
 		nourriture += town->getFood();
-		energie += town->getEnergy;
+		energie += town->getEnergy();
 		budget += town->getWallet();
 	}
 }
