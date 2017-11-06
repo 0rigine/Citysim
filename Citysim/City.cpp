@@ -184,7 +184,10 @@ void City::estAchetee(Faction *newFaction)
 
 void City::acheterVille(City *achetee, float prix)
 {
-	faction->acheterVille(achetee, prix);
+	if (achetee->getFaction() != faction)
+	{
+		faction->acheterVille(achetee, prix);
+	}
 }
 
 // Accesseurs
