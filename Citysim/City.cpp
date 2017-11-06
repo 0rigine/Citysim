@@ -89,7 +89,7 @@ void City::working()
 	cout << "Employes : " << totalEmployes << "/" << population << endl;
 	cout << "Fermiers : " << farmers << endl;
 	cout << "Traders : " << traders << endl;
-	cout << "Energiciens : " << energizer << endl;
+	cout << "Ingenieurs : " << energizer << endl;
 	cout << endl;
 }
 

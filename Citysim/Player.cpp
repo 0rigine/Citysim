@@ -22,7 +22,7 @@ void Player::turn()
 	{
 		setEmployes("de fermiers", &City::set_Farmers);
 		setEmployes("de traders", &City::set_Traders);
-		setEmployes("d'energiciens", &City::set_Energize);
+		setEmployes("d'ingenieurs", &City::set_Energize);
 	}
 	working();
 
