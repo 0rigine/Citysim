@@ -68,6 +68,7 @@ int Grille::initialize_Grid(int sizex, int sizey)
 			column = 0;
 			grid.push_back(vector<City*>(0));
 		}
+		town->set_Coord(row, column);
 		grid[row].push_back(town);
 		++column;
 	}

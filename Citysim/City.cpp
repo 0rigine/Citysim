@@ -11,41 +11,60 @@ int City::cityNumber = 0;
 
 City::City():
 	bonheur(1),
-	population(100),
-	nourriture(2000),
-	energie(10000),
-	budget(200000),
-	farmers(0),
-	energizer(0),
-	traders(0)
+	population(DEFAULT_POPULATION),
+	nourriture(DEFAULT_FOOD),
+	energie(DEFAULT_ENERGY),
+	budget(DEFAULT_WALLET),
+	farmers(DEFAULT_FARMERS),
+	energizer(DEFAULT_ENERGIZER),
+	traders(DEFAULT_TRADERS)
 {
+	initiate();
 	nom = RandomName::generate();
 	faction = new Faction(nom, this);
 	id = City::cityNumber;
 	++City::cityNumber;
-
-
 }
 
-City::City(string name, float arg_bonheur, int arg_population, float arg_nourriture, float arg_energie, float arg_budget):
+City::City(int arg_posx, int arg_posy):
 	bonheur(1),
-	population(100),
-	nourriture(2000),
-	energie(10000),
-	budget(200000),
-	farmers(0),
-	energizer(0),
-	traders(0)
+	population(DEFAULT_POPULATION),
+	nourriture(DEFAULT_FOOD),
+	energie(DEFAULT_ENERGY),
+	budget(DEFAULT_WALLET),
+	farmers(DEFAULT_FARMERS),
+	energizer(DEFAULT_ENERGIZER),
+	traders(DEFAULT_TRADERS)
 {
-	id = City::cityNumber;
-	++City::cityNumber;
-	nom = name;
-	faction = new Faction(nom, this);
+	initiate(arg_posx, arg_posy);
+}
+
+City::City(string name, int arg_posx, int arg_posy, float arg_bonheur, int arg_population, float arg_nourriture, float arg_energie, float arg_budget):
+	bonheur(1),
+	population(DEFAULT_POPULATION),
+	nourriture(DEFAULT_FOOD),
+	energie(DEFAULT_ENERGY),
+	budget(DEFAULT_WALLET),
+	farmers(DEFAULT_FARMERS),
+	energizer(DEFAULT_ENERGIZER),
+	traders(DEFAULT_TRADERS)
+{
+	initiate(arg_posx, arg_posy, name);
 	population = arg_population;
 	nourriture = arg_nourriture;
 	energie = arg_energie;
 	budget = arg_budget;
 	bonheur = arg_bonheur;
+}
+
+void City::initiate(int posx, int posy, string arg_name)
+{
+	id = City::cityNumber;
+	++City::cityNumber;
+	nom = arg_name;
+	faction = new Faction(nom, this);
+	coord_x = posx;
+	coord_y = posy;
 }
 
 
@@ -177,6 +196,12 @@ const string City::getName() const
 Faction* City::getFaction() const
 {
 	return faction;
+}
+
+void City::set_Coord(int posx, int posy)
+{
+	coord_x = posx;
+	coord_y = posy;
 }
 
 

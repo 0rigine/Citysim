@@ -4,20 +4,41 @@
 #include <vector>
 using namespace std;
 
-
+#include "RandomName.h"
 #include "Skill.h"
 
 // Définitions des retours d'erreurs
 #define ATTRIBUTION_OK 0 // réussite d'attribution d'employés
 #define ATTRIBUTION_ERROR 1 // erreur d'attribution d'employés
+
+// Valeurs par défaut en début de partie
+#define DEFAULT_POPULATION 100
+#define DEFAULT_FOOD 2000
+#define DEFAULT_ENERGY 10000
+#define DEFAULT_WALLET 200000
+#define DEFAULT_FARMERS 0
+#define DEFAULT_TRADERS 0
+#define DEFAULT_ENERGIZER 0
+
 class Faction;
 
 class City
 {
 public:
 	static int cityNumber;
+	// Constructeurs
 	City();
-	City(string name, float arg_bonheur = 0, int arg_population = 100, float arg_nourriture = 2000, float arg_energie = 10000, float arg_budget = 200000);
+	City(int arg_posx, int arg_posy);
+	City(string name,
+		int arg_posx,
+		int arg_posy,
+		float arg_bonheur = 1,
+		int arg_population = DEFAULT_POPULATION,
+		float arg_nourriture = DEFAULT_FOOD,
+		float arg_energie = DEFAULT_ENERGY,
+		float arg_budget = DEFAULT_WALLET);
+	void initiate(int posx = 0, int posy = 0, string arg_name = RandomName::generate());
+	// Destructeur
 	virtual ~City();
 
 	// Interface
@@ -49,12 +70,17 @@ public:
 	const string getName() const; // Accesseur de nom
 	Faction* getFaction() const; // Accesseur de faction
 
+	// Setters
+	void set_Coord(int posx, int posy); // setter de position
+
 private:
 	
 	// Attributes
 	string nom; // nom de la ville
 	Faction *faction; // faction de la ville
 	int id; // id de la ville
+	int coord_x; // coordonnées de la ville en x
+	int coord_y; // coordonnées de la ville en y
 
 	int population; // population totale
 	int farmers; // fermiers
