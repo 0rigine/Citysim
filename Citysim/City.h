@@ -13,8 +13,8 @@ using namespace std;
 
 // Valeurs par défaut en début de partie
 #define DEFAULT_POPULATION 100
-#define DEFAULT_FOOD 2000
-#define DEFAULT_ENERGY 10000
+#define DEFAULT_FOOD 10000
+#define DEFAULT_ENERGY 20000
 #define DEFAULT_WALLET 200000
 #define DEFAULT_FARMERS 0
 #define DEFAULT_TRADERS 0
@@ -48,10 +48,10 @@ public:
 
 	// Croissance de la ville
 	void growth(); // appel des fonctions de croissance
-	void energyGrowth(); // croissance de l'énergie
-	void foodGrowth(); // croissance de la nourriture
-	void populationGrowth(); // croissance de la population
-	void happinessGrowth(); // croissance du bonheur
+	void energyGrowth(float coeffHappy); // croissance de l'énergie
+	void foodGrowth(float coeffHappy); // croissance de la nourriture
+	void populationGrowth(float coeffHappy); // croissance de la population
+	void happinessGrowth(float coeffHappy); // croissance du bonheur
 	void budgetGrowth(); // croissance du budget
 
 	// Estimations et mesures
