@@ -205,10 +205,11 @@ void City::propositionRachat(Faction * arg_acheteur, float proposition)
 
 void City::achatFinTour()
 {
-	acheteur->acheterVille(this, prix);
-
-	acheteur = NULL;
-	prix = 0;
+	if (acheteur != NULL)
+	{
+		acheteur->acheterVille(this, prix);
+		acheteur = NULL;
+	}
 }
 
 // Accesseurs

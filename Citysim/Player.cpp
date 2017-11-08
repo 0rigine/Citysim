@@ -26,7 +26,10 @@ void Player::turn()
 	}
 	working();
 
+	buy();
+
 	growth(); // croissance de la ville en fin de tour
+	achatFinTour(); // test pour le rachat de la ville
 }
 
 void Player::setEmployes(string jobName, int (City::*setter)(int))
@@ -38,9 +41,10 @@ void Player::setEmployes(string jobName, int (City::*setter)(int))
 		do
 		{
 			cout << "Saisir le nombre " << jobName << " (-1 pour ignorer) : " << endl;
-			cin.ignore(INT_MAX);
+			cin.clear();
+			cin.ignore(INT_MAX,'\n');
 			cin >> assigned;
-		} while (assigned < -1);
+		} while (cin.fail() || assigned < -1);
 		if (assigned > -1)
 		{
 			attribution = (this->*setter)(assigned);
@@ -81,15 +85,17 @@ void Player::buy()
 		do
 		{
 			cout << "Saisir l'index de la ville a acheter : " << ends;
-			cin.ignore(INT_MAX);
+			cin.clear();
+			cin.ignore(INT_MAX, '\n');
 			cin >> choice;
-		} while (choice < 0 || choice > size);
+		} while (cin.fail() || choice < 0 || choice > size);
 		do
 		{
 			cout << "Prix propose : " << ends;
-			cin.ignore(INT_MAX);
+			cin.clear();
+			cin.ignore(INT_MAX, '\n');
 			cin >> price;
-		} while (price < 1);
+		} while (cin.fail() || price < 1);
 		voisines[choice]->propositionRachat(getFaction(), price);
 		cout << "Proposition de rachat envoyee !" << endl;
 	}
