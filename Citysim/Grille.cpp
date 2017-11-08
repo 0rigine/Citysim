@@ -46,6 +46,7 @@ void Grille::playATurn()
 	vector<thread> processus;
 	vector<Faction*> toDelete;
 
+	// Estimations des prix des villes
 	for each (City *town in towns)
 	{
 		processus.push_back(thread(&City::estimate, town));
@@ -54,6 +55,7 @@ void Grille::playATurn()
 
 	processus.clear();
 
+	// Tour de jeu
 	for each (City *town in towns)
 	{
 		processus.push_back(thread(&City::turn,town));
@@ -62,6 +64,7 @@ void Grille::playATurn()
 
 	processus.clear();
 
+	// Résolution des achats de villes
 	for each (City *town in towns)
 	{
 		processus.push_back(thread(&City::achatFinTour, town));
@@ -70,6 +73,7 @@ void Grille::playATurn()
 
 	processus.clear();
 
+	// Mise à jour des ressources de faction
 	for each (Faction *group in factionsList)
 	{
 		if (group->getCitiesLenght() > 0)
@@ -81,12 +85,21 @@ void Grille::playATurn()
 			toDelete.push_back(group);
 		}
 	}
+
+	// Suppression des factions éliminées
 	for (vector<Faction*>::iterator it = toDelete.begin(); it != toDelete.end(); ++it)
 	{
 		factionsList.erase(remove(factionsList.begin(), factionsList.end(), *it), factionsList.end());
 		delete *it;
 	}
-	for_each(processus.begin(), processus.end(), do_join);
+}
+
+void Grille::playAGame()
+{
+	while (!isVictory())
+	{
+		playATurn();
+	}
 }
 
 int Grille::initialize_Grid(int sizex, int sizey)
@@ -116,11 +129,13 @@ int Grille::initialize_Grid(int sizex, int sizey)
 	return GENERATION_OK;
 }
 
-void Grille::isVictory()
+bool Grille::isVictory()
 {
 	int lenght(factionsList.size());
 	if (lenght == 1)
 	{
-		(factionsList.begin())->getVictory();
+		factionsList.front()->getVictory();
+		return true;
 	}
+	return false;
 }

@@ -17,14 +17,15 @@ public:
 	~Grille();
 
 	// Gestion du jeu
-	void afficherVilles();
-	void playATurn();
+	void afficherVilles(); // Affichage de toutes les villes
+	void playATurn(); // Lancement du tour en cours
+	void playAGame(); // Partie en cours
 
 	// Instanciation de la grille
 	int initialize_Grid(int sizex, int sizey);
 
 	// Victoire
-	void isVictory(); // Fonction d'annonce de victoire
+	bool isVictory(); // Fonction d'annonce de victoire
 
 private:
 	vector<vector<City*>> grid;
