@@ -18,17 +18,13 @@ void Player::turn()
 	presentation();
 	working();
 	
-	for each (City* town in get_Neighbour())
-	{
-		town->presentation();
-	}
-	/*if (ask("Changer les employes (o/n) ?"))
+	if (ask("Changer les employes (o/n) ?"))
 	{
 		setEmployes("de fermiers", &City::set_Farmers);
 		setEmployes("de traders", &City::set_Traders);
 		setEmployes("d'ingenieurs", &City::set_Energize);
 	}
-	working();*/
+	working();
 
 	growth(); // croissance de la ville en fin de tour
 }
@@ -71,8 +67,11 @@ void Player::buy()
 		voisines = getFaction()->getNeighbourhood();
 		for each (City* town in voisines)
 		{
-			town->presentation();
-			cout << endl;
+			if (town != NULL)
+			{
+				town->presentation();
+				cout << endl;
+			}
 		}
 	}
 }
