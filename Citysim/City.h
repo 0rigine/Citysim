@@ -64,7 +64,7 @@ public:
 	int set_Traders(int toSet); // indiquer le nombre de traders actifs
 
 	// Conquete
-	void acheterVille(City *achetee, float prix = 10); // fonction d'achat d'une ville
+	bool acheterVille(City *achetee, float prix = 10); // fonction d'achat d'une ville
 	void propositionRachat(Faction *arg_acheteur, float proposition); // fonction de proposition d'achat de la ville
 	virtual void achatFinTour(); // fonction de fin de tour pour le rachat de la ville
 	void estimate(); // estimation du prix de la ville

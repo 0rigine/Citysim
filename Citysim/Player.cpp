@@ -81,19 +81,21 @@ void Player::buy()
 		}
 		do
 		{
-			cout << "Saisir l'index de la ville a acheter : " << ends;
-			cin.clear();
-			cin.ignore(INT_MAX, '\n');
-			cin >> choice;
-		} while (cin.fail() || choice < 0 || choice > size-1);
-		do
-		{
-			cout << "Prix propose : " << ends;
-			cin.clear();
-			cin.ignore(INT_MAX, '\n');
-			cin >> price;
-		} while (cin.fail() || price < 1);
-		acheterVille(voisines[choice], price);
+			do
+			{
+				cout << "Saisir l'index de la ville a acheter : " << ends;
+				cin.clear();
+				cin.ignore(INT_MAX, '\n');
+				cin >> choice;
+			} while (cin.fail() || choice < 0 || choice > size - 1);
+			do
+			{
+				cout << "Prix propose : " << ends;
+				cin.clear();
+				cin.ignore(INT_MAX, '\n');
+				cin >> price;
+			} while (cin.fail() || price < 1);
+		} while (!acheterVille(voisines[choice], price));
 		cout << "Proposition de rachat envoyee !" << endl;
 	}
 }

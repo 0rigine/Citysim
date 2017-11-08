@@ -184,12 +184,14 @@ float City::happinessPart()
 }
 
 // Achat/Vente de villes
-void City::acheterVille(City *achetee, float prix)
+bool City::acheterVille(City *achetee, float prix)
 {
-	if (achetee->getFaction() != faction)
+	if (achetee->getFaction() != faction && prix < faction->getBudget())
 	{
 		achetee->propositionRachat(faction, prix); // proposition de rachat de la ville
 	}
+	else return false;
+	return true;
 }
 
 void City::propositionRachat(Faction * arg_acheteur, float proposition)
