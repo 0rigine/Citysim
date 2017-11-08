@@ -205,7 +205,7 @@ vector<City*> City::get_Neighbour() const
 {
 	int sizex = worldMap->size();
 	int sizey = worldMap->begin()->size();
-	vector<City*> voisines; // vector contenant les villes : Sud, Ouest, Est, Nord
+	vector<City*> voisines; // vector contenant les villes : Nord, Ouest, Est, Sud
 	for (int i = -1; i <= 1; ++i)
 	{
 		for (int j = -1; j <= 1; ++j)
@@ -214,7 +214,7 @@ vector<City*> City::get_Neighbour() const
 			{
 				if ( (0 <= coord_x + i && coord_x + i < sizex) && (0 <= coord_y + j && coord_y + j < sizey) )
 				{
-					voisines.push_back(worldMap[0][coord_x + i][coord_y + j]);
+					voisines.push_back(worldMap[0][coord_x + i][coord_y + j]); // on ajoute la ville aux voisines
 				}
 				else
 				{
