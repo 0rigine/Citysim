@@ -96,8 +96,10 @@ private:
 	float energie; // stock d'énergie
 	float budget; // argent disponible
 	float bonheur; // bonheur accumulé
+	float prix; // prix estimé de la ville
 
 	vector< vector<City*> > *worldMap; // carte du monde (grille)
+
 
 	/*
 	Skill skillFood; // arbre de compétences : nourriture

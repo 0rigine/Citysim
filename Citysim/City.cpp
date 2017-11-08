@@ -210,11 +210,15 @@ vector<City*> City::get_Neighbour() const
 	{
 		for (int j = -1; j <= 1; ++j)
 		{
-			if ((i*i != j*j) && 0 <= coord_x + i && coord_x + i < sizex)
+			if (i*i != j*j)
 			{
-				if (0 <= coord_y + j && coord_y + j < sizey)
+				if ( (0 <= coord_x + i && coord_x + i < sizex) && (0 <= coord_y + j && coord_y + j < sizey) )
 				{
 					voisines.push_back(worldMap[0][coord_x + i][coord_y + j]);
+				}
+				else
+				{
+					voisines.push_back(NULL); // on indique que la ville n'existe pas
 				}
 			}
 		}
