@@ -7,14 +7,14 @@ using namespace std;
 int Faction::factionNumber = 0;
 
 Faction::Faction():
-	budget(0),
+	budget(DEFAULT_WALLET),
 	id(factionNumber)
 {
 	++factionNumber;
 }
 
 Faction::Faction(string arg_name, City* capitale):
-	budget(0),
+	budget(DEFAULT_WALLET),
 	id(factionNumber)
 {
 	name = arg_name;
@@ -25,15 +25,6 @@ Faction::Faction(string arg_name, City* capitale):
 
 Faction::~Faction()
 {
-}
-
-void Faction::update()
-{
-	budget = 0;
-	for each (City* town in cities)
-	{
-		budget += town->getWallet();
-	}
 }
 
 void Faction::acheterVille(City *vendue, float prix)
@@ -48,6 +39,11 @@ void Faction::vendreVille(City * vendue, float prix)
 {
 	cities.erase(remove(cities.begin(), cities.end(), vendue), cities.end());
 	budget += prix;
+}
+
+void Faction::estimate()
+{
+	price = budget / cities.size();
 }
 
 const string Faction::getName() const
@@ -76,6 +72,11 @@ vector<City*> Faction::getNeighbourhood()
 float Faction::getBudget() const
 {
 	return budget;
+}
+
+float Faction::getPrice() const
+{
+	return price;
 }
 
 void Faction::setBudget(float arg_budget)

@@ -14,7 +14,6 @@ City::City():
 	population(DEFAULT_POPULATION),
 	nourriture(DEFAULT_FOOD),
 	energie(DEFAULT_ENERGY),
-	budget(DEFAULT_WALLET),
 	farmers(DEFAULT_FARMERS),
 	energizer(DEFAULT_ENERGIZER),
 	traders(DEFAULT_TRADERS),
@@ -33,7 +32,6 @@ City::City(int arg_posx, int arg_posy):
 	population(DEFAULT_POPULATION),
 	nourriture(DEFAULT_FOOD),
 	energie(DEFAULT_ENERGY),
-	budget(DEFAULT_WALLET),
 	farmers(DEFAULT_FARMERS),
 	energizer(DEFAULT_ENERGIZER),
 	traders(DEFAULT_TRADERS),
@@ -48,7 +46,6 @@ City::City(string name, int arg_posx, int arg_posy, float arg_bonheur, int arg_p
 	population(DEFAULT_POPULATION),
 	nourriture(DEFAULT_FOOD),
 	energie(DEFAULT_ENERGY),
-	budget(DEFAULT_WALLET),
 	farmers(DEFAULT_FARMERS),
 	energizer(DEFAULT_ENERGIZER),
 	traders(DEFAULT_TRADERS),
@@ -59,7 +56,6 @@ City::City(string name, int arg_posx, int arg_posy, float arg_bonheur, int arg_p
 	population = arg_population;
 	nourriture = arg_nourriture;
 	energie = arg_energie;
-	budget = arg_budget;
 	bonheur = arg_bonheur;
 }
 
@@ -86,7 +82,7 @@ void City::presentation()
 	cout << "Population : " << population << endl;
 	cout << "Nourriture : " << nourriture << endl;
 	cout << "Energie : " << energie << endl;
-	cout << "Budget : " << budget << endl;
+	cout << "Budget : " << faction->getBudget() << endl;
 	cout << endl;
 }
 
@@ -219,7 +215,7 @@ void City::achatFinTour()
 
 void City::estimate()
 {
-	prix = faction->getBudget() / 2;
+	prix = faction->getPrice();
 }
 
 // Accesseurs
@@ -268,7 +264,7 @@ float City::getEnergy() const
 
 float City::getWallet() const
 {
-	return budget;
+	return faction->getBudget();
 }
 
 float City::getPrice() const

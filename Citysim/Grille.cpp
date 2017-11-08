@@ -46,6 +46,20 @@ void Grille::playATurn()
 	vector<thread> processus;
 	vector<Faction*> toDelete;
 
+	// Mise à jour des prix de villes de faction
+	for each (Faction *group in factionsList)
+	{
+		if (group->getCitiesLenght() > 0)
+		{
+			processus.push_back(thread(&Faction::estimate, group));
+		}
+		else
+		{
+			toDelete.push_back(group);
+		}
+	}
+	for_each(processus.begin(), processus.end(), do_join);
+
 	// Estimations des prix des villes
 	launchMulti(&City::estimate);
 
@@ -60,20 +74,6 @@ void Grille::playATurn()
 
 	// Résolution des achats de villes
 	launchMulti(&City::achatFinTour);
-
-	// Mise à jour des ressources de faction
-	for each (Faction *group in factionsList)
-	{
-		if (group->getCitiesLenght() > 0)
-		{
-			processus.push_back(thread(&Faction::update, group));
-		}
-		else
-		{
-			toDelete.push_back(group);
-		}
-	}
-	for_each(processus.begin(), processus.end(), do_join);
 
 	// Suppression des factions éliminées
 	for (vector<Faction*>::iterator it = toDelete.begin(); it != toDelete.end(); ++it)
