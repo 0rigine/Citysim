@@ -215,7 +215,7 @@ void City::achatFinTour()
 
 void City::estimate()
 {
-	prix = faction->getPrice();
+	prix = faction->getPrice() + bonheur;
 }
 
 // Accesseurs
