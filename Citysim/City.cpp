@@ -17,7 +17,9 @@ City::City():
 	budget(DEFAULT_WALLET),
 	farmers(DEFAULT_FARMERS),
 	energizer(DEFAULT_ENERGIZER),
-	traders(DEFAULT_TRADERS)
+	traders(DEFAULT_TRADERS),
+	acheteur(NULL),
+	prix(1)
 {
 	initiate();
 	nom = RandomName::generate();
@@ -34,7 +36,9 @@ City::City(int arg_posx, int arg_posy):
 	budget(DEFAULT_WALLET),
 	farmers(DEFAULT_FARMERS),
 	energizer(DEFAULT_ENERGIZER),
-	traders(DEFAULT_TRADERS)
+	traders(DEFAULT_TRADERS),
+	acheteur(NULL),
+	prix(1)
 {
 	initiate(arg_posx, arg_posy);
 }
@@ -47,7 +51,9 @@ City::City(string name, int arg_posx, int arg_posy, float arg_bonheur, int arg_p
 	budget(DEFAULT_WALLET),
 	farmers(DEFAULT_FARMERS),
 	energizer(DEFAULT_ENERGIZER),
-	traders(DEFAULT_TRADERS)
+	traders(DEFAULT_TRADERS),
+	acheteur(NULL),
+	prix(1)
 {
 	initiate(arg_posx, arg_posy, name);
 	population = arg_population;
