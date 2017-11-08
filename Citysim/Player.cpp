@@ -1,7 +1,7 @@
 #include "stdafx.h"
-#include "Player.h"
 #include <iostream>
 using namespace std;
+#include "Player.h"
 #include "Faction.h"
 
 Player::Player():City::City()
@@ -18,13 +18,17 @@ void Player::turn()
 	presentation();
 	working();
 	
-	if (ask("Changer les employes (o/n) ?"))
+	for each (City* town in get_Neighbour())
+	{
+		town->presentation();
+	}
+	/*if (ask("Changer les employes (o/n) ?"))
 	{
 		setEmployes("de fermiers", &City::set_Farmers);
 		setEmployes("de traders", &City::set_Traders);
 		setEmployes("d'ingenieurs", &City::set_Energize);
 	}
-	working();
+	working();*/
 
 	growth(); // croissance de la ville en fin de tour
 }

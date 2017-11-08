@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <mutex>
 using namespace std;
 
 #include "RandomName.h"
@@ -63,8 +64,9 @@ public:
 	int set_Traders(int toSet); // indiquer le nombre de traders actifs
 
 	// Conquete
-	void estAchetee(Faction *newFaction); // fonction de vente de la ville
-	void acheterVille(City *achetee, float prix = 10);
+	void acheterVille(City *achetee, float prix = 10); // fonction d'achat d'une ville
+	void propositionRachat(Faction *arg_acheteur, float proposition); // fonction de proposition d'achat de la ville
+	void achatFinTour(); // fonction de fin de tour pour le rachat de la ville
 
 	// Accesseurs
 	const string getName() const; // Accesseur de nom
@@ -76,7 +78,8 @@ public:
 
 	// Setters
 	void set_Coord(int posx, int posy); // setter de position
-	void set_Map(vector<vector<City*>> *arg_map);
+	void set_Map(vector<vector<City*>> *arg_map); // setter de la map
+	void set_Faction(Faction *newFaction); // setter de la faction
 
 private:
 	
@@ -96,7 +99,10 @@ private:
 	float energie; // stock d'énergie
 	float budget; // argent disponible
 	float bonheur; // bonheur accumulé
-	float prix; // prix estimé de la ville
+
+	mutex negocie;
+	float prix; // prix minimum de la ville (estimé en début de tour)
+	Faction* acheteur; // faction proposant le prix le plus élevé pour la ville
 
 	vector< vector<City*> > *worldMap; // carte du monde (grille)
 

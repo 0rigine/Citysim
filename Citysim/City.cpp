@@ -177,17 +177,32 @@ float City::happinessPart()
 }
 
 // Achat/Vente de villes
-void City::estAchetee(Faction *newFaction)
-{
-	faction = newFaction;
-}
-
 void City::acheterVille(City *achetee, float prix)
 {
 	if (achetee->getFaction() != faction)
 	{
-		faction->acheterVille(achetee, prix);
+		achetee->propositionRachat(faction, prix); // proposition de rachat de la ville
 	}
+}
+
+void City::propositionRachat(Faction * arg_acheteur, float proposition)
+{
+	negocie.lock(); // on empêche d'autres négociations simultanées
+
+	if (proposition > prix)
+	{
+		acheteur = arg_acheteur;
+	}
+
+	negocie.unlock(); // on déverrouille
+}
+
+void City::achatFinTour()
+{
+	acheteur->acheterVille(this, prix);
+
+	acheteur = NULL;
+	prix = 0;
 }
 
 // Accesseurs
@@ -250,6 +265,11 @@ void City::set_Coord(int posx, int posy)
 void City::set_Map(vector<vector<City*>>* arg_map)
 {
 	worldMap = arg_map;
+}
+
+void City::set_Faction(Faction * newFaction)
+{
+	faction = newFaction;
 }
 
 
