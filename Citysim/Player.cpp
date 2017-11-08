@@ -87,7 +87,7 @@ void Player::buy()
 			cin.clear();
 			cin.ignore(INT_MAX, '\n');
 			cin >> choice;
-		} while (cin.fail() || choice < 0 || choice > size);
+		} while (cin.fail() || choice < 0 || choice > size-1);
 		do
 		{
 			cout << "Prix propose : " << ends;
@@ -95,7 +95,7 @@ void Player::buy()
 			cin.ignore(INT_MAX, '\n');
 			cin >> price;
 		} while (cin.fail() || price < 1);
-		acheterVille(voisines[0], 15);
+		acheterVille(voisines[choice], price);
 		cout << "Proposition de rachat envoyee !" << endl;
 	}
 }

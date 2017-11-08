@@ -43,6 +43,7 @@ void do_join(thread& process)
 void Grille::playATurn()
 {
 	vector<thread> processus;
+	vector<Faction*> toDelete;
 	for each (City *town in towns)
 	{
 		processus.push_back(thread(&City::turn,town));
@@ -67,9 +68,14 @@ void Grille::playATurn()
 		}
 		else
 		{
-			delete group;
-			factionsList.erase(remove(factionsList.begin(), factionsList.end(), group), factionsList.end());
+			toDelete.push_back(group);
 		}
+	}
+	cout << "Here" << endl;
+	for (vector<Faction*>::iterator it = toDelete.begin(); it != toDelete.end(); ++it)
+	{
+		factionsList.erase(remove(factionsList.begin(), factionsList.end(), *it), factionsList.end());
+		delete *it;
 	}
 	for_each(processus.begin(), processus.end(), do_join);
 }
