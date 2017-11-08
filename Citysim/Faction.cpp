@@ -73,6 +73,23 @@ vector<City*> Faction::getNeighbourhood()
 	return neighbour;
 }
 
+float Faction::getBudget() const
+{
+	return budget;
+}
+
+void Faction::setBudget(float arg_budget)
+{
+	budget = arg_budget;
+}
+
+void Faction::budgetGrowing(City* setBy)
+{
+	inSetting.lock();
+	setBy->budgetGrowth();
+	inSetting.unlock();
+}
+
 void Faction::getVictory()
 {
 

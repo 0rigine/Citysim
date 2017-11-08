@@ -164,10 +164,11 @@ void City::happinessGrowth(float coeffHappy)
 
 void City::budgetGrowth()
 {
-	float salaire(2.5),coeffTraders(25.0);
+	float salaire(2.5),coeffTraders(25.0), local_budget(faction->getBudget());
 	int travailleurs = farmers + energizer + traders;
-	budget += traders*coeffTraders - salaire*travailleurs;
-	if (budget < 0) budget = 0;
+	local_budget += traders*coeffTraders - salaire*travailleurs;
+	if (local_budget < 0) local_budget = 0;
+	faction->setBudget(local_budget);
 }
 
 // Estimations et mesures
@@ -218,7 +219,7 @@ void City::achatFinTour()
 
 void City::estimate()
 {
-	prix = budget + bonheur - (1-happinessPart())*population;
+	prix = faction->getBudget() / 2;
 }
 
 // Accesseurs

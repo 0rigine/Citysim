@@ -103,7 +103,6 @@ private:
 
 	float nourriture; // stock de nourriture
 	float energie; // stock d'énergie
-	float budget; // argent disponible
 	float bonheur; // bonheur accumulé
 
 	mutex negocie;

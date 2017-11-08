@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <mutex>
 using namespace std;
 
 #include "City.h"
@@ -23,6 +24,11 @@ public:
 	const string getName() const; // Accesseur de name
 	const int getCitiesLenght() const; // Accesseur de la longueur de cities
 	vector<City*> getNeighbourhood(); // Liste des villes voisines de la faction
+	float getBudget() const; // Accesseur du budget
+
+	// Setters
+	void setBudget(float arg_budget); // setter de budget
+	void budgetGrowing(City* setBy); // Croissance du budget
 
 	// Victoire
 	void getVictory(); // Victoire
@@ -33,5 +39,6 @@ private:
 	int id;
 	float budget; // argent disponible
 	vector<City*> cities;
+	mutex inSetting;
 };
 
