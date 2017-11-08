@@ -47,33 +47,19 @@ void Grille::playATurn()
 	vector<Faction*> toDelete;
 
 	// Estimations des prix des villes
-	for each (City *town in towns)
-	{
-		processus.push_back(thread(&City::estimate, town));
-	}
-	for_each(processus.begin(), processus.end(), do_join);
-
-	processus.clear();
+	launchMulti(&City::estimate);
 
 	afficherVilles();
+	system("pause & cls");
 
 	// Tour de jeu
-	for each (City *town in towns)
-	{
-		processus.push_back(thread(&City::turn,town));
-	}
-	for_each(processus.begin(), processus.end(), do_join);
+	launchMulti(&City::turn);
 
-	processus.clear();
+	// Croissance
+	launchMulti(&City::growth);
 
 	// Résolution des achats de villes
-	for each (City *town in towns)
-	{
-		processus.push_back(thread(&City::achatFinTour, town));
-	}
-	for_each(processus.begin(), processus.end(), do_join);
-
-	processus.clear();
+	launchMulti(&City::achatFinTour);
 
 	// Mise à jour des ressources de faction
 	for each (Faction *group in factionsList)
@@ -104,6 +90,16 @@ void Grille::playAGame()
 	{
 		playATurn();
 	}
+}
+
+void Grille::launchMulti(void(City::*function)())
+{
+	vector<thread> processus;
+	for each (City *town in towns)
+	{
+		processus.push_back(thread(function, town));
+	}
+	for_each(processus.begin(), processus.end(), do_join);
 }
 
 int Grille::initialize_Grid(int sizex, int sizey)

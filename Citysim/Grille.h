@@ -20,6 +20,7 @@ public:
 	void afficherVilles(); // Affichage de toutes les villes
 	void playATurn(); // Lancement du tour en cours
 	void playAGame(); // Partie en cours
+	void launchMulti(void (City::*function)());
 
 	// Instanciation de la grille
 	int initialize_Grid(int sizex, int sizey);
