@@ -9,9 +9,7 @@ int main()
 {
 	srand(time(NULL));
 	Grille test = Grille(2,2);
-	test.playATurn();
-	system("pause & cls");
-	test.afficherVilles();
+	
 
 	system("pause");
     return 0;

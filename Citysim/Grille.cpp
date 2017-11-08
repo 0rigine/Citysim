@@ -55,6 +55,8 @@ void Grille::playATurn()
 
 	processus.clear();
 
+	afficherVilles();
+
 	// Tour de jeu
 	for each (City *town in towns)
 	{
@@ -133,8 +135,8 @@ int Grille::initialize_Grid(int sizex, int sizey)
 
 bool Grille::isVictory()
 {
-	int lenght(factionsList.size());
-	if (lenght == 1)
+	int length(factionsList.size());
+	if (length == 1)
 	{
 		factionsList.front()->getVictory();
 		return true;
