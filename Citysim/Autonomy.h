@@ -13,5 +13,4 @@ public:
 
 	// Fin de partie
 	virtual void victory();
-	virtual void defeat();
 };

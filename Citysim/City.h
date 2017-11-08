@@ -85,7 +85,6 @@ public:
 
 	// Fin de partie
 	virtual void victory() = 0;
-	virtual void defeat() = 0;
 
 private:
 	

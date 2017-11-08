@@ -6,6 +6,7 @@
 using namespace std;
 #include "Player.h"
 #include "Autonomy.h"
+#include "Faction.h"
 
 Grille::Grille()
 {
@@ -120,6 +121,6 @@ void Grille::isVictory()
 	int lenght(factionsList.size());
 	if (lenght == 1)
 	{
-		
+		(factionsList.begin())->getVictory();
 	}
 }

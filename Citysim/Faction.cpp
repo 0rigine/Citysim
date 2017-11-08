@@ -1,7 +1,8 @@
 #include "stdafx.h"
-#include "Faction.h"
 #include <algorithm>
+#include <thread>
 using namespace std;
+#include "Faction.h"
 
 int Faction::factionNumber = 0;
 
@@ -82,4 +83,9 @@ vector<City*> Faction::getNeighbourhood()
 
 void Faction::getVictory()
 {
+
+	for each (City* town in cities)
+	{
+		town->victory();
+	}
 }

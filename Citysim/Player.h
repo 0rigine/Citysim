@@ -17,6 +17,6 @@ public:
 
 	// Fin de partie
 	virtual void victory(); // victoire
-	virtual void defeat(); // défaite
+	void Player::achatFinTour(); // défaite
 	
 };

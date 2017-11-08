@@ -106,8 +106,9 @@ void Player::victory()
 	cout << "Victoire !" << endl;
 }
 
-void Player::defeat()
+void Player::achatFinTour()
 {
 	cout << "Vous avez été racheté !" << endl;
 	cout << "Partie terminée" << endl;
+	exit(EXIT_SUCCESS);
 }
