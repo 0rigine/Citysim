@@ -51,6 +51,14 @@ void Grille::playATurn()
 
 	processus.clear();
 
+	for each (City *town in towns)
+	{
+		processus.push_back(thread(&City::achatFinTour, town));
+	}
+	for_each(processus.begin(), processus.end(), do_join);
+
+	processus.clear();
+
 	for each (Faction *group in factionsList)
 	{
 		if (group->getCitiesLenght() > 0)

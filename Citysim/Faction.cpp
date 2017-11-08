@@ -46,6 +46,7 @@ void Faction::update()
 void Faction::acheterVille(City *vendue, float prix)
 {
 	budget -= prix;
+	vendue->getFaction()->vendreVille(vendue, prix);
 	vendue->set_Faction(this);
 	cities.push_back(vendue);
 }

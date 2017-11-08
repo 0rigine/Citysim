@@ -29,7 +29,6 @@ void Player::turn()
 	buy();
 
 	growth(); // croissance de la ville en fin de tour
-	achatFinTour(); // test pour le rachat de la ville
 }
 
 void Player::setEmployes(string jobName, int (City::*setter)(int))
@@ -96,7 +95,7 @@ void Player::buy()
 			cin.ignore(INT_MAX, '\n');
 			cin >> price;
 		} while (cin.fail() || price < 1);
-		voisines[choice]->propositionRachat(getFaction(), price);
+		acheterVille(voisines[0], 15);
 		cout << "Proposition de rachat envoyee !" << endl;
 	}
 }

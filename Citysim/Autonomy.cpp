@@ -16,5 +16,4 @@ void Autonomy::turn()
 	set_Energize(50);
 
 	growth(); // croissance de la ville en fin de tour
-	achatFinTour();
 }
