@@ -14,8 +14,8 @@ using namespace std;
 
 // Valeurs par défaut en début de partie
 #define DEFAULT_POPULATION 100
-#define DEFAULT_FOOD 10000
-#define DEFAULT_ENERGY 20000
+#define DEFAULT_FOOD 100
+#define DEFAULT_ENERGY 200
 #define DEFAULT_WALLET 10000
 #define DEFAULT_FARMERS 0
 #define DEFAULT_TRADERS 0

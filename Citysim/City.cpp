@@ -118,6 +118,7 @@ void City::energyGrowth(float coeffHappy)
 	float consommation(20); // energie consommee par habitant
 	// Production en fonction du bonheur de la population
 	energie += (energizer*coefficient*quantity*coeffHappy)+(energizer*coefficient*(1- coeffHappy))-population*consommation;
+	if (energie < 0) energie = 0;
 }
 
 void City::foodGrowth(float coeffHappy)
@@ -127,6 +128,7 @@ void City::foodGrowth(float coeffHappy)
 	float consommation(10); // nourriture consommee par habitant
 	// Production en fonction du bonheur de la population
 	nourriture += (farmers*coefficient*quantity*coeffHappy)+(farmers*coefficient*(1- coeffHappy))-population*consommation;
+	if (nourriture < 0) nourriture = 0;
 }
 
 void City::populationGrowth(float coeffHappy)
@@ -141,7 +143,7 @@ void City::populationGrowth(float coeffHappy)
 
 	travailleurs = farmers + energizer + traders; // total de travailleurs
 
-	if (travailleurs > newPopulation) // ajustement des travailleurs à la population restante si inférieure
+	if (travailleurs > newPopulation && newPopulation > 0) // ajustement des travailleurs à la population restante si inférieure
 	{
 		coeffWorker = (travailleurs - newPopulation) / newPopulation;
 		energizer *= coeffWorker;
@@ -165,6 +167,7 @@ void City::budgetGrowth()
 	float salaire(2.5),coeffTraders(25.0);
 	int travailleurs = farmers + energizer + traders;
 	budget += traders*coeffTraders - salaire*travailleurs;
+	if (budget < 0) budget = 0;
 }
 
 // Estimations et mesures
@@ -172,15 +175,15 @@ float City::happinessPart()
 {
 	float foodCons(10), energyCons(20); // besoins par habitant selon la ressource
 
+	if (nourriture <= 0 || energie <= 0) return 0.0;
+
 	float happyFood = (nourriture / foodCons) / population; // part de population dont les besoins en nourriture sont satisfaits
 	if (happyFood > 1.0) happyFood = 1.0; // controle du pourcentage de population satisfaite en nourriture
 
 	float happyEnergy = (energie / energyCons) / population; // part de population dont les besoins en energie sont satisfaits
 	if (happyEnergy > 1.0) happyEnergy = 1.0; // controle du pourcentage de population satisfaite en énergie
 
-	float hapinessTotal(happyFood*happyEnergy);
-
-	return hapinessTotal; // part de population dont tous les besoins sont satisfaits
+	return happyFood*happyEnergy; // part de population dont tous les besoins sont satisfaits
 }
 
 // Achat/Vente de villes
