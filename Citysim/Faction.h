@@ -31,8 +31,6 @@ private:
 	static int factionNumber;
 	string name;
 	int id;
-	float nourriture; // stock de nourriture
-	float energie; // stock d'énergie
 	float budget; // argent disponible
 	vector<City*> cities;
 };

@@ -215,8 +215,7 @@ void City::achatFinTour()
 
 void City::estimate()
 {
-	//prix = budget + bonheur - (1-happinessPart())*population;
-	prix = population*happinessPart() + bonheur;
+	prix = budget + bonheur - (1-happinessPart())*population;
 }
 
 // Accesseurs

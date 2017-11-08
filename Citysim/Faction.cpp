@@ -7,8 +7,6 @@ using namespace std;
 int Faction::factionNumber = 0;
 
 Faction::Faction():
-	nourriture(0),
-	energie(0),
 	budget(0),
 	id(factionNumber)
 {
@@ -16,8 +14,6 @@ Faction::Faction():
 }
 
 Faction::Faction(string arg_name, City* capitale):
-	nourriture(0),
-	energie(0),
 	budget(0),
 	id(factionNumber)
 {
@@ -33,13 +29,9 @@ Faction::~Faction()
 
 void Faction::update()
 {
-	nourriture = 0;
-	energie = 0;
 	budget = 0;
 	for each (City* town in cities)
 	{
-		nourriture += town->getFood();
-		energie += town->getEnergy();
 		budget += town->getWallet();
 	}
 }
