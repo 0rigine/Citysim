@@ -272,6 +272,11 @@ float City::getPrice() const
 	return prix;
 }
 
+Faction * City::getAcheteur() const
+{
+	return acheteur;
+}
+
 void City::set_Coord(int posx, int posy)
 {
 	coord_x = posx;
