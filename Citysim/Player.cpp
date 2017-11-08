@@ -108,7 +108,10 @@ void Player::victory()
 
 void Player::achatFinTour()
 {
-	cout << "Vous avez été racheté !" << endl;
-	cout << "Partie terminée" << endl;
-	exit(EXIT_SUCCESS);
+	if (getAcheteur() != NULL)
+	{
+		cout << "Vous avez été racheté !" << endl;
+		cout << "Partie terminée" << endl;
+		exit(EXIT_SUCCESS);
+	}
 }

@@ -77,6 +77,7 @@ public:
 	float getEnergy() const;
 	float getWallet() const;
 	float getPrice() const; // Accesseur de prix de vente
+	Faction* getAcheteur() const; // Accesseur d'acheteur
 
 	// Setters
 	void set_Coord(int posx, int posy); // setter de position
