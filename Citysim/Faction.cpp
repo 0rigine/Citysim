@@ -79,3 +79,7 @@ vector<City*> Faction::getNeighbourhood()
 	}
 	return neighbour;
 }
+
+void Faction::getVictory()
+{
+}

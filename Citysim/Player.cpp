@@ -99,3 +99,15 @@ void Player::buy()
 		cout << "Proposition de rachat envoyee !" << endl;
 	}
 }
+
+void Player::victory()
+{
+	cout << "Le monde vous appartient !" << endl;
+	cout << "Victoire !" << endl;
+}
+
+void Player::defeat()
+{
+	cout << "Vous avez été racheté !" << endl;
+	cout << "Partie terminée" << endl;
+}

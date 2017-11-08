@@ -44,6 +44,15 @@ void Grille::playATurn()
 {
 	vector<thread> processus;
 	vector<Faction*> toDelete;
+
+	for each (City *town in towns)
+	{
+		processus.push_back(thread(&City::estimate, town));
+	}
+	for_each(processus.begin(), processus.end(), do_join);
+
+	processus.clear();
+
 	for each (City *town in towns)
 	{
 		processus.push_back(thread(&City::turn,town));
@@ -71,7 +80,6 @@ void Grille::playATurn()
 			toDelete.push_back(group);
 		}
 	}
-	cout << "Here" << endl;
 	for (vector<Faction*>::iterator it = toDelete.begin(); it != toDelete.end(); ++it)
 	{
 		factionsList.erase(remove(factionsList.begin(), factionsList.end(), *it), factionsList.end());
@@ -105,4 +113,13 @@ int Grille::initialize_Grid(int sizex, int sizey)
 	}
 
 	return GENERATION_OK;
+}
+
+void Grille::isVictory()
+{
+	int lenght(factionsList.size());
+	if (lenght == 1)
+	{
+		
+	}
 }

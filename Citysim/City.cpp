@@ -82,6 +82,7 @@ City::~City()
 void City::presentation()
 {
 	cout << "[" << faction->getName() << "] " << nom << "\n" << endl;
+	cout << "Prix : " << prix << endl;
 	cout << "Population : " << population << endl;
 	cout << "Nourriture : " << nourriture << endl;
 	cout << "Energie : " << energie << endl;
@@ -212,6 +213,11 @@ void City::achatFinTour()
 	}
 }
 
+void City::estimate()
+{
+	prix = budget + bonheur - (1-happinessPart())*population;
+}
+
 // Accesseurs
 const string City::getName() const
 {
@@ -257,6 +263,11 @@ float City::getEnergy() const
 float City::getWallet() const
 {
 	return budget;
+}
+
+float City::getPrice() const
+{
+	return prix;
 }
 
 void City::set_Coord(int posx, int posy)

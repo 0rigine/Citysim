@@ -14,4 +14,9 @@ public:
 	void setEmployes(string jobName, int (City::*setter)(int)); // fonction d'assignation des employés
 	bool ask(string question); // fonction pour poser une question (insertion sécurisée)
 	void buy(); // acheter une ville
+
+	// Fin de partie
+	virtual void victory(); // victoire
+	virtual void defeat(); // défaite
+	
 };

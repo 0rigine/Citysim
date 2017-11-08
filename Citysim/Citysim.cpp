@@ -8,9 +8,7 @@ using namespace std;
 int main()
 {
 	srand(time(NULL));
-	Grille test = Grille(3,3);
-	test.afficherVilles();
-	system("pause & cls");
+	Grille test = Grille(50,50);
 	test.playATurn();
 	system("pause & cls");
 	test.afficherVilles();

@@ -1,9 +1,9 @@
 #pragma once
-#include "City.h"
-#include "Faction.h"
 #include <vector>
 #include <thread>
 using namespace std;
+#include "City.h"
+#include "Faction.h"
 
 #define GENERATION_OK 0
 #define GENERATION_FAILED 1
@@ -22,6 +22,9 @@ public:
 
 	// Instanciation de la grille
 	int initialize_Grid(int sizex, int sizey);
+
+	// Victoire
+	void isVictory(); // Fonction d'annonce de victoire
 
 private:
 	vector<vector<City*>> grid;

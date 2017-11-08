@@ -67,6 +67,7 @@ public:
 	void acheterVille(City *achetee, float prix = 10); // fonction d'achat d'une ville
 	void propositionRachat(Faction *arg_acheteur, float proposition); // fonction de proposition d'achat de la ville
 	void achatFinTour(); // fonction de fin de tour pour le rachat de la ville
+	void estimate(); // estimation du prix de la ville
 
 	// Accesseurs
 	const string getName() const; // Accesseur de nom
@@ -75,11 +76,16 @@ public:
 	float getFood() const;
 	float getEnergy() const;
 	float getWallet() const;
+	float getPrice() const; // Accesseur de prix de vente
 
 	// Setters
 	void set_Coord(int posx, int posy); // setter de position
 	void set_Map(vector<vector<City*>> *arg_map); // setter de la map
 	void set_Faction(Faction *newFaction); // setter de la faction
+
+	// Fin de partie
+	virtual void victory() = 0;
+	virtual void defeat() = 0;
 
 private:
 	

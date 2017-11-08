@@ -17,3 +17,11 @@ void Autonomy::turn()
 
 	growth(); // croissance de la ville en fin de tour
 }
+
+void Autonomy::victory()
+{
+}
+
+void Autonomy::defeat()
+{
+}
