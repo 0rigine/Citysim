@@ -85,6 +85,7 @@ void Grille::playATurn()
 			toDelete.push_back(group);
 		}
 	}
+	for_each(processus.begin(), processus.end(), do_join);
 
 	// Suppression des factions éliminées
 	for (vector<Faction*>::iterator it = toDelete.begin(); it != toDelete.end(); ++it)
@@ -92,6 +93,7 @@ void Grille::playATurn()
 		factionsList.erase(remove(factionsList.begin(), factionsList.end(), *it), factionsList.end());
 		delete *it;
 	}
+	
 }
 
 void Grille::playAGame()
