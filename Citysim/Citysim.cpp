@@ -9,7 +9,7 @@ int main()
 {
 	srand(time(NULL));
 	Grille test = Grille(2,2);
-	
+	test.playAGame();
 
 	system("pause");
     return 0;
