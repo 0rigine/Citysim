@@ -38,6 +38,7 @@ void Player::setEmployes(string jobName, int (City::*setter)(int))
 		do
 		{
 			cout << "Saisir le nombre " << jobName << " (-1 pour ignorer) : " << endl;
+			cin.ignore(INT_MAX);
 			cin >> assigned;
 		} while (assigned < -1);
 		if (assigned > -1)
@@ -62,16 +63,34 @@ bool Player::ask(string question)
 void Player::buy()
 {
 	vector<City*> voisines;
+	int i(0);
+	int choice(0);
+	int size(0);
+	float price(0); // prix d'achat proposé
 	if (ask("Acheter une ville (o/n) ?"))
 	{
 		voisines = getFaction()->getNeighbourhood();
+		size = voisines.size();
 		for each (City* town in voisines)
 		{
-			if (town != NULL)
-			{
-				town->presentation();
-				cout << endl;
-			}
+			cout << "Index : " << i << " -> " << ends;
+			town->presentation();
+			cout << endl;
+			++i;
 		}
+		do
+		{
+			cout << "Saisir l'index de la ville a acheter : " << ends;
+			cin.ignore(INT_MAX);
+			cin >> choice;
+		} while (choice < 0 || choice > size);
+		do
+		{
+			cout << "Prix propose : " << ends;
+			cin.ignore(INT_MAX);
+			cin >> price;
+		} while (price < 1);
+		voisines[choice]->propositionRachat(getFaction(), price);
+		cout << "Proposition de rachat envoyee !" << endl;
 	}
 }
