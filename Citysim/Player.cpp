@@ -68,11 +68,19 @@ void Player::buy()
 	int choice(0);
 	int size(0);
 	float price(0); // prix d'achat proposé
-	if (ask("Acheter une ville (o/n) ?"))
+	vector<City*> toBuy;
+	if (getFaction()->canBuy() && ask("Acheter une ville (o/n) ?"))
 	{
 		voisines = getFaction()->getNeighbourhood();
-		size = voisines.size();
+		size = toBuy.size();
 		for each (City* town in voisines)
+		{
+			if (getFaction()->canBuyIt(town))
+			{
+				toBuy.push_back(town);
+			}
+		}
+		for each (City* town in toBuy)
 		{
 			cout << "Index : " << i << " -> " << ends;
 			town->presentation();
@@ -95,7 +103,7 @@ void Player::buy()
 				cin.ignore(INT_MAX, '\n');
 				cin >> price;
 			} while (cin.fail() || price < 1);
-		} while (!acheterVille(voisines[choice], price));
+		} while (!acheterVille(toBuy[choice], price));
 		cout << "Proposition de rachat envoyee !" << endl;
 	}
 }
