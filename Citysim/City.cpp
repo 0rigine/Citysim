@@ -139,7 +139,7 @@ void City::populationGrowth(float coeffHappy)
 
 	travailleurs = farmers + energizer + traders; // total de travailleurs
 
-	if (travailleurs > newPopulation && newPopulation > 0) // ajustement des travailleurs à la population restante si inférieure
+	if (travailleurs > newPopulation) // ajustement des travailleurs à la population restante si inférieure
 	{
 		coeffWorker = (newPopulation / population);
 		energizer *= coeffWorker;
