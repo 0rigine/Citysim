@@ -8,7 +8,7 @@ using namespace std;
 #define GENERATION_OK 0
 #define GENERATION_FAILED 1
 
-/* Classe rÈgissant le jeu */
+/* Classe r√©gissant le jeu */
 class Grille
 {
 public:
@@ -27,6 +27,7 @@ public:
 
 	// Victoire
 	bool isVictory(); // Fonction d'annonce de victoire
+	bool Grille::isPlayable(); // Test de jouabilit√©
 
 private:
 	vector<vector<City*>> grid;
@@ -34,4 +35,4 @@ private:
 	vector<Faction*> factionsList;
 };
 
-void do_join(thread& process); // faire un join() sur le thread donnÈ
+void do_join(thread& process); // faire un join() sur le thread donn√©
