@@ -17,6 +17,8 @@ public:
 	void acheterVille(City *vendue, float prix = 10); // fonction d'achat de la ville
 	void vendreVille(City *vendue, float prix = 10); // fonction de vente d'une ville
 	void estimate(); // estimation du prix des villes de la faction
+	bool Faction::canBuyIt(City* aVendre); // tester l'achat de la ville
+	bool Faction::canBuy(); // vérifier s'il est possible d'acheter une ville voisine
 
 	// Accesseurs
 	const string getName() const; // Accesseur de name
