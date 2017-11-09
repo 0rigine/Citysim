@@ -66,9 +66,6 @@ void Grille::playATurn()
 
 	afficherVilles();
 	system("pause & cls");
-	
-	// Vérification de la situation des villes
-	if (!isPlayable()) launchMulti(&City::defeat);
 
 	// Tour de jeu
 	launchMulti(&City::turn);
@@ -93,6 +90,12 @@ void Grille::playAGame()
 	while (!isVictory())
 	{
 		playATurn();
+		// Vérification de la situation des villes
+		if (!isPlayable()) 
+		{
+			launchMulti(&City::defeat);
+			return;
+		}
 	}
 }
 
