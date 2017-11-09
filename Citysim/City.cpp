@@ -139,7 +139,7 @@ void City::populationGrowth(float coeffHappy)
 
 	travailleurs = farmers + energizer + traders; // total de travailleurs
 
-	if (travailleurs > newPopulation && newPopulation > 0) // ajustement des travailleurs à la population restante si inférieure
+	if (travailleurs > newPopulation && newPopulation > 0) // ajustement des travailleurs Ã  la population restante si infÃ©rieure
 	{
 		coeffWorker = (newPopulation / population);
 		energizer *= coeffWorker;
@@ -178,7 +178,7 @@ float City::happinessPart()
 	if (happyFood > 1.0) happyFood = 1.0; // controle du pourcentage de population satisfaite en nourriture
 
 	float happyEnergy = (energie / energyCons) / population; // part de population dont les besoins en energie sont satisfaits
-	if (happyEnergy > 1.0) happyEnergy = 1.0; // controle du pourcentage de population satisfaite en énergie
+	if (happyEnergy > 1.0) happyEnergy = 1.0; // controle du pourcentage de population satisfaite en Ã©nergie
 
 	return happyFood*happyEnergy; // part de population dont tous les besoins sont satisfaits
 }
@@ -196,14 +196,14 @@ bool City::acheterVille(City *achetee, float prix)
 
 void City::propositionRachat(Faction * arg_acheteur, float proposition)
 {
-	negocie.lock(); // on empêche d'autres négociations simultanées
+	negocie.lock(); // on empÃªche d'autres nÃ©gociations simultanÃ©es
 
 	if (proposition > prix)
 	{
 		acheteur = arg_acheteur;
 	}
 
-	negocie.unlock(); // on déverrouille
+	negocie.unlock(); // on dÃ©verrouille
 }
 
 void City::achatFinTour()
@@ -277,6 +277,11 @@ float City::getPrice() const
 Faction * City::getAcheteur() const
 {
 	return acheteur;
+}
+
+int City::getPopulation() const
+{
+	return population;
 }
 
 void City::set_Coord(int posx, int posy)
