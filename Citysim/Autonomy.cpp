@@ -20,3 +20,7 @@ void Autonomy::turn()
 void Autonomy::victory()
 {
 }
+
+void Autonomy::defeat()
+{
+}

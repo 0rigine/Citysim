@@ -1,7 +1,7 @@
 #pragma once
 #include "City.h"
 
-/* Classe de ville dirigÈe par un joueur hÈritant de City */
+/* Classe de ville dirig√©e par un joueur h√©ritant de City */
 class Player :
 	public City
 {
@@ -11,12 +11,13 @@ public:
 
 	// Interface
 	virtual void turn(); // tour de jeu
-	void setEmployes(string jobName, int (City::*setter)(int)); // fonction d'assignation des employÈs
-	bool ask(string question); // fonction pour poser une question (insertion sÈcurisÈe)
+	void setEmployes(string jobName, int (City::*setter)(int)); // fonction d'assignation des employ√©s
+	bool ask(string question); // fonction pour poser une question (insertion s√©curis√©e)
 	void buy(); // acheter une ville
 
 	// Fin de partie
 	virtual void victory(); // victoire
-	virtual void Player::achatFinTour(); // dÈfaite
+	virtual void defeat(); // d√©faite
+	virtual void Player::achatFinTour(); // d√©faite
 	
 };

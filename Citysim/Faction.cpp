@@ -46,6 +46,21 @@ void Faction::estimate()
 	price = budget / cities.size();
 }
 
+bool Faction::canBuyIt(City* aVendre)
+{
+	if (aVendre->getPrice() <= budget) return true;
+	return false;
+}
+
+bool Faction::canBuy()
+{
+	for each (City* town in getNeighbourhood())
+	{
+		if (canBuyIt(town)) return true;
+	}
+	return false;
+}
+
 const string Faction::getName() const
 {
 	return name;
@@ -77,6 +92,16 @@ float Faction::getBudget() const
 float Faction::getPrice() const
 {
 	return price;
+}
+
+int Faction::getPopulation() const
+{
+	int totalPopulation(0);
+	for each (City* town in cities)
+	{
+		totalPopulation += town->getPopulation();
+	}
+	return totalPopulation;
 }
 
 void Faction::setBudget(float arg_budget)

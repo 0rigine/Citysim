@@ -1,7 +1,7 @@
 #pragma once
 #include "City.h"
 
-/* Ville contrôlée par intelligence artificielle héritant de City */
+/* Ville contrÃ´lÃ©e par intelligence artificielle hÃ©ritant de City */
 class Autonomy :
 	public City
 {
@@ -13,4 +13,5 @@ public:
 
 	// Fin de partie
 	virtual void victory();
+	virtual void defeat();
 };
