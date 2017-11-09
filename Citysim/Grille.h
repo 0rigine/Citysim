@@ -27,7 +27,7 @@ public:
 
 	// Victoire
 	bool isVictory(); // Fonction d'annonce de victoire
-	bool Grille::isPlayable(); // Test de jouabilité
+	bool isPlayable(); // Test de jouabilité
 
 private:
 	vector<vector<City*>> grid;
