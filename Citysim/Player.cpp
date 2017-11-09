@@ -117,15 +117,15 @@ void Player::victory()
 void Player::defeat()
 {
 	cout << "Budget et population insuffisants pour continuer !" << endl;
-	cout << "Partie terminée" << endl;
+	cout << "Partie terminee" << endl;
 }
 
 void Player::achatFinTour()
 {
 	if (getAcheteur() != NULL)
 	{
-		cout << "Vous avez été racheté !" << endl;
-		cout << "Partie terminée" << endl;
+		cout << "Vous avez ete rachete !" << endl;
+		cout << "Partie terminee" << endl;
 		exit(EXIT_SUCCESS);
 	}
 }
