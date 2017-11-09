@@ -10,7 +10,7 @@ using namespace std;
 
 Grille::Grille()
 {
-	initialize_Grid(2, 2); // initialisation d'une grille avec une taille de 2x2 par défaut
+	initialize_Grid(2, 2); // initialisation d'une grille avec une taille de 2x2 par dÃ©faut
 }
 
 Grille::Grille(int sizex, int sizey)
@@ -46,7 +46,7 @@ void Grille::playATurn()
 	vector<thread> processus;
 	vector<Faction*> toDelete;
 
-	// Mise à jour des prix de villes de faction
+	// Mise Ã  jour des prix de villes de faction
 	for each (Faction *group in factionsList)
 	{
 		if (group->getCitiesLenght() > 0)
@@ -59,12 +59,16 @@ void Grille::playATurn()
 		}
 	}
 	for_each(processus.begin(), processus.end(), do_join);
+	processus.clear();
 
 	// Estimations des prix des villes
 	launchMulti(&City::estimate);
 
 	afficherVilles();
 	system("pause & cls");
+	
+	// VÃ©rification de la situation des villes
+	if (!isPlayable()) launchMulti(&City::defeat);
 
 	// Tour de jeu
 	launchMulti(&City::turn);
@@ -72,10 +76,10 @@ void Grille::playATurn()
 	// Croissance
 	launchMulti(&City::growth);
 
-	// Résolution des achats de villes
+	// RÃ©solution des achats de villes
 	launchMulti(&City::achatFinTour);
 
-	// Suppression des factions éliminées
+	// Suppression des factions Ã©liminÃ©es
 	for (vector<Faction*>::iterator it = toDelete.begin(); it != toDelete.end(); ++it)
 	{
 		factionsList.erase(remove(factionsList.begin(), factionsList.end(), *it), factionsList.end());
@@ -104,16 +108,16 @@ void Grille::launchMulti(void(City::*function)())
 
 int Grille::initialize_Grid(int sizex, int sizey)
 {
-	int row(0), column(0), len(sizex*sizey); // colonnes et lignes pour la taille limite ainsi que le nombre de villes devant être créées
-	towns.push_back(new Player()); // on crée la ville du joueur
-	for (int i = 1; i < len; ++i) towns.push_back(new Autonomy()); // on ajoute à la liste les villes IA
+	int row(0), column(0), len(sizex*sizey); // colonnes et lignes pour la taille limite ainsi que le nombre de villes devant Ãªtre crÃ©Ã©es
+	towns.push_back(new Player()); // on crÃ©e la ville du joueur
+	for (int i = 1; i < len; ++i) towns.push_back(new Autonomy()); // on ajoute Ã  la liste les villes IA
 
-	random_shuffle(towns.begin(), towns.end()); // on mélange la liste des villes
+	random_shuffle(towns.begin(), towns.end()); // on mÃ©lange la liste des villes
 
 	grid.push_back(vector<City*>(0));
-	for each (City* town in towns) // on distribue dans la grille la liste, leur position est aléatoire
+	for each (City* town in towns) // on distribue dans la grille la liste, leur position est alÃ©atoire
 	{
-		factionsList.push_back(town->getFaction()); // ajout de la faction à la liste des factions présentes
+		factionsList.push_back(town->getFaction()); // ajout de la faction Ã  la liste des factions prÃ©sentes
 		if (column == sizey)
 		{
 			++row;
@@ -136,6 +140,15 @@ bool Grille::isVictory()
 	{
 		factionsList.front()->getVictory();
 		return true;
+	}
+	return false;
+}
+
+bool Grille::isPlayable()
+{
+	for each (Faction *group in factionsList)
+	{
+		if (group->canBuy() || group->getPopulation()  > 0) return true;
 	}
 	return false;
 }
