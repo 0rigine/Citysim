@@ -78,7 +78,7 @@ public:
 	float getWallet() const;
 	float getPrice() const; // Accesseur de prix de vente
 	Faction* getAcheteur() const; // Accesseur d'acheteur
-	int City::getPopulation() const; // Accesseur de la population
+	int getPopulation() const; // Accesseur de la population
 
 	// Setters
 	void set_Coord(int posx, int posy); // setter de position
