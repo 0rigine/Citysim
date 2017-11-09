@@ -139,7 +139,7 @@ void City::populationGrowth(float coeffHappy)
 
 	travailleurs = farmers + energizer + traders; // total de travailleurs
 
-	if (travailleurs > newPopulation) // ajustement des travailleurs à la population restante si inférieure
+	if (travailleurs > newPopulation && newPopulation > 0) // ajustement des travailleurs à la population restante si inférieure
 	{
 		coeffWorker = (newPopulation / population);
 		energizer *= coeffWorker;
@@ -147,7 +147,6 @@ void City::populationGrowth(float coeffHappy)
 		traders *= coeffWorker;
 	}
 	population = newPopulation;
-	if (population < 1) bonheur = 1;
 }
 
 void City::happinessGrowth(float coeffHappy)
@@ -278,6 +277,11 @@ float City::getPrice() const
 Faction * City::getAcheteur() const
 {
 	return acheteur;
+}
+
+int City::getPopulation() const
+{
+	return population;
 }
 
 void City::set_Coord(int posx, int posy)
