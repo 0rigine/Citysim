@@ -94,6 +94,16 @@ float Faction::getPrice() const
 	return price;
 }
 
+int Faction::getPopulation() const
+{
+	int totalPopulation(0);
+	for each (City* town in cities)
+	{
+		totalPopulation += town->getPopulation();
+	}
+	return totalPopulation;
+}
+
 void Faction::setBudget(float arg_budget)
 {
 	budget = arg_budget;
