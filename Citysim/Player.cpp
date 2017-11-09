@@ -102,7 +102,7 @@ void Player::buy()
 				cin.clear();
 				cin.ignore(INT_MAX, '\n');
 				cin >> price;
-			} while (cin.fail() || price < 1);
+			} while (cin.fail() || price < 1 || getWallet() < price);
 		} while (!acheterVille(toBuy[choice], price));
 		cout << "Proposition de rachat envoyee !" << endl;
 	}
