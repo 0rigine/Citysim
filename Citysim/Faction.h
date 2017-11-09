@@ -24,7 +24,6 @@ public:
 	vector<City*> getNeighbourhood(); // Liste des villes voisines de la faction
 	float getBudget() const; // Accesseur du budget
 	float getPrice() const; // Accesseur du prix
-	int getPopulation() const; // Calculateur du total de population
 
 	// Setters
 	void setBudget(float arg_budget); // setter de budget
