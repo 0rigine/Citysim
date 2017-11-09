@@ -21,6 +21,8 @@ Grille::Grille(int sizex, int sizey)
 
 Grille::~Grille()
 {
+	for each(City* town in towns) delete town;
+	for each(Faction* group in factionsList) delete group;
 }
 
 void Grille::afficherVilles()
