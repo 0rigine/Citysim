@@ -67,7 +67,7 @@ void Player::buy()
 	int i(0);
 	int choice(0);
 	int size(0);
-	float price(0); // prix d'achat proposé
+	float price(0); // prix d'achat proposÃ©
 	if (ask("Acheter une ville (o/n) ?"))
 	{
 		voisines = getFaction()->getNeighbourhood();
@@ -106,12 +106,18 @@ void Player::victory()
 	cout << "Victoire !" << endl;
 }
 
+void Player::defeat()
+{
+	cout << "Budget et population insuffisants pour continuer !" << endl;
+	cout << "Partie terminÃ©e" << endl;
+}
+
 void Player::achatFinTour()
 {
 	if (getAcheteur() != NULL)
 	{
-		cout << "Vous avez été racheté !" << endl;
-		cout << "Partie terminée" << endl;
+		cout << "Vous avez Ã©tÃ© rachetÃ© !" << endl;
+		cout << "Partie terminÃ©e" << endl;
 		exit(EXIT_SUCCESS);
 	}
 }
