@@ -151,10 +151,10 @@ bool Grille::isVictory()
 
 bool Grille::isPlayable()
 {
-	int cityOK(0);
+	int cityOK(0); // villes susceptibles d'évoluer
 	for each (Faction *group in factionsList)
 	{
-		if (group->canBuy() && group->getPopulation() > 0) ++cityOK;
+		if (group->getPopulation() > 0) ++cityOK;
 	}
 	if (cityOK > 0) return true;
 	return false;
