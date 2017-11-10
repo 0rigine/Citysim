@@ -153,7 +153,7 @@ bool Grille::isPlayable()
 {
 	for each (Faction *group in factionsList)
 	{
-		if (group->canBuy() || group->getPopulation()  > 0) return true;
+		if (group->canBuy() && group->getPopulation()  > 0) return true;
 	}
 	return false;
 }
