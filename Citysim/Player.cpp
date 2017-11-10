@@ -42,7 +42,7 @@ void Player::setEmployes(string jobName, int (City::*setter)(int))
 			cin.ignore(INT_MAX,'\n');
 			cin >> assigned;
 		} while (cin.fail() || assigned < -1);
-		if (assigned > -1)
+		if (assigned != -1)
 		{
 			attribution = (this->*setter)(assigned);
 		}
@@ -72,7 +72,6 @@ void Player::buy()
 	if (getFaction()->canBuy() && ask("Acheter une ville (o/n) ?"))
 	{
 		voisines = getFaction()->getNeighbourhood();
-		size = toBuy.size();
 		for each (City* town in voisines)
 		{
 			if (getFaction()->canBuyIt(town))
@@ -87,6 +86,7 @@ void Player::buy()
 			cout << endl;
 			++i;
 		}
+		size = toBuy.size();
 		do
 		{
 			do
