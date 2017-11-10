@@ -305,7 +305,7 @@ void City::set_Faction(Faction * newFaction)
 int City::set_Farmers(int toSet)
 {
 	int freePopulation(population-energizer-traders);
-	int maximum(100);
+	int maximum(MAXIMUM_SETTLERS);
 	if(toSet < 0 || toSet > maximum || toSet > freePopulation) return ATTRIBUTION_ERROR;
 	farmers = toSet;
 	return ATTRIBUTION_OK;
@@ -314,7 +314,7 @@ int City::set_Farmers(int toSet)
 int City::set_Energize(int toSet)
 {
 	int freePopulation(population-farmers-traders);
-	int maximum(100);
+	int maximum(MAXIMUM_SETTLERS);
 	if(toSet < 0 || toSet > maximum || toSet > freePopulation) return ATTRIBUTION_ERROR;
 	energizer = toSet;
 	return ATTRIBUTION_OK;
@@ -323,7 +323,7 @@ int City::set_Energize(int toSet)
 int City::set_Traders(int toSet)
 {
 	int freePopulation(population-farmers-energizer);
-	int maximum(100);
+	int maximum(MAXIMUM_SETTLERS);
 	if(toSet < 0 || toSet > maximum || toSet > freePopulation) return ATTRIBUTION_ERROR;
 	traders = toSet;
 	return ATTRIBUTION_OK;

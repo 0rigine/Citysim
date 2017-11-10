@@ -12,6 +12,9 @@ using namespace std;
 #define ATTRIBUTION_OK 0 // réussite d'attribution d'employés
 #define ATTRIBUTION_ERROR 1 // erreur d'attribution d'employés
 
+// Définitions des maximums d'employés
+#define MAXIMUM_SETTLERS 500
+
 // Valeurs par défaut en début de partie
 #define DEFAULT_POPULATION 100
 #define DEFAULT_FOOD 1000
