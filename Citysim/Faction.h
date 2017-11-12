@@ -29,11 +29,12 @@ public:
 	float getPrice() const; // Accesseur du prix
 	int getPopulation() const; // Calculateur du total de population
 	float getTempBudget() const; // Accesseur du budget de tour
+	mutex* getInSetting(); // Accesseur du mutex InSetting
 
 	// Setters
 	void setBudget(float arg_budget); // setter de budget
 	void budgetGrowing(City* setBy); // Croissance du budget
-	void setTemporaryBudget(float arg_temp); // setter du budget sur le tour
+	void removeFromTemporaryBudget(float arg_temp); // Différence avec le budget utilisé
 
 	// Victoire
 	void getVictory(); // Victoire

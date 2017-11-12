@@ -59,11 +59,11 @@ public:
 	void foodGrowth(float coeffHappy); // croissance de la nourriture
 	void populationGrowth(float coeffHappy); // croissance de la population
 	void happinessGrowth(float coeffHappy); // croissance du bonheur
-	void budgetGrowth(); // croissance du budget
+	float budgetGrowth(); // croissance du budget
 
 	// Estimations et mesures
 	float happinessPart(); // Part de population heureuse (coefficient)
-	int salary(); // calcul du salaire total de la ville
+	float salary(); // calcul du salaire total de la ville
 
 	// Gestion de la ville
 	int set_Farmers(int toSet); // indiquer le nombre de fermiers actifs
@@ -109,7 +109,6 @@ private:
 	int farmers; // fermiers
 	int energizer; // producteurs d'énergie
 	int traders; // employés dans la finance
-	int salaires; // salaires des employés
 
 	float nourriture; // stock de nourriture
 	float energie; // stock d'énergie
