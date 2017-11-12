@@ -66,7 +66,7 @@ public:
 	float salary(); // calcul du salaire total de la ville
 
 	// Gestion de la ville
-	int City::setEmployees(int toSet, int &employee, int tree); // setter d'employés
+	int setEmployees(int toSet, int &employee, int tree); // setter d'employés
 	int set_Farmers(int toSet); // indiquer le nombre de fermiers actifs
 	int set_Energize(int toSet); // indiquer le nombre de producteur d'énergie actifs
 	int set_Traders(int toSet); // indiquer le nombre de traders actifs

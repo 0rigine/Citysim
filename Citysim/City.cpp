@@ -324,6 +324,7 @@ int City::setEmployees(int toSet, int &employee, int tree)
 		employee = old;
 		result = ATTRIBUTION_ERROR;
 	}
+	faction->removeFromTemporaryBudget(employee*SALARY);
 	lockBudget->unlock();
 	return result;
 }
