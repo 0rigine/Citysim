@@ -190,28 +190,24 @@ float City::salary()
 // Achat/Vente de villes
 bool City::acheterVille(City *achetee, float prix)
 {
-	mutex* lockBudget = faction->getInSetting();
+	lock_guard<mutex> lockBudget(*(faction->getInSetting()));
 	bool result(true);
-	lockBudget->lock();
 	if (achetee->getFaction() != faction && prix < faction->getTempBudget())
 	{
 		achetee->propositionRachat(faction, prix); // proposition de rachat de la ville
 	}
 	else result = false;
-	lockBudget->unlock();
 	return result;
 }
 
 void City::propositionRachat(Faction * arg_acheteur, float proposition)
 {
-	negocie.lock(); // on empêche d'autres négociations simultanées
+	lock_guard<mutex> noMultiNegociation(negocie); // on empêche d'autres négociations simultanées
 
 	if (proposition > prix)
 	{
 		acheteur = arg_acheteur;
 	}
-
-	negocie.unlock(); // on déverrouille
 }
 
 void City::achatFinTour()
@@ -312,20 +308,18 @@ void City::set_Faction(Faction * newFaction)
 // Setters
 int City::setEmployees(int toSet, int &employee, int tree)
 {
-	mutex* lockBudget = faction->getInSetting();
+	lock_guard<mutex> lockBudget(*(faction->getInSetting()));
 	int freePopulation(population + employee - farmers -energizer-traders),
 		maximum(MAXIMUM_SETTLERS),
 		result(ATTRIBUTION_OK),
 		old(employee);
 	employee = toSet;
-	lockBudget->lock();
 	if (faction->getTempBudget() < salary() || toSet < 0 || toSet > maximum || toSet > freePopulation)
 	{
 		employee = old;
 		result = ATTRIBUTION_ERROR;
 	}
 	faction->removeFromTemporaryBudget(employee*SALARY);
-	lockBudget->unlock();
 	return result;
 }
 

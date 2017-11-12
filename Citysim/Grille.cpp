@@ -40,7 +40,9 @@ void Grille::afficherVilles()
 
 void do_join(thread& process)
 {
+	cout << "Join lance" << endl;
 	process.join();
+	cout << "Join effectue" << endl;
 }
 
 void Grille::playATurn()

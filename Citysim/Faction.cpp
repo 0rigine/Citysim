@@ -124,7 +124,7 @@ void Faction::setBudget(float arg_budget)
 void Faction::budgetGrowing()
 {
 	float salaires(0);
-	inSetting.lock();
+	lock_guard<mutex> localLock(inSetting);
 	budget = temporaryBudget;
 	for each (City* town in cities)
 	{
@@ -133,14 +133,12 @@ void Faction::budgetGrowing()
 	}
 	budget -= salaires;
 	temporaryBudget = budget - salaires;
-	inSetting.unlock();
 }
 
 void Faction::removeFromTemporaryBudget(float arg_temp)
 {
-	inSetting.lock();
+	lock_guard<mutex> localLock(inSetting);
 	temporaryBudget -= arg_temp;
-	inSetting.unlock();
 }
 
 void Faction::getVictory()

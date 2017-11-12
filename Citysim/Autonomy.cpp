@@ -12,9 +12,12 @@ Autonomy::~Autonomy()
 
 void Autonomy::turn()
 {
+	cout << "Launching..." << endl;
 	set_Farmers(50);
+	cout << "Success !" << endl;
 	set_Energize(40);
 	set_Traders(10);
+	cout << "Ending..." << endl;
 }
 
 void Autonomy::victory()
