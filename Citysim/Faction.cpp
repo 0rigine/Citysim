@@ -50,7 +50,7 @@ void Faction::estimate()
 
 bool Faction::canBuyIt(City* aVendre)
 {
-	if (aVendre->getPrice() <= budget) return true;
+	if (aVendre->getPrice() <= temporaryBudget) return true;
 	return false;
 }
 
