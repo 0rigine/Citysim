@@ -19,7 +19,6 @@ public:
 	void estimate(); // estimation du prix des villes de la faction
 	bool canBuyIt(City* aVendre); // tester l'achat de la ville
 	bool canBuy(); // vérifier s'il est possible d'acheter une ville voisine
-	void allowedBudget(); // calcul du budget disponible pour le tour en cours
 
 	// Accesseurs
 	const string getName() const; // Accesseur de name
@@ -33,7 +32,7 @@ public:
 
 	// Setters
 	void setBudget(float arg_budget); // setter de budget
-	void budgetGrowing(City* setBy); // Croissance du budget
+	void budgetGrowing(); // Croissance du budget
 	void removeFromTemporaryBudget(float arg_temp); // Différence avec le budget utilisé
 
 	// Victoire

@@ -103,7 +103,6 @@ void City::growth()
 	energyGrowth(coeffHappy);
 	foodGrowth(coeffHappy);
 	happinessGrowth(coeffHappy);
-	budgetGrowth();
 	populationGrowth(coeffHappy);
 }
 
@@ -158,7 +157,7 @@ void City::happinessGrowth(float coeffHappy)
 	if (bonheur <= 0) bonheur = 1;
 }
 
-float City::budgetGrowth()
+float City::production()
 {
 	float coeffTraders(25.0), production(0);
 	production = traders*coeffTraders;
@@ -311,29 +310,35 @@ void City::set_Faction(Faction * newFaction)
 
 
 // Setters
+int City::setEmployees(int toSet, int &employee, int tree)
+{
+	mutex* lockBudget = faction->getInSetting();
+	int freePopulation(population + employee - farmers -energizer-traders),
+		maximum(MAXIMUM_SETTLERS),
+		result(ATTRIBUTION_OK),
+		old(employee);
+	employee = toSet;
+	lockBudget->lock();
+	if (faction->getTempBudget() < salary() || toSet < 0 || toSet > maximum || toSet > freePopulation)
+	{
+		employee = old;
+		result = ATTRIBUTION_ERROR;
+	}
+	lockBudget->unlock();
+	return result;
+}
+
 int City::set_Farmers(int toSet)
 {
-	int freePopulation(population-energizer-traders);
-	int maximum(MAXIMUM_SETTLERS);
-	if(toSet < 0 || toSet > maximum || toSet > freePopulation) return ATTRIBUTION_ERROR;
-	farmers = toSet;
-	return ATTRIBUTION_OK;
+	return setEmployees(toSet, farmers , 0);
 }
 
 int City::set_Energize(int toSet)
 {
-	int freePopulation(population-farmers-traders);
-	int maximum(MAXIMUM_SETTLERS);
-	if(toSet < 0 || toSet > maximum || toSet > freePopulation) return ATTRIBUTION_ERROR;
-	energizer = toSet;
-	return ATTRIBUTION_OK;
+	return setEmployees(toSet, energizer, 0);
 }
 
 int City::set_Traders(int toSet)
 {
-	int freePopulation(population-farmers-energizer);
-	int maximum(MAXIMUM_SETTLERS);
-	if(toSet < 0 || toSet > maximum || toSet > freePopulation) return ATTRIBUTION_ERROR;
-	traders = toSet;
-	return ATTRIBUTION_OK;
+	return setEmployees(toSet, traders, 0);
 }

@@ -61,16 +61,6 @@ bool Faction::canBuy()
 	return false;
 }
 
-void Faction::allowedBudget()
-{
-	int salaires(0);
-	for each (City* town in cities)
-	{
-		salaires += town->salary();
-	}
-	temporaryBudget = budget - salaires;
-}
-
 const string Faction::getName() const
 {
 	return name;
@@ -129,10 +119,18 @@ void Faction::setBudget(float arg_budget)
 	budget = arg_budget;
 }
 
-void Faction::budgetGrowing(City* setBy)
+void Faction::budgetGrowing()
 {
+	float salaires(0);
 	inSetting.lock();
-	budget += setBy->production() - setBy->salary();
+	budget = 0;
+	for each (City* town in cities)
+	{
+		salaires += town->salary();
+		budget += town->production();
+	}
+	budget -= salaires;
+	temporaryBudget = budget - salaires;
 	inSetting.unlock();
 }
 

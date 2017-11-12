@@ -54,6 +54,7 @@ void Grille::playATurn()
 		if (group->getCitiesLenght() > 0)
 		{
 			processus.push_back(thread(&Faction::estimate, group));
+			processus.push_back(thread(&Faction::budgetGrowing, group));
 		}
 		else
 		{

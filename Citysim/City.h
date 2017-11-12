@@ -59,13 +59,14 @@ public:
 	void foodGrowth(float coeffHappy); // croissance de la nourriture
 	void populationGrowth(float coeffHappy); // croissance de la population
 	void happinessGrowth(float coeffHappy); // croissance du bonheur
-	float budgetGrowth(); // croissance du budget
+	float production(); // mesure de la production financière
 
 	// Estimations et mesures
 	float happinessPart(); // Part de population heureuse (coefficient)
 	float salary(); // calcul du salaire total de la ville
 
 	// Gestion de la ville
+	int City::setEmployees(int toSet, int &employee, int tree); // setter d'employés
 	int set_Farmers(int toSet); // indiquer le nombre de fermiers actifs
 	int set_Energize(int toSet); // indiquer le nombre de producteur d'énergie actifs
 	int set_Traders(int toSet); // indiquer le nombre de traders actifs
