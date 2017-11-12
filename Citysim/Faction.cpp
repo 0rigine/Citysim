@@ -8,6 +8,7 @@ int Faction::factionNumber = 0;
 
 Faction::Faction():
 	budget(DEFAULT_WALLET),
+	temporaryBudget(DEFAULT_WALLET),
 	id(factionNumber)
 {
 	++factionNumber;
@@ -15,6 +16,7 @@ Faction::Faction():
 
 Faction::Faction(string arg_name, City* capitale):
 	budget(DEFAULT_WALLET),
+	temporaryBudget(DEFAULT_WALLET),
 	id(factionNumber)
 {
 	name = arg_name;
@@ -123,7 +125,7 @@ void Faction::budgetGrowing()
 {
 	float salaires(0);
 	inSetting.lock();
-	budget = 0;
+	budget = temporaryBudget;
 	for each (City* town in cities)
 	{
 		salaires += town->salary();
