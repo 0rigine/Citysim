@@ -48,4 +48,3 @@ private:
 	vector<City*> cities;
 	mutex inSetting; // Mutex pour la croissance du budget en fin de tour
 };
-

@@ -40,9 +40,7 @@ void Grille::afficherVilles()
 
 void do_join(thread& process)
 {
-	cout << "Join lance" << endl;
 	process.join();
-	cout << "Join effectue" << endl;
 }
 
 void Grille::playATurn()
@@ -111,7 +109,6 @@ void Grille::launchMulti(void(City::*function)())
 	{
 		processus.push_back(thread(function, town));
 	}
-	cout << "Processus lances" << endl;
 	for_each(processus.begin(), processus.end(), do_join);
 }
 

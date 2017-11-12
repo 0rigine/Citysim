@@ -137,7 +137,6 @@ void Faction::budgetGrowing()
 
 void Faction::removeFromTemporaryBudget(float arg_temp)
 {
-	lock_guard<mutex> localLock(inSetting);
 	temporaryBudget -= arg_temp;
 }
 
