@@ -111,9 +111,9 @@ float Faction::getTempBudget() const
 	return temporaryBudget;
 }
 
-mutex* Faction::getInSetting()
+mutex& Faction::getInSetting()
 {
-	return &inSetting;
+	return inSetting;
 }
 
 void Faction::setBudget(float arg_budget)

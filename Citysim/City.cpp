@@ -190,7 +190,7 @@ float City::salary()
 // Achat/Vente de villes
 bool City::acheterVille(City *achetee, float prix)
 {
-	lock_guard<mutex> lockBudget(*(faction->getInSetting()));
+	lock_guard<mutex> lockBudget(faction->getInSetting());
 	bool result(true);
 	if (achetee->getFaction() != faction && prix < faction->getTempBudget())
 	{
@@ -308,7 +308,7 @@ void City::set_Faction(Faction * newFaction)
 // Setters
 int City::setEmployees(int toSet, int &employee, int tree)
 {
-	lock_guard<mutex> lockBudget(*(faction->getInSetting()));
+	lock_guard<mutex> lockBudget(faction->getInSetting());
 	int freePopulation(population + employee - farmers -energizer-traders),
 		maximum(MAXIMUM_SETTLERS),
 		result(ATTRIBUTION_OK),

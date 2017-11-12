@@ -28,7 +28,7 @@ public:
 	float getPrice() const; // Accesseur du prix
 	int getPopulation() const; // Calculateur du total de population
 	float getTempBudget() const; // Accesseur du budget de tour
-	mutex* getInSetting(); // Accesseur du mutex InSetting
+	mutex& getInSetting(); // Accesseur du mutex InSetting
 
 	// Setters
 	void setBudget(float arg_budget); // setter de budget
