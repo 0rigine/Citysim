@@ -61,6 +61,11 @@ bool Faction::canBuy()
 	return false;
 }
 
+void Faction::allowedBudget()
+{
+
+}
+
 const string Faction::getName() const
 {
 	return name;
@@ -104,6 +109,11 @@ int Faction::getPopulation() const
 	return totalPopulation;
 }
 
+float Faction::getTempBudget() const
+{
+	return temporaryBudget;
+}
+
 void Faction::setBudget(float arg_budget)
 {
 	budget = arg_budget;
@@ -114,6 +124,11 @@ void Faction::budgetGrowing(City* setBy)
 	inSetting.lock();
 	setBy->budgetGrowth();
 	inSetting.unlock();
+}
+
+void Faction::setTemporaryBudget(float arg_temp)
+{
+	temporaryBudget = arg_temp;
 }
 
 void Faction::getVictory()

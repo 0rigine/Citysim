@@ -24,6 +24,9 @@ using namespace std;
 #define DEFAULT_TRADERS 0
 #define DEFAULT_ENERGIZER 0
 
+// Valeurs par défaut des coefficients
+#define SALARY 2.5
+
 class Faction;
 
 class City
@@ -60,6 +63,7 @@ public:
 
 	// Estimations et mesures
 	float happinessPart(); // Part de population heureuse (coefficient)
+	int salary(); // calcul du salaire total de la ville
 
 	// Gestion de la ville
 	int set_Farmers(int toSet); // indiquer le nombre de fermiers actifs
@@ -105,6 +109,7 @@ private:
 	int farmers; // fermiers
 	int energizer; // producteurs d'énergie
 	int traders; // employés dans la finance
+	int salaires; // salaires des employés
 
 	float nourriture; // stock de nourriture
 	float energie; // stock d'énergie

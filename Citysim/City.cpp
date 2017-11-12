@@ -160,9 +160,9 @@ void City::happinessGrowth(float coeffHappy)
 
 void City::budgetGrowth()
 {
-	float salaire(2.5),coeffTraders(25.0), local_budget(faction->getBudget());
+	float coeffTraders(25.0), local_budget(faction->getBudget());
 	int travailleurs = farmers + energizer + traders;
-	local_budget += traders*coeffTraders - salaire*travailleurs;
+	local_budget += traders*coeffTraders - salary();
 	if (local_budget < 0) local_budget = 0;
 	faction->setBudget(local_budget);
 }
@@ -183,10 +183,18 @@ float City::happinessPart()
 	return happyFood*happyEnergy; // part de population dont tous les besoins sont satisfaits
 }
 
+int City::salary()
+{
+	float salaire(SALARY);
+	int travailleurs(farmers + energizer + traders);
+	return salaire*travailleurs;
+}
+
 // Achat/Vente de villes
 bool City::acheterVille(City *achetee, float prix)
 {
-	if (achetee->getFaction() != faction && prix < faction->getBudget())
+
+	if (achetee->getFaction() != faction && prix < faction->getTempBudget())
 	{
 		achetee->propositionRachat(faction, prix); // proposition de rachat de la ville
 	}
