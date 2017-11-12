@@ -115,15 +115,6 @@ void Grille::launchMulti(void(City::*function)())
 
 int Grille::initialize_Grid(int sizex, int sizey)
 {
-	// Mise à zéro des villes et liste de factions
-	towns.clear();
-	factionsList.clear();
-	for each(vector< City*> list in grid)
-	{
-		list.clear();
-	}
-	grid.clear();
-
 	int row(0), column(0), len(sizex*sizey); // colonnes et lignes pour la taille limite ainsi que le nombre de villes devant être créées
 	towns.push_back(new Player()); // on crée la ville du joueur
 	for (int i = 1; i < len; ++i) towns.push_back(new Autonomy()); // on ajoute à la liste les villes IA
