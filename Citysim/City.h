@@ -13,7 +13,7 @@ using namespace std;
 #define ATTRIBUTION_ERROR 1 // erreur d'attribution d'employés
 
 // Définitions des maximums d'employés
-#define MAXIMUM_SETTLERS 500
+#define MAXIMUM_SETTLERS 15000
 
 // Valeurs par défaut en début de partie
 #define DEFAULT_POPULATION 100
