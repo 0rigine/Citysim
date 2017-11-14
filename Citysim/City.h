@@ -66,6 +66,7 @@ public:
 	float salary(); // calcul du salaire total de la ville
 
 	// Gestion de la ville
+	int generalSettingEmployees(int arg_farmers, int arg_traders, int arg_energizer); // setter pour tous les employés
 	int setEmployees(int toSet, int &employee, int tree); // setter d'employés
 	int set_Farmers(int toSet); // indiquer le nombre de fermiers actifs
 	int set_Energize(int toSet); // indiquer le nombre de producteur d'énergie actifs

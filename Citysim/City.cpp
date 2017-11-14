@@ -129,7 +129,7 @@ void City::foodGrowth(float coeffHappy)
 void City::populationGrowth(float coeffHappy)
 {
 	float coefficient(1); // coefficient bonus
-	float coeffSad(1 / bonheur); // coefficient de population malheureuse disparaissant
+	float coeffSad(1 / (2*bonheur)); // coefficient de population malheureuse disparaissant
 	float coeffWorker(1);
 	int newPopulation(0),travailleurs(0);
 	int happy(coeffHappy*population); // habitants heureux
@@ -304,6 +304,17 @@ void City::set_Faction(Faction * newFaction)
 	faction = newFaction;
 }
 
+
+int City::generalSettingEmployees(int arg_farmers, int arg_traders, int arg_energizer)
+{
+	if (arg_farmers == -1) arg_farmers = farmers;
+	if (arg_energizer == -1) arg_energizer = energizer;
+	if (arg_traders == -1) arg_traders = traders;
+	set_Farmers(0);
+	set_Energize(0);
+	set_Traders(0);
+	return set_Farmers(arg_farmers) || set_Energize(arg_energizer) || set_Traders(arg_traders);
+}
 
 // Setters
 int City::setEmployees(int toSet, int &employee, int tree)
