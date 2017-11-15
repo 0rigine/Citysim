@@ -85,12 +85,12 @@ void Grille::playATurn()
 		factionsList.erase(remove(factionsList.begin(), factionsList.end(), *it), factionsList.end());
 		delete *it;
 	}
-	
 }
 
 void Grille::playAGame()
 {
-	while (!isVictory())
+	bool victory(false);
+	while (!victory)
 	{
 		playATurn();
 		// Vérification de la situation des villes
@@ -99,6 +99,7 @@ void Grille::playAGame()
 			launchMulti(&City::defeat);
 			return;
 		}
+		victory = isVictory();
 	}
 }
 
