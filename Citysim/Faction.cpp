@@ -83,6 +83,10 @@ vector<City*> Faction::getNeighbourhood()
 			neighbour.push_back(voisine);
 		}
 	}
+	for (vector<City*>::iterator it = neighbour.begin(); it != neighbour.end(); ++it)
+	{
+		neighbour.erase(remove(it+1, neighbour.end(), *it), neighbour.end());
+	}
 	return neighbour;
 }
 

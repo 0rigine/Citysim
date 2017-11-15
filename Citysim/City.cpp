@@ -24,7 +24,6 @@ City::City():
 	nom = RandomName::generate();
 	faction = new Faction(nom, this);
 	id = City::cityNumber;
-	++City::cityNumber;
 }
 
 City::City(int arg_posx, int arg_posy):
