@@ -64,6 +64,7 @@ public:
 	// Estimations et mesures
 	float happinessPart(); // Part de population heureuse (coefficient)
 	float salary(); // calcul du salaire total de la ville
+	float realSalary(); // salaire réel de la ville
 
 	// Gestion de la ville
 	int generalSettingEmployees(int arg_farmers, int arg_traders, int arg_energizer); // setter pour tous les employés
