@@ -11,7 +11,7 @@ public:
 
 	// Interface
 	virtual void turn(); // tour de jeu
-	void setEmployes(string jobName, int (City::*setter)(int)); // fonction d'assignation des employés
+	int setEmployes(string jobName); // fonction d'assignation des employés
 	bool ask(string question); // fonction pour poser une question (insertion sécurisée)
 	void buy(); // acheter une ville
 

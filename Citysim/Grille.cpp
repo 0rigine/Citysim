@@ -21,6 +21,8 @@ Grille::Grille(int sizex, int sizey)
 
 Grille::~Grille()
 {
+	for each(City* town in towns) delete town;
+	for each(Faction* group in factionsList) delete group;
 }
 
 void Grille::afficherVilles()
@@ -52,6 +54,7 @@ void Grille::playATurn()
 		if (group->getCitiesLenght() > 0)
 		{
 			processus.push_back(thread(&Faction::estimate, group));
+			processus.push_back(thread(&Faction::budgetGrowing, group));
 		}
 		else
 		{
@@ -82,12 +85,12 @@ void Grille::playATurn()
 		factionsList.erase(remove(factionsList.begin(), factionsList.end(), *it), factionsList.end());
 		delete *it;
 	}
-	
 }
 
 void Grille::playAGame()
 {
-	while (!isVictory())
+	bool victory(false);
+	while (!victory)
 	{
 		playATurn();
 		// Vérification de la situation des villes
@@ -96,6 +99,7 @@ void Grille::playAGame()
 			launchMulti(&City::defeat);
 			return;
 		}
+		victory = isVictory();
 	}
 }
 
@@ -149,9 +153,11 @@ bool Grille::isVictory()
 
 bool Grille::isPlayable()
 {
+	int cityOK(0); // villes susceptibles d'évoluer
 	for each (Faction *group in factionsList)
 	{
-		if (group->canBuy() || group->getPopulation()  > 0) return true;
+		if (group->getPopulation() > 0) ++cityOK;
 	}
+	if (cityOK > 0) return true;
 	return false;
 }

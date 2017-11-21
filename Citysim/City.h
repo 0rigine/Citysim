@@ -12,14 +12,20 @@ using namespace std;
 #define ATTRIBUTION_OK 0 // réussite d'attribution d'employés
 #define ATTRIBUTION_ERROR 1 // erreur d'attribution d'employés
 
+// Définitions des maximums d'employés
+#define MAXIMUM_SETTLERS 15000
+
 // Valeurs par défaut en début de partie
 #define DEFAULT_POPULATION 100
-#define DEFAULT_FOOD 100
-#define DEFAULT_ENERGY 200
+#define DEFAULT_FOOD 1000
+#define DEFAULT_ENERGY 2000
 #define DEFAULT_WALLET 10000
 #define DEFAULT_FARMERS 0
 #define DEFAULT_TRADERS 0
 #define DEFAULT_ENERGIZER 0
+
+// Valeurs par défaut des coefficients
+#define SALARY 2.5
 
 class Faction;
 
@@ -53,12 +59,15 @@ public:
 	void foodGrowth(float coeffHappy); // croissance de la nourriture
 	void populationGrowth(float coeffHappy); // croissance de la population
 	void happinessGrowth(float coeffHappy); // croissance du bonheur
-	void budgetGrowth(); // croissance du budget
+	float production(); // mesure de la production financière
 
 	// Estimations et mesures
 	float happinessPart(); // Part de population heureuse (coefficient)
+	float salary(); // calcul du salaire total de la ville
 
 	// Gestion de la ville
+	int generalSettingEmployees(int arg_farmers, int arg_traders, int arg_energizer); // setter pour tous les employés
+	int setEmployees(int toSet, int &employee, int tree); // setter d'employés
 	int set_Farmers(int toSet); // indiquer le nombre de fermiers actifs
 	int set_Energize(int toSet); // indiquer le nombre de producteur d'énergie actifs
 	int set_Traders(int toSet); // indiquer le nombre de traders actifs

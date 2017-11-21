@@ -8,6 +8,7 @@ int Faction::factionNumber = 0;
 
 Faction::Faction():
 	budget(DEFAULT_WALLET),
+	temporaryBudget(DEFAULT_WALLET),
 	id(factionNumber)
 {
 	++factionNumber;
@@ -15,6 +16,7 @@ Faction::Faction():
 
 Faction::Faction(string arg_name, City* capitale):
 	budget(DEFAULT_WALLET),
+	temporaryBudget(DEFAULT_WALLET),
 	id(factionNumber)
 {
 	name = arg_name;
@@ -48,7 +50,7 @@ void Faction::estimate()
 
 bool Faction::canBuyIt(City* aVendre)
 {
-	if (aVendre->getPrice() <= budget) return true;
+	if (aVendre->getPrice() <= temporaryBudget) return true;
 	return false;
 }
 
@@ -81,6 +83,10 @@ vector<City*> Faction::getNeighbourhood()
 			neighbour.push_back(voisine);
 		}
 	}
+	for (vector<City*>::iterator it = neighbour.begin(); it != neighbour.end(); ++it)
+	{
+		neighbour.erase(remove(it+1, neighbour.end(), *it), neighbour.end());
+	}
 	return neighbour;
 }
 
@@ -104,16 +110,38 @@ int Faction::getPopulation() const
 	return totalPopulation;
 }
 
+float Faction::getTempBudget() const
+{
+	return temporaryBudget;
+}
+
+mutex& Faction::getInSetting()
+{
+	return inSetting;
+}
+
 void Faction::setBudget(float arg_budget)
 {
 	budget = arg_budget;
 }
 
-void Faction::budgetGrowing(City* setBy)
+void Faction::budgetGrowing()
 {
-	inSetting.lock();
-	setBy->budgetGrowth();
-	inSetting.unlock();
+	float salaires(0);
+	lock_guard<mutex> localLock(inSetting);
+	budget = temporaryBudget;
+	for each (City* town in cities)
+	{
+		salaires += town->salary();
+		budget += town->production();
+	}
+	budget -= salaires;
+	temporaryBudget = budget - salaires;
+}
+
+void Faction::removeFromTemporaryBudget(float arg_temp)
+{
+	temporaryBudget -= arg_temp;
 }
 
 void Faction::getVictory()

@@ -24,7 +24,6 @@ City::City():
 	nom = RandomName::generate();
 	faction = new Faction(nom, this);
 	id = City::cityNumber;
-	++City::cityNumber;
 }
 
 City::City(int arg_posx, int arg_posy):
@@ -103,7 +102,6 @@ void City::growth()
 	energyGrowth(coeffHappy);
 	foodGrowth(coeffHappy);
 	happinessGrowth(coeffHappy);
-	budgetGrowth();
 	populationGrowth(coeffHappy);
 }
 
@@ -111,7 +109,7 @@ void City::energyGrowth(float coeffHappy)
 {
 	float coefficient(1); // coefficient bonus
 	float quantity(50); // energie produite par habitant
-	float consommation(20); // energie consommee par habitant
+	float consommation(10); // energie consommee par habitant
 	// Production en fonction du bonheur de la population
 	energie += (energizer*coefficient*quantity*coeffHappy)+(energizer*coefficient*(1- coeffHappy))-population*consommation;
 	if (energie < 0) energie = 0;
@@ -120,7 +118,7 @@ void City::energyGrowth(float coeffHappy)
 void City::foodGrowth(float coeffHappy)
 {
 	float coefficient(1); // coefficient bonus
-	float quantity(30); // nourriture produite par habitant
+	float quantity(50); // nourriture produite par habitant
 	float consommation(10); // nourriture consommee par habitant
 	// Production en fonction du bonheur de la population
 	nourriture += (farmers*coefficient*quantity*coeffHappy)+(farmers*coefficient*(1- coeffHappy))-population*consommation;
@@ -130,7 +128,7 @@ void City::foodGrowth(float coeffHappy)
 void City::populationGrowth(float coeffHappy)
 {
 	float coefficient(1); // coefficient bonus
-	float coeffSad(1 / bonheur); // coefficient de population malheureuse disparaissant
+	float coeffSad(1 / (2*bonheur)); // coefficient de population malheureuse disparaissant
 	float coeffWorker(1);
 	int newPopulation(0),travailleurs(0);
 	int happy(coeffHappy*population); // habitants heureux
@@ -154,17 +152,15 @@ void City::happinessGrowth(float coeffHappy)
 	float coefficient(1); // coefficient bonus
 	int happynessPop(coeffHappy*population); // population comblee
 	int sadnessPop(population - happynessPop); // population en manque
-	bonheur += (happynessPop - sadnessPop)*coefficient; // calcul du bonheur selon la population heureuse et malheureuse
+	bonheur += happynessPop*coefficient - sadnessPop*coefficient/2; // calcul du bonheur selon la population heureuse et malheureuse
 	if (bonheur <= 0) bonheur = 1;
 }
 
-void City::budgetGrowth()
+float City::production()
 {
-	float salaire(2.5),coeffTraders(25.0), local_budget(faction->getBudget());
-	int travailleurs = farmers + energizer + traders;
-	local_budget += traders*coeffTraders - salaire*travailleurs;
-	if (local_budget < 0) local_budget = 0;
-	faction->setBudget(local_budget);
+	float coeffTraders(25.0), production(0);
+	production = traders*coeffTraders;
+	return production;
 }
 
 // Estimations et mesures
@@ -183,27 +179,34 @@ float City::happinessPart()
 	return happyFood*happyEnergy; // part de population dont tous les besoins sont satisfaits
 }
 
+float City::salary()
+{
+	float salaire(SALARY);
+	int travailleurs(farmers + energizer + traders);
+	return salaire*travailleurs;
+}
+
 // Achat/Vente de villes
 bool City::acheterVille(City *achetee, float prix)
 {
-	if (achetee->getFaction() != faction && prix < faction->getBudget())
+	lock_guard<mutex> lockBudget(faction->getInSetting());
+	bool result(true);
+	if (achetee->getFaction() != faction && prix < faction->getTempBudget())
 	{
 		achetee->propositionRachat(faction, prix); // proposition de rachat de la ville
 	}
-	else return false;
-	return true;
+	else result = false;
+	return result;
 }
 
 void City::propositionRachat(Faction * arg_acheteur, float proposition)
 {
-	negocie.lock(); // on empêche d'autres négociations simultanées
+	lock_guard<mutex> noMultiNegociation(negocie); // on empêche d'autres négociations simultanées
 
 	if (proposition > prix)
 	{
 		acheteur = arg_acheteur;
 	}
-
-	negocie.unlock(); // on déverrouille
 }
 
 void City::achatFinTour()
@@ -301,30 +304,46 @@ void City::set_Faction(Faction * newFaction)
 }
 
 
+int City::generalSettingEmployees(int arg_farmers, int arg_traders, int arg_energizer)
+{
+	if (arg_farmers == -1) arg_farmers = farmers;
+	if (arg_energizer == -1) arg_energizer = energizer;
+	if (arg_traders == -1) arg_traders = traders;
+	set_Farmers(0);
+	set_Energize(0);
+	set_Traders(0);
+	return set_Farmers(arg_farmers) || set_Energize(arg_energizer) || set_Traders(arg_traders);
+}
+
 // Setters
+int City::setEmployees(int toSet, int &employee, int tree)
+{
+	lock_guard<mutex> lockBudget(faction->getInSetting());
+	int freePopulation(population + employee - farmers -energizer-traders),
+		maximum(MAXIMUM_SETTLERS),
+		result(ATTRIBUTION_OK),
+		old(employee);
+	employee = toSet;
+	if (faction->getTempBudget() < salary() || toSet < 0 || toSet > maximum || toSet > freePopulation)
+	{
+		employee = old;
+		result = ATTRIBUTION_ERROR;
+	}
+	faction->removeFromTemporaryBudget(employee*SALARY);
+	return result;
+}
+
 int City::set_Farmers(int toSet)
 {
-	int freePopulation(population-energizer-traders);
-	int maximum(100);
-	if(toSet < 0 || toSet > maximum || toSet > freePopulation) return ATTRIBUTION_ERROR;
-	farmers = toSet;
-	return ATTRIBUTION_OK;
+	return setEmployees(toSet, farmers , 0);
 }
 
 int City::set_Energize(int toSet)
 {
-	int freePopulation(population-farmers-traders);
-	int maximum(100);
-	if(toSet < 0 || toSet > maximum || toSet > freePopulation) return ATTRIBUTION_ERROR;
-	energizer = toSet;
-	return ATTRIBUTION_OK;
+	return setEmployees(toSet, energizer, 0);
 }
 
 int City::set_Traders(int toSet)
 {
-	int freePopulation(population-farmers-energizer);
-	int maximum(100);
-	if(toSet < 0 || toSet > maximum || toSet > freePopulation) return ATTRIBUTION_ERROR;
-	traders = toSet;
-	return ATTRIBUTION_OK;
+	return setEmployees(toSet, traders, 0);
 }
