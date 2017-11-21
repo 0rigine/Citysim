@@ -132,7 +132,7 @@ void Faction::budgetGrowing()
 	budget = temporaryBudget;
 	for each (City* town in cities)
 	{
-		salaires += town->salary();
+		salaires += town->realSalary();
 		budget += town->production();
 	}
 	budget -= salaires;

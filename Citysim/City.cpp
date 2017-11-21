@@ -182,7 +182,13 @@ float City::happinessPart()
 float City::salary()
 {
 	float salaire(SALARY);
-	int travailleurs(farmers + energizer + traders);
+	return salaire*population;
+}
+
+float realSalary()
+{
+	float salaire(SALARY);
+	int travailleurs(traders+farmers+energizer);
 	return salaire*travailleurs;
 }
 
@@ -329,7 +335,6 @@ int City::setEmployees(int toSet, int &employee, int tree)
 		employee = old;
 		result = ATTRIBUTION_ERROR;
 	}
-	faction->removeFromTemporaryBudget(employee*SALARY);
 	return result;
 }
 
