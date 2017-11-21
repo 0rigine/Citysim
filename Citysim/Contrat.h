@@ -1,8 +1,10 @@
 #pragma once
+#include "City.h"
 
 class Contrat
 {
 public:
+	// Constructeurs et destructeurs
 	Contrat();
 	~Contrat();
 
@@ -11,12 +13,6 @@ private:
 	float *resourceUsed;
 	float cost;
 	float quantity;
+	City* importatrice;
+	City* exportatrice;
 };
-
-Contrat::Contrat()
-{
-}
-
-Contrat::~Contrat()
-{
-}

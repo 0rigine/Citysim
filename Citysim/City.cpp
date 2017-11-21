@@ -352,3 +352,8 @@ int City::set_Traders(int toSet)
 {
 	return setEmployees(toSet, traders, 0);
 }
+
+void endContract(Contrat* toEnd)
+{
+	contractsList.erase(remove(contractsList.begin(), contractsList.end(), *toEnd), contractsList.end());
+}
