@@ -22,6 +22,7 @@ public:
 	bool canBuy(); // vérifier s'il est possible d'acheter une ville voisine
 
 	// Contrats
+	void resolveContract(float cost);
 	void endContract(Contrat* toEnd); // clore un contrat
 
 	// Accesseurs

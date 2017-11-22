@@ -355,6 +355,12 @@ int City::set_Traders(int toSet)
 	return setEmployees(toSet, traders, 0);
 }
 
+void City::resolveContract(float * resource, float quantity, float cost)
+{
+	*resource += quantity;
+	faction->resolveContract(cost);
+}
+
 void City::endContract(Contrat* toEnd)
 {
 	faction->endContract(toEnd);

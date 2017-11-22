@@ -29,3 +29,22 @@ Contrat::~Contrat()
 	importatrice->endContract(this);
 	exportatrice->endContract(this);
 }
+
+void Contrat::resolveContract()
+{
+	if (statut) // si le contrat est ouvert, donc non lancé dans le tour
+	{
+		importatrice->resolveContract(resourceTo, quantity, (-1)*cost);
+		exportatrice->resolveContract(resourceFrom, (-1)*quantity, cost);
+		--timeLeft;
+		statut = false;
+	}
+	else
+	{
+		statut = true;
+	}
+	if (timeLeft < 1)
+	{
+		delete this;
+	}
+}
