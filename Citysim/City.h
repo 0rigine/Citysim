@@ -127,7 +127,7 @@ private:
 	Faction* acheteur; // faction proposant le prix le plus élevé pour la ville
 
 	vector< vector<City*> > *worldMap; // carte du monde (grille)
-	vector< Contrat* > contractsList; // liste des contrats
+	
 
 	/*
 	Skill skillFood; // arbre de compétences : nourriture

@@ -357,5 +357,5 @@ int City::set_Traders(int toSet)
 
 void City::endContract(Contrat* toEnd)
 {
-	contractsList.erase(remove(contractsList.begin(), contractsList.end(), toEnd), contractsList.end());
+	faction->endContract(toEnd);
 }

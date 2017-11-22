@@ -63,6 +63,11 @@ bool Faction::canBuy()
 	return false;
 }
 
+void Faction::endContract(Contrat * toEnd)
+{
+	contractsList.erase(remove(contractsList.begin(), contractsList.end(), toEnd), contractsList.end());
+}
+
 const string Faction::getName() const
 {
 	return name;

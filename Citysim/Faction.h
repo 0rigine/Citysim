@@ -5,6 +5,7 @@
 using namespace std;
 
 #include "City.h"
+#include "Contrat.h"
 
 class Faction
 {
@@ -19,6 +20,9 @@ public:
 	void estimate(); // estimation du prix des villes de la faction
 	bool canBuyIt(City* aVendre); // tester l'achat de la ville
 	bool canBuy(); // vérifier s'il est possible d'acheter une ville voisine
+
+	// Contrats
+	void endContract(Contrat* toEnd); // clore un contrat
 
 	// Accesseurs
 	const string getName() const; // Accesseur de name
@@ -47,4 +51,5 @@ private:
 	float price;
 	vector<City*> cities;
 	mutex inSetting; // Mutex pour la croissance du budget en fin de tour
+	vector< Contrat* > contractsList; // liste des contrats
 };
