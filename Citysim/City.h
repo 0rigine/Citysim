@@ -27,7 +27,9 @@ using namespace std;
 // Valeurs par défaut des coefficients
 #define SALARY 2.5
 
+// Prototype de classes
 class Faction;
+class Contrat;
 
 class City
 {
@@ -72,6 +74,10 @@ public:
 	int set_Farmers(int toSet); // indiquer le nombre de fermiers actifs
 	int set_Energize(int toSet); // indiquer le nombre de producteur d'énergie actifs
 	int set_Traders(int toSet); // indiquer le nombre de traders actifs
+
+	// Contrats
+	void resolveContract(float *resource, float quantity, float cost); // résolution de contrat, modification de la ressource concernée
+	void endContract(Contrat* toEnd); // clore un contrat
 
 	// Conquete
 	bool acheterVille(City *achetee, float prix = 10); // fonction d'achat d'une ville
@@ -122,7 +128,7 @@ private:
 	Faction* acheteur; // faction proposant le prix le plus élevé pour la ville
 
 	vector< vector<City*> > *worldMap; // carte du monde (grille)
-
+	
 
 	/*
 	Skill skillFood; // arbre de compétences : nourriture

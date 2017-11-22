@@ -80,7 +80,7 @@ void Grille::playATurn()
 	launchMulti(&City::achatFinTour);
 
 	// Suppression des factions éliminées
-	for (vector<Faction*>::iterator it = toDelete.begin(); it != toDelete.end(); ++it)
+	for (vector<Faction*>::iterator it = toDelete.begin(); it != toDelete.end(); it++)
 	{
 		factionsList.erase(remove(factionsList.begin(), factionsList.end(), *it), factionsList.end());
 		delete *it;
