@@ -1,10 +1,12 @@
 #include "stdafx.h"
 
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
 #include "Faction.h"
 #include "City.h"
 #include "RandomName.h"
-#include <iostream>
-using namespace std;
 
 int City::cityNumber = 0;
 
@@ -185,7 +187,7 @@ float City::salary()
 	return salaire*population;
 }
 
-float realSalary()
+float City::realSalary()
 {
 	float salaire(SALARY);
 	int travailleurs(traders+farmers+energizer);
@@ -353,7 +355,7 @@ int City::set_Traders(int toSet)
 	return setEmployees(toSet, traders, 0);
 }
 
-void endContract(Contrat* toEnd)
+void City::endContract(Contrat* toEnd)
 {
-	contractsList.erase(remove(contractsList.begin(), contractsList.end(), *toEnd), contractsList.end());
+	contractsList.erase(remove(contractsList.begin(), contractsList.end(), toEnd), contractsList.end());
 }
