@@ -77,7 +77,6 @@ public:
 
 	// Contrats
 	void resolveContract(float *resource, float quantity, float cost); // résolution de contrat, modification de la ressource concernée
-	void endContract(Contrat* toEnd); // clore un contrat
 
 	// Conquete
 	bool acheterVille(City *achetee, float prix = 10); // fonction d'achat d'une ville
@@ -128,7 +127,6 @@ private:
 	Faction* acheteur; // faction proposant le prix le plus élevé pour la ville
 
 	vector< vector<City*> > *worldMap; // carte du monde (grille)
-	
 
 	/*
 	Skill skillFood; // arbre de compétences : nourriture

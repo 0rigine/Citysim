@@ -19,7 +19,6 @@ private:
 	float *resourceTo;
 	float cost;
 	float quantity;
-	bool statut;
 	City* importatrice;
 	City* exportatrice;
 };

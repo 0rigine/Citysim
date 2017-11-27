@@ -360,8 +360,3 @@ void City::resolveContract(float * resource, float quantity, float cost)
 	*resource += quantity;
 	faction->resolveContract(cost);
 }
-
-void City::endContract(Contrat* toEnd)
-{
-	faction->endContract(toEnd);
-}
