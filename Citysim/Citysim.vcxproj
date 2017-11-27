@@ -167,7 +167,6 @@
     <ClCompile Include="Contrat.cpp" />
     <ClCompile Include="Faction.cpp" />
     <ClCompile Include="Grille.cpp" />
-    <ClCompile Include="Liste.cpp" />
     <ClCompile Include="pileContrats.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RandomName.cpp" />

@@ -1,7 +1,6 @@
 #pragma once
+#include "Liste.h"
 
-template <typename Data>
-class Liste;
 class Contrat;
 
 class pileContrats

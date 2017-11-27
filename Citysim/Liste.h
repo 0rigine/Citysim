@@ -11,3 +11,17 @@ private:
 	Data info;
 	Liste *next;
 };
+
+
+// SOURCES
+
+
+template <typename Data>
+Liste<Data>::Liste()
+{
+}
+
+template <typename Data>
+Liste<Data>::~Liste()
+{
+}
