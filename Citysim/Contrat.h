@@ -13,6 +13,8 @@ public:
 	// Application des contrats
 	void resolveContract(); // résolution du contrat
 
+	bool isClosed(); // tester si le contrat est terminé
+
 private:
 	int timeLeft;
 	float *resourceFrom;

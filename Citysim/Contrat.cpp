@@ -28,11 +28,16 @@ Contrat::~Contrat()
 
 void Contrat::resolveContract()
 {
-	importatrice->resolveContract(resourceTo, quantity, (-1)*cost);
-	exportatrice->resolveContract(resourceFrom, (-1)*quantity, cost);
-	--timeLeft;
-	if (timeLeft < 1)
+	if (!isClosed()) // si toujours en cours
 	{
-		delete this;
+		importatrice->resolveContract(resourceTo, quantity, (-1)*cost);
+		exportatrice->resolveContract(resourceFrom, (-1)*quantity, cost);
+		--timeLeft;
 	}
+}
+
+bool Contrat::isClosed()
+{
+	if (timeLeft > 0) return false;
+	return true;
 }
