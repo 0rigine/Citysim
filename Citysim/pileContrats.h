@@ -1,14 +1,12 @@
 #pragma once
-#include "Liste.h"
+#include "Contrat.h"
 
-class Contrat;
-
-class pileContrats
+class pileContrats: Contrat
 {
 public:
 	pileContrats();
 	~pileContrats();
 
 private:
-	Liste< Contrat* > contractsList; // liste des contrats
+	pileContrats *next;
 };

@@ -5,7 +5,7 @@ using namespace std;
 
 #include "City.h"
 #include "Faction.h"
-#include "Contrat.h"
+#include "pileContrats.h"
 
 #define GENERATION_OK 0
 #define GENERATION_FAILED 1
