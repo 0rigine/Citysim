@@ -151,6 +151,7 @@
     <ClInclude Include="Contrat.h" />
     <ClInclude Include="Faction.h" />
     <ClInclude Include="Grille.h" />
+    <ClInclude Include="pileContrats.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RandomName.h" />
     <ClInclude Include="Skill.h" />
@@ -165,6 +166,7 @@
     <ClCompile Include="Contrat.cpp" />
     <ClCompile Include="Faction.cpp" />
     <ClCompile Include="Grille.cpp" />
+    <ClCompile Include="pileContrats.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RandomName.cpp" />
     <ClCompile Include="Skill.cpp" />

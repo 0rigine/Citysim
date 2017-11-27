@@ -2,8 +2,10 @@
 #include <vector>
 #include <thread>
 using namespace std;
+
 #include "City.h"
 #include "Faction.h"
+#include "pileContrats.h"
 
 #define GENERATION_OK 0
 #define GENERATION_FAILED 1
@@ -33,6 +35,7 @@ private:
 	vector<vector<City*>> grid;
 	vector<City*> towns;
 	vector<Faction*> factionsList;
+	
 };
 
 void do_join(thread& process); // faire un join() sur le thread donné

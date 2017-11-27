@@ -13,13 +13,14 @@ public:
 	// Application des contrats
 	void resolveContract(); // résolution du contrat
 
+	bool isClosed(); // tester si le contrat est terminé
+
 private:
 	int timeLeft;
 	float *resourceFrom;
 	float *resourceTo;
 	float cost;
 	float quantity;
-	bool statut;
 	City* importatrice;
 	City* exportatrice;
 };
