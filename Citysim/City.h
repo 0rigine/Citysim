@@ -30,6 +30,7 @@ using namespace std;
 // Prototype de classes
 class Faction;
 class Contrat;
+class Grille;
 
 class City
 {
@@ -76,6 +77,7 @@ public:
 	int set_Traders(int toSet); // indiquer le nombre de traders actifs
 
 	// Contrats
+	void proposerContrat(int duration, float arg_cost, float *marchandise);
 	void resolveContract(float *resource, float quantity, float cost); // résolution de contrat, modification de la ressource concernée
 
 	// Conquete
@@ -97,8 +99,8 @@ public:
 
 	// Setters
 	void set_Coord(int posx, int posy); // setter de position
-	void set_Map(vector<vector<City*>> *arg_map); // setter de la map
 	void set_Faction(Faction *newFaction); // setter de la faction
+	void set_Game(Grille *grid); // setter de game
 
 	// Fin de partie
 	virtual void victory() = 0;
@@ -126,7 +128,7 @@ private:
 	float prix; // prix minimum de la ville (estimé en début de tour)
 	Faction* acheteur; // faction proposant le prix le plus élevé pour la ville
 
-	vector< vector<City*> > *worldMap; // carte du monde (grille)
+	Grille *game;
 
 	/*
 	Skill skillFood; // arbre de compétences : nourriture

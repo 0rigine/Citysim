@@ -7,11 +7,12 @@ using namespace std;
 #include "Faction.h"
 #include "City.h"
 #include "RandomName.h"
+#include "Grille.h"
 
 int City::cityNumber = 0;
 
 
-City::City():
+City::City() :
 	bonheur(1),
 	population(DEFAULT_POPULATION),
 	nourriture(DEFAULT_FOOD),
@@ -20,7 +21,8 @@ City::City():
 	energizer(DEFAULT_ENERGIZER),
 	traders(DEFAULT_TRADERS),
 	acheteur(NULL),
-	prix(1)
+	prix(1),
+	game(NULL)
 {
 	initiate();
 	nom = RandomName::generate();
@@ -37,7 +39,8 @@ City::City(int arg_posx, int arg_posy):
 	energizer(DEFAULT_ENERGIZER),
 	traders(DEFAULT_TRADERS),
 	acheteur(NULL),
-	prix(1)
+	prix(1),
+	game(NULL)
 {
 	initiate(arg_posx, arg_posy);
 }
@@ -51,7 +54,8 @@ City::City(string name, int arg_posx, int arg_posy, float arg_bonheur, int arg_p
 	energizer(DEFAULT_ENERGIZER),
 	traders(DEFAULT_TRADERS),
 	acheteur(NULL),
-	prix(1)
+	prix(1),
+	game(NULL)
 {
 	initiate(arg_posx, arg_posy, name);
 	population = arg_population;
@@ -244,6 +248,7 @@ Faction* City::getFaction() const
 
 vector<City*> City::get_Neighbour() const
 {
+	vector< vector<City*> > *worldMap(game->getMap());
 	int sizex = worldMap->size();
 	int sizey = worldMap->begin()->size();
 	vector<City*> voisines; // vector contenant les villes voisines : Nord, Ouest, Est, Sud
@@ -301,14 +306,14 @@ void City::set_Coord(int posx, int posy)
 	coord_y = posy;
 }
 
-void City::set_Map(vector<vector<City*>>* arg_map)
-{
-	worldMap = arg_map;
-}
-
 void City::set_Faction(Faction * newFaction)
 {
 	faction = newFaction;
+}
+
+void City::set_Game(Grille * grid)
+{
+	game = grid;
 }
 
 
@@ -353,6 +358,10 @@ int City::set_Energize(int toSet)
 int City::set_Traders(int toSet)
 {
 	return setEmployees(toSet, traders, 0);
+}
+
+void City::proposerContrat(int duration, float arg_cost, float * marchandise)
+{
 }
 
 void City::resolveContract(float * resource, float quantity, float cost)

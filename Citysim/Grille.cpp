@@ -4,16 +4,19 @@
 #include <algorithm>
 #include <thread>
 using namespace std;
+
 #include "Player.h"
 #include "Autonomy.h"
 #include "Faction.h"
 
-Grille::Grille()
+Grille::Grille():
+	contractList(NULL)
 {
 	initialize_Grid(2, 2); // initialisation d'une grille avec une taille de 2x2 par défaut
 }
 
-Grille::Grille(int sizex, int sizey)
+Grille::Grille(int sizex, int sizey):
+	contractList(NULL)
 {
 	initialize_Grid(sizex, sizey);
 }
@@ -132,7 +135,7 @@ int Grille::initialize_Grid(int sizex, int sizey)
 			grid.push_back(vector<City*>(0));
 		}
 		town->set_Coord(row, column);
-		town->set_Map(&grid);
+		town->set_Game(this);
 		grid[row].push_back(town);
 		++column;
 	}
@@ -160,4 +163,9 @@ bool Grille::isPlayable()
 	}
 	if (cityOK > 0) return true;
 	return false;
+}
+
+vector<vector<City*>>* Grille::getMap()
+{
+	return &grid;
 }
