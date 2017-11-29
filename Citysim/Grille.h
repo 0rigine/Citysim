@@ -31,6 +31,9 @@ public:
 	bool isVictory(); // Fonction d'annonce de victoire
 	bool isPlayable(); // Test de jouabilité
 
+	// Accesseurs
+	vector<vector<City*>>* getMap();
+
 private:
 	vector<vector<City*>> grid;
 	vector<City*> towns;

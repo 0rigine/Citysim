@@ -135,7 +135,7 @@ int Grille::initialize_Grid(int sizex, int sizey)
 			grid.push_back(vector<City*>(0));
 		}
 		town->set_Coord(row, column);
-		town->set_Map(&grid);
+		town->set_Game(this);
 		grid[row].push_back(town);
 		++column;
 	}
@@ -163,4 +163,9 @@ bool Grille::isPlayable()
 	}
 	if (cityOK > 0) return true;
 	return false;
+}
+
+vector<vector<City*>>* Grille::getMap()
+{
+	return &grid;
 }
