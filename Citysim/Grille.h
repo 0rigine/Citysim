@@ -35,6 +35,7 @@ private:
 	vector<vector<City*>> grid;
 	vector<City*> towns;
 	vector<Faction*> factionsList;
+	pileContrats *contractList;
 	
 };
 

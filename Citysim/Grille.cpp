@@ -4,16 +4,19 @@
 #include <algorithm>
 #include <thread>
 using namespace std;
+
 #include "Player.h"
 #include "Autonomy.h"
 #include "Faction.h"
 
-Grille::Grille()
+Grille::Grille():
+	contractList(NULL)
 {
 	initialize_Grid(2, 2); // initialisation d'une grille avec une taille de 2x2 par défaut
 }
 
-Grille::Grille(int sizex, int sizey)
+Grille::Grille(int sizex, int sizey):
+	contractList(NULL)
 {
 	initialize_Grid(sizex, sizey);
 }

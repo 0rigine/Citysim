@@ -44,6 +44,18 @@ void pileContrats::removeNext()
 	}
 }
 
+void pileContrats::addNext(Contrat * arg_contrat)
+{
+	if (next != NULL)
+	{
+		next->addNext(arg_contrat);
+	}
+	else
+	{
+		next = new pileContrats(arg_contrat);
+	}
+}
+
 pileContrats * pileContrats::getNext() const
 {
 	return next;

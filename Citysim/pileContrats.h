@@ -14,6 +14,7 @@ public:
 
 	// Manipulation de liste
 	void removeNext(); // suppression du maillon suivant
+	void addNext(Contrat* arg_contrat); // ajout d'un maillon
 
 	// Accesseurs
 	pileContrats* getNext() const;
