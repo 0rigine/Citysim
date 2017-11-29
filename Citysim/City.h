@@ -80,7 +80,8 @@ public:
 	// Contrats
 	void proposerContrat(int duration, float arg_cost, float arg_nourriture, float arg_energie); // configurer une proposition de contrat
 	void resolveContract(float arg_food, float arg_energia, float arg_cost); // résolution de contrat, modification de la ressource concernée
-	void validerContrat();
+	void signerContrat(City* with, float marchandises[][3][3]);
+	void accorderContrat(City* with, float marchandises[][3][3]);
 
 	// Conquete
 	bool acheterVille(City *achetee, float prix = 10); // fonction d'achat d'une ville
@@ -131,7 +132,9 @@ private:
 	Faction* acheteur; // faction proposant le prix le plus élevé pour la ville
 
 	Grille *game;
-	pileContrats *propositionsContrats;
+
+	mutex contractActions;
+	pileContrats propositionsContrats;
 
 	/*
 	Skill skillFood; // arbre de compétences : nourriture

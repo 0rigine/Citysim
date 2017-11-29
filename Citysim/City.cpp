@@ -365,7 +365,7 @@ void City::proposerContrat(int duration, float arg_cost, float arg_nourriture, f
 {
 	Contrat *temp(NULL);
 	temp = new Contrat(duration, arg_cost, this, NULL, arg_nourriture, arg_energie);
-	propositionsContrats->addNext(temp);
+	propositionsContrats.addNext(temp);
 }
 
 void City::resolveContract(float arg_food, float arg_energia, float arg_cost)
@@ -373,4 +373,13 @@ void City::resolveContract(float arg_food, float arg_energia, float arg_cost)
 	nourriture += arg_food;
 	energie += arg_energia;
 	faction->resolveContract(arg_cost);
+}
+
+void City::signerContrat(City * with, float marchandises[][3][3])
+{
+	with->accorderContrat(this, marchandises);
+}
+
+void City::accorderContrat(City * with, float marchandises[][3][3])
+{
 }

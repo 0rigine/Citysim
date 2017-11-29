@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Contrat.h"
 
+#include "City.h"
+
 Contrat::Contrat() :
 	timeLeft(1),
 	villeA(NULL),

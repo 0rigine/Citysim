@@ -118,7 +118,7 @@ void Grille::launchMulti(void(City::*function)())
 
 void Grille::addContract(Contrat * arg_accord)
 {
-	contractList->addNext(arg_accord);
+	contractList.addNext(arg_accord);
 }
 
 int Grille::initialize_Grid(int sizex, int sizey)

@@ -39,7 +39,7 @@ private:
 	vector<vector<City*>> grid;
 	vector<City*> towns;
 	vector<Faction*> factionsList;
-	pileContrats *contractList;
+	pileContrats contractList;
 };
 
 void do_join(thread& process); // faire un join() sur le thread donné
