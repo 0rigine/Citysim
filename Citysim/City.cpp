@@ -360,6 +360,10 @@ int City::set_Traders(int toSet)
 	return setEmployees(toSet, traders, 0);
 }
 
+void City::proposerContrat(int duration, float arg_cost, float * marchandise)
+{
+}
+
 void City::resolveContract(float * resource, float quantity, float cost)
 {
 	*resource += quantity;

@@ -77,6 +77,7 @@ public:
 	int set_Traders(int toSet); // indiquer le nombre de traders actifs
 
 	// Contrats
+	void proposerContrat(int duration, float arg_cost, float *marchandise);
 	void resolveContract(float *resource, float quantity, float cost); // résolution de contrat, modification de la ressource concernée
 
 	// Conquete
