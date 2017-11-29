@@ -7,6 +7,7 @@ using namespace std;
 
 #include "RandomName.h"
 #include "Skill.h"
+#include "pileContrats.h"
 
 // Définitions des retours d'erreurs
 #define ATTRIBUTION_OK 0 // réussite d'attribution d'employés
@@ -77,8 +78,9 @@ public:
 	int set_Traders(int toSet); // indiquer le nombre de traders actifs
 
 	// Contrats
-	void proposerContrat(int duration, float arg_cost, float *marchandise);
-	void resolveContract(float *resource, float quantity, float cost); // résolution de contrat, modification de la ressource concernée
+	void proposerContrat(int duration, float arg_cost, float arg_nourriture, float arg_energie); // configurer une proposition de contrat
+	void resolveContract(float arg_food, float arg_energia, float arg_cost); // résolution de contrat, modification de la ressource concernée
+	void validerContrat();
 
 	// Conquete
 	bool acheterVille(City *achetee, float prix = 10); // fonction d'achat d'une ville
@@ -129,6 +131,7 @@ private:
 	Faction* acheteur; // faction proposant le prix le plus élevé pour la ville
 
 	Grille *game;
+	pileContrats *propositionsContrats;
 
 	/*
 	Skill skillFood; // arbre de compétences : nourriture

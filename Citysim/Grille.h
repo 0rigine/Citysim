@@ -23,6 +23,7 @@ public:
 	void playATurn(); // Lancement du tour en cours
 	void playAGame(); // Partie en cours
 	void launchMulti(void (City::*function)());
+	void addContract(Contrat *arg_accord);
 
 	// Instanciation de la grille
 	int initialize_Grid(int sizex, int sizey);
@@ -39,7 +40,6 @@ private:
 	vector<City*> towns;
 	vector<Faction*> factionsList;
 	pileContrats *contractList;
-	
 };
 
 void do_join(thread& process); // faire un join() sur le thread donné

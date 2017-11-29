@@ -116,6 +116,11 @@ void Grille::launchMulti(void(City::*function)())
 	for_each(processus.begin(), processus.end(), do_join);
 }
 
+void Grille::addContract(Contrat * arg_accord)
+{
+	contractList->addNext(arg_accord);
+}
+
 int Grille::initialize_Grid(int sizex, int sizey)
 {
 	int row(0), column(0), len(sizex*sizey); // colonnes et lignes pour la taille limite ainsi que le nombre de villes devant être créées

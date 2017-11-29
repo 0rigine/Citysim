@@ -6,7 +6,7 @@ class Contrat
 public:
 	// Constructeurs et destructeurs
 	Contrat();
-	Contrat(int duration, float arg_cost, City* import_to, float* import_resource, City* export_to, float* export_resource); // création complète d'un contrat
+	Contrat(int duration, float arg_cost, City* desserve, City* client, float food, float energia); // création complète d'un contrat
 
 	~Contrat();
 
@@ -17,10 +17,10 @@ public:
 
 private:
 	int timeLeft;
-	float *resourceFrom;
-	float *resourceTo;
-	float cost;
-	float quantity;
-	City* importatrice;
-	City* exportatrice;
+	float marchandises[3][3]; /* grille de contrat :
+							  - nourriture négociée
+							  - energie
+							  - cout */
+	City* villeA;
+	City* villeB;
 };

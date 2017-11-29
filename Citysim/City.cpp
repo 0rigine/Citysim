@@ -8,6 +8,7 @@ using namespace std;
 #include "City.h"
 #include "RandomName.h"
 #include "Grille.h"
+#include "Contrat.h"
 
 int City::cityNumber = 0;
 
@@ -360,12 +361,16 @@ int City::set_Traders(int toSet)
 	return setEmployees(toSet, traders, 0);
 }
 
-void City::proposerContrat(int duration, float arg_cost, float * marchandise)
+void City::proposerContrat(int duration, float arg_cost, float arg_nourriture, float arg_energie)
 {
+	Contrat *temp(NULL);
+	temp = new Contrat(duration, arg_cost, this, NULL, arg_nourriture, arg_energie);
+	propositionsContrats->addNext(temp);
 }
 
-void City::resolveContract(float * resource, float quantity, float cost)
+void City::resolveContract(float arg_food, float arg_energia, float arg_cost)
 {
-	*resource += quantity;
-	faction->resolveContract(cost);
+	nourriture += arg_food;
+	energie += arg_energia;
+	faction->resolveContract(arg_cost);
 }
