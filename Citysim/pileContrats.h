@@ -15,6 +15,8 @@ public:
 	// Manipulation de liste
 	void removeAll(pileContrats** cur); // supprimer la liste chainée
 	void removeNext(); // suppression du maillon suivant
+	void removeThis(pileContrats** current, float arg_marchandises[][MERCHANDISES_LINES][MERCHANDISES_COLUMNS]); // suppression d'un seul maillon correspond
+	void removeCurrent(pileContrats** to_remove); // suppression du maillon indiqué (ici to_remove correspond au pointeur sur le maillon courant indiqué par this)
 	void addNext(Contrat* arg_contrat); // ajout d'un maillon
 	bool isPresent(float arg_marchandises[][MERCHANDISES_LINES][MERCHANDISES_COLUMNS]); // vérification de la présence d'un contrat
 	Contrat* findContract(float arg_marchandises[][MERCHANDISES_LINES][MERCHANDISES_COLUMNS]); // trouver un contrat

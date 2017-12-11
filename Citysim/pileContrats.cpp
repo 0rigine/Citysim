@@ -51,6 +51,28 @@ void pileContrats::removeNext()
 	}
 }
 
+void pileContrats::removeThis(pileContrats** current, float arg_marchandises[][MERCHANDISES_LINES][MERCHANDISES_COLUMNS])
+{
+	if (localContract->isThat(arg_marchandises))
+	{
+		removeCurrent(current);
+	}
+}
+
+void pileContrats::removeCurrent(pileContrats ** to_remove)
+{
+	if (*to_remove != this) return;
+	if (next == NULL)
+	{
+		*to_remove = NULL;
+	}
+	else
+	{
+		*to_remove = next;
+	}
+	delete this;
+}
+
 void pileContrats::addNext(Contrat * arg_contrat)
 {
 	if (next != NULL)
