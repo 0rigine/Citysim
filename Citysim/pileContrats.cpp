@@ -36,9 +36,8 @@ bool pileContrats::isClosed()
 void pileContrats::removeAll(pileContrats** cur)
 {
 	if (next != NULL) next->removeAll(&next);
-	next->removeNext();
 	delete this;
-	cur = NULL;
+	*cur = NULL;
 }
 
 void pileContrats::removeNext()
