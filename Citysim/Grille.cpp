@@ -86,7 +86,11 @@ void Grille::playATurn()
 	launchMulti(&City::gererAccords);
 
 	// Résolution des contrats
-	if (contractList != NULL) contractList->resolveAll();
+	if (contractList != NULL)
+	{
+		contractList->resolveAll();
+		contractList->purge(&contractList);
+	}
 
 	// Mise à jour des factions encore en jeu
 	for each(Faction* group in factionsList)
