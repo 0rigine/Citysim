@@ -81,6 +81,7 @@ void City::initiate(int posx, int posy, string arg_name)
 
 City::~City()
 {
+	propositionsContrats->removeAll(&propositionsContrats);
 }
 
 // Affichages

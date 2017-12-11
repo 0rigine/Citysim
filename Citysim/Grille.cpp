@@ -26,6 +26,7 @@ Grille::~Grille()
 {
 	for each(City* town in towns) delete town;
 	for each(Faction* group in factionsList) delete group;
+	contractList->removeAll(&contractList);
 }
 
 void Grille::afficherVilles()
