@@ -8,9 +8,9 @@ Contrat::Contrat() :
 	villeA(NULL),
 	villeB(NULL)
 {
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < MERCHANDISES_LINES; i++)
 	{
-		for (int j = 0; j < 3; j++)
+		for (int j = 0; j < MERCHANDISES_COLUMNS; j++)
 		{
 			marchandises[i][j] = 0;
 		}
@@ -78,5 +78,17 @@ void Contrat::resolveContract()
 bool Contrat::isClosed()
 {
 	if (timeLeft > 0) return false;
+	return true;
+}
+
+bool Contrat::isThat(float arg_marchandises[][MERCHANDISES_LINES][MERCHANDISES_COLUMNS])
+{
+	for (int i = 0; i < MERCHANDISES_LINES; i++)
+	{
+		for (int j = 0; j < MERCHANDISES_COLUMNS; j++)
+		{
+			if (arg_marchandises[i][j] != marchandises[i][j]) return false;
+		}
+	}
 	return true;
 }

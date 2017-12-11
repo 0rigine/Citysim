@@ -62,6 +62,22 @@ void pileContrats::addNext(Contrat * arg_contrat)
 	}
 }
 
+bool pileContrats::isPresent(float arg_marchandises[][MERCHANDISES_LINES][MERCHANDISES_COLUMNS])
+{
+	bool temp(false);
+	if (next != NULL) temp = next->isPresent(arg_marchandises);
+	if (temp == false) return localContract->isThat(arg_marchandises);
+	return true;
+}
+
+Contrat * pileContrats::findContract(float arg_marchandises[][MERCHANDISES_LINES][MERCHANDISES_COLUMNS])
+{
+	Contrat* temp(NULL);
+	if (next != NULL) temp = next->findContract(arg_marchandises);
+	if (temp == NULL && localContract->isThat(arg_marchandises)) return localContract;
+	return temp;
+}
+
 pileContrats * pileContrats::getNext() const
 {
 	return next;

@@ -80,8 +80,9 @@ public:
 	// Contrats
 	void proposerContrat(int duration, float arg_cost, float arg_nourriture, float arg_energie); // configurer une proposition de contrat
 	void resolveContract(float arg_food, float arg_energia, float arg_cost); // résolution de contrat, modification de la ressource concernée
-	void signerContrat(City* with, float marchandises[][3][3]);
-	void accorderContrat(City* with, float marchandises[][3][3]);
+	bool signerContrat(City* with, float marchandises[][3][3]); // envoyer une demande pour signer le contrat proposé par la ville "with"
+	bool accorderContrat(City* with, float marchandises[][3][3]); // valider le contrat pour la ville cliente
+	void contratsVoisine(City* voisine); // lister les contrats de la ville indiquées
 
 	// Conquete
 	bool acheterVille(City *achetee, float prix = 10); // fonction d'achat d'une ville

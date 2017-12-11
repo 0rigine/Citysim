@@ -375,11 +375,22 @@ void City::resolveContract(float arg_food, float arg_energia, float arg_cost)
 	faction->resolveContract(arg_cost);
 }
 
-void City::signerContrat(City * with, float marchandises[][3][3])
+bool City::signerContrat(City * with, float marchandises[][3][3])
 {
-	with->accorderContrat(this, marchandises);
+	return with->accorderContrat(this, marchandises); //WIP
 }
 
-void City::accorderContrat(City * with, float marchandises[][3][3])
+bool City::accorderContrat(City * with, float marchandises[][3][3])
+{
+	lock_guard<mutex> NegoOpen(contractActions); // verrouillage des signatures de contrats
+	Contrat* temp(NULL);
+	temp = propositionsContrats.findContract(marchandises);
+	if (temp != NULL)
+	{
+
+	}
+}
+
+void City::contratsVoisine(City * voisine)
 {
 }

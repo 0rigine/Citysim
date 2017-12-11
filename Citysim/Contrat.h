@@ -1,5 +1,8 @@
 #pragma once
 
+#define MERCHANDISES_LINES 3
+#define MERCHANDISES_COLUMNS 3
+
 class City;
 
 class Contrat
@@ -13,8 +16,10 @@ public:
 
 	// Application des contrats
 	void resolveContract(); // résolution du contrat
-
 	bool isClosed(); // tester si le contrat est terminé
+
+	// Tests
+	bool isThat(float arg_marchandises[][MERCHANDISES_LINES][MERCHANDISES_COLUMNS]); // retourne true si le contrat correspond au tableau de transactions indiqué
 
 private:
 	int timeLeft;
