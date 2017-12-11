@@ -33,10 +33,12 @@ bool pileContrats::isClosed()
 	return localContract->isClosed();
 }
 
-void pileContrats::removeAll()
+void pileContrats::removeAll(pileContrats** cur)
 {
+	if (next != NULL) next->removeAll(&next);
 	next->removeNext();
 	delete this;
+	cur = NULL;
 }
 
 void pileContrats::removeNext()

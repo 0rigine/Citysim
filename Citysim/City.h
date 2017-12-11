@@ -135,7 +135,7 @@ private:
 	Grille *game;
 
 	mutex contractActions;
-	pileContrats propositionsContrats;
+	pileContrats *propositionsContrats;
 
 	/*
 	Skill skillFood; // arbre de compétences : nourriture

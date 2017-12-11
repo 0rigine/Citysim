@@ -87,7 +87,7 @@ bool Contrat::isThat(float arg_marchandises[][MERCHANDISES_LINES][MERCHANDISES_C
 	{
 		for (int j = 0; j < MERCHANDISES_COLUMNS; j++)
 		{
-			if (arg_marchandises[i][j] != marchandises[i][j]) return false;
+			if (arg_marchandises[0][i][j] != marchandises[i][j]) return false;
 		}
 	}
 	return true;

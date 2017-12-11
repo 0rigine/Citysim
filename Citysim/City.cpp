@@ -23,7 +23,8 @@ City::City() :
 	traders(DEFAULT_TRADERS),
 	acheteur(NULL),
 	prix(1),
-	game(NULL)
+	game(NULL),
+	propositionsContrats(NULL)
 {
 	initiate();
 	nom = RandomName::generate();
@@ -41,7 +42,8 @@ City::City(int arg_posx, int arg_posy):
 	traders(DEFAULT_TRADERS),
 	acheteur(NULL),
 	prix(1),
-	game(NULL)
+	game(NULL),
+	propositionsContrats(NULL)
 {
 	initiate(arg_posx, arg_posy);
 }
@@ -56,7 +58,8 @@ City::City(string name, int arg_posx, int arg_posy, float arg_bonheur, int arg_p
 	traders(DEFAULT_TRADERS),
 	acheteur(NULL),
 	prix(1),
-	game(NULL)
+	game(NULL),
+	propositionsContrats(NULL)
 {
 	initiate(arg_posx, arg_posy, name);
 	population = arg_population;
@@ -365,7 +368,8 @@ void City::proposerContrat(int duration, float arg_cost, float arg_nourriture, f
 {
 	Contrat *temp(NULL);
 	temp = new Contrat(duration, arg_cost, this, NULL, arg_nourriture, arg_energie);
-	propositionsContrats.addNext(temp);
+	if (propositionsContrats == NULL) propositionsContrats = new pileContrats(temp);
+	else propositionsContrats->addNext(temp);
 }
 
 void City::resolveContract(float arg_food, float arg_energia, float arg_cost)
@@ -384,11 +388,13 @@ bool City::accorderContrat(City * with, float marchandises[][3][3])
 {
 	lock_guard<mutex> NegoOpen(contractActions); // verrouillage des signatures de contrats
 	Contrat* temp(NULL);
-	temp = propositionsContrats.findContract(marchandises);
+	if (propositionsContrats == NULL) return false; // pas de contrats à proposer
+	temp = propositionsContrats->findContract(marchandises);
 	if (temp != NULL)
 	{
-
+		
 	}
+	return true;
 }
 
 void City::contratsVoisine(City * voisine)
