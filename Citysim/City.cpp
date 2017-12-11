@@ -88,7 +88,6 @@ void City::initiate(int posx, int posy, string arg_name)
 	}
 }
 
-
 City::~City()
 {
 	propositionsContrats->removeAll(&propositionsContrats);
@@ -413,4 +412,25 @@ bool City::accorderContrat(City * with, float marchandises[][3][3])
 
 void City::contratsVoisine(City * voisine)
 {
+}
+
+vector<vector<vector<float>>> City::get_Contracts()
+{
+	return propositionsContrats->presenterContrats();
+}
+
+vector<vector<vector<float>>> City::neighboorContracts()
+{
+	vector<vector<vector<float>>> temp(0);
+	vector<vector<vector<float>>> contracts(0);
+	vector<City*> voisines(get_Neighbour());
+	for each (City* town in voisines)
+	{
+		contracts = town->get_Contracts();
+		for each (vector<vector<float>> merchandises in contracts)
+		{
+			temp.push_back(merchandises);
+		}
+	}
+	return temp;
 }

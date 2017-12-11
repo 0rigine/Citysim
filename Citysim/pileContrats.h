@@ -8,10 +8,11 @@ public:
 	pileContrats(Contrat* arg_contract, pileContrats* arg_next = NULL);
 	~pileContrats();
 
-	// Résolution des contrats
+	// Contrats
 	void resolveAll(); // résolution des contrats de la liste
 	void purge(pileContrats** current); // Retrait des contrats périmés
 	bool isClosed(); // tester si le contrat est terminé
+	vector<vector<vector<float>>> presenterContrats();
 
 	// Manipulation de liste
 	void removeAll(pileContrats** cur); // supprimer la liste chainée

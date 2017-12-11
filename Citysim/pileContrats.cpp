@@ -46,6 +46,17 @@ bool pileContrats::isClosed()
 	return localContract->isClosed();
 }
 
+vector<vector<vector<float>>> pileContrats::presenterContrats()
+{
+	vector<vector<vector<float>>> temp(0);
+	if (next != NULL) temp = next->presenterContrats();
+	if (localContract != NULL)
+	{
+		temp.push_back(localContract->presentate());
+	}
+	return temp;
+}
+
 void pileContrats::removeAll(pileContrats** cur)
 {
 	if (next != NULL) next->removeAll(&next);

@@ -84,6 +84,8 @@ public:
 	bool accorderContrat(City* with, float marchandises[][3][3]); // valider le contrat pour la ville cliente
 	void contratsVoisine(City* voisine); // lister les contrats de la ville indiquées
 	virtual void gererAccords() = 0;
+	vector<vector<vector<float>>> get_Contracts(); // récupère la liste des contrats proposés par la ville
+	vector<vector<vector<float>>> neighboorContracts(); // récupère la liste des contrats proposés par les villes voisines
 
 	// Conquete
 	bool acheterVille(City *achetee, float prix = 10); // fonction d'achat d'une ville
