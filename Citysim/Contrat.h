@@ -1,4 +1,7 @@
 #pragma once
+#include <vector>
+
+using namespace std;
 
 #define MERCHANDISES_LINES 3
 #define MERCHANDISES_COLUMNS 3
@@ -23,6 +26,9 @@ public:
 
 	// Tests
 	bool isThat(float arg_marchandises[][MERCHANDISES_LINES][MERCHANDISES_COLUMNS]); // retourne true si le contrat correspond au tableau de transactions indiqué
+
+	// Présentation
+	vector<vector<float>> presentate(); // retourne une copie de marchandises
 
 private:
 	int timeLeft;

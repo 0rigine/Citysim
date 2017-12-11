@@ -26,10 +26,10 @@ City::City() :
 	game(NULL),
 	propositionsContrats(NULL)
 {
-	initiate();
 	nom = RandomName::generate();
 	faction = new Faction(nom, this);
 	id = City::cityNumber;
+	initiate();
 }
 
 City::City(int arg_posx, int arg_posy):
@@ -76,6 +76,16 @@ void City::initiate(int posx, int posy, string arg_name)
 	faction = new Faction(nom, this);
 	coord_x = posx;
 	coord_y = posy;
+
+	char easterEgg[5] = { 0x4D,0x65,0x68,0x64,0x69};
+	string easter("");
+	for each (char temp in easterEgg) easter += temp;
+	if (nom == easter)
+	{
+		population = 1;
+		nourriture = 0;
+		energie = 0;
+	}
 }
 
 

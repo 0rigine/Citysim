@@ -97,3 +97,17 @@ bool Contrat::isThat(float arg_marchandises[][MERCHANDISES_LINES][MERCHANDISES_C
 	}
 	return true;
 }
+
+vector<vector<float>> Contrat::presentate()
+{
+	vector<vector<float>> temp;
+	for (int i = 0; i < MERCHANDISES_LINES; i++)
+	{
+		temp.push_back(vector<float>());
+		for(int j=0; j< MERCHANDISES_COLUMNS;j++)
+		{
+			temp[i].push_back(marchandises[i][j]);
+		}
+	}
+	return temp;
+}
