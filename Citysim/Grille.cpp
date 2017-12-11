@@ -82,6 +82,15 @@ void Grille::playATurn()
 	// Résolution des achats de villes
 	launchMulti(&City::achatFinTour);
 
+	// Mise à jour des factions encore en jeu
+	for each(Faction* group in factionsList)
+	{
+		if (group->getCitiesLenght() == 0)
+		{
+			toDelete.push_back(group);
+		}
+	}
+
 	// Suppression des factions éliminées
 	for (vector<Faction*>::iterator it = toDelete.begin(); it != toDelete.end(); it++)
 	{
