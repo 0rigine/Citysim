@@ -17,6 +17,10 @@ void Autonomy::turn()
 	set_Traders(10);
 }
 
+void Autonomy::gererAccords()
+{
+}
+
 void Autonomy::victory()
 {
 }

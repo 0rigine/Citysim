@@ -82,6 +82,12 @@ void Grille::playATurn()
 	// Résolution des achats de villes
 	launchMulti(&City::achatFinTour);
 
+	// Signature des contrats
+	launchMulti(&City::gererAccords);
+
+	// Résolution des contrats
+	if (contractList != NULL) contractList->resolveAll();
+
 	// Mise à jour des factions encore en jeu
 	for each(Faction* group in factionsList)
 	{
@@ -127,7 +133,8 @@ void Grille::launchMulti(void(City::*function)())
 
 void Grille::addContract(Contrat * arg_accord)
 {
-	contractList.addNext(arg_accord);
+	if (contractList != NULL) contractList->addNext(arg_accord);
+	else contractList = new pileContrats(arg_accord);
 }
 
 int Grille::initialize_Grid(int sizex, int sizey)

@@ -392,8 +392,11 @@ bool City::accorderContrat(City * with, float marchandises[][3][3])
 	temp = propositionsContrats->findContract(marchandises);
 	if (temp != NULL)
 	{
-		
+		propositionsContrats->removeThis(&propositionsContrats, marchandises);
 	}
+	else return false;
+	temp->set_client(with);
+	game->addContract(temp); // ajout du contrat à la liste des contrats de la grille
 	return true;
 }
 

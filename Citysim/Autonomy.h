@@ -11,6 +11,9 @@ public:
 
 	virtual void turn(); // tour de jeu
 
+	// Contrats
+	virtual void gererAccords(); // passage d'accords avec les villes voisines
+
 	// Fin de partie
 	virtual void victory();
 	virtual void defeat();

@@ -63,7 +63,7 @@ Contrat::~Contrat()
 
 void Contrat::resolveContract()
 {
-	if (!isClosed()) // si toujours en cours
+	if (!isClosed() && villeA != NULL && villeB != NULL) // si toujours en cours
 	{
 		villeA->resolveContract(marchandises[0][0] * marchandises[0][1],
 			marchandises[1][0] * marchandises[1][1],
@@ -79,6 +79,11 @@ bool Contrat::isClosed()
 {
 	if (timeLeft > 0) return false;
 	return true;
+}
+
+void Contrat::set_client(City * client)
+{
+	if (villeB == NULL)	villeB = client;
 }
 
 bool Contrat::isThat(float arg_marchandises[][MERCHANDISES_LINES][MERCHANDISES_COLUMNS])

@@ -19,12 +19,25 @@ pileContrats::~pileContrats()
 {
 }
 
-void pileContrats::purge()
+void pileContrats::resolveAll()
 {
+	if (localContract != NULL)
+	{
+		localContract->resolveContract();
+	}
+	if (next != NULL) next->resolveAll();
+}
+
+void pileContrats::purge(pileContrats** current)
+{
+	if (*current != this) return; // sécurité
 	if (next != NULL)
 	{
-		next->purge();
-		if (next->isClosed()) removeNext();
+		next->purge(&next);
+	}
+	if (isClosed())
+	{
+		removeCurrent(current);
 	}
 }
 

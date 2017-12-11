@@ -99,6 +99,10 @@ void Player::buy()
 	}
 }
 
+void Player::gererAccords()
+{
+}
+
 void Player::victory()
 {
 	cout << "Le monde vous appartient !" << endl;
