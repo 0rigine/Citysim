@@ -1,5 +1,4 @@
 #include "stdafx.h"
-
 #include <iostream>
 #include <algorithm>
 using namespace std;
@@ -9,6 +8,7 @@ using namespace std;
 #include "RandomName.h"
 #include "Grille.h"
 #include "Contrat.h"
+#include "Display.h"
 
 int City::cityNumber = 0;
 
@@ -78,13 +78,43 @@ City::~City()
 // Affichages
 void City::presentation()
 {
-	cout << "[" << faction->getName() << "] " << nom << "\n" << endl;
+	/*cout << "[" << faction->getName() << "] " << nom << "\n" << endl;
 	cout << "Prix : " << prix << endl;
 	cout << "Population : " << population << endl;
 	cout << "Nourriture : " << nourriture << endl;
 	cout << "Energie : " << energie << endl;
 	cout << "Budget : " << faction->getBudget() << endl;
-	cout << endl;
+	cout << endl;*/
+	Locate(130, 0); printf("|");
+	Locate(130, 1); printf("|\t RESSOURCES DE LA VILLE : "); print_ville_name(this); printf("\n");
+	Locate(130, 2); printf("|");
+	Locate(130, 3); printf("|");
+	Locate(130, 4); printf("|"); color(14, 0); printf(" GOLD"); color(15, 0); printf("   : %2.2f", faction->getBudget()); printf("\n");
+	Locate(130, 5); printf("|");
+	Locate(130, 6); printf("|"); color(12, 0); printf(" BOUFFE"); color(15, 0); printf(" : %2.2f", nourriture); printf("\n");
+	Locate(130, 7); printf("|");
+	Locate(130, 8); printf("|"); color(9, 0); printf(" ENERGIE"); color(15, 0); printf(" : %2.2f", energie); printf("\n");
+	Locate(130, 9); printf("|");
+	Locate(130, 10); printf("|"); //color(13, 0); printf(" NOMBRE DE CONTRATS"); color(15, 0); printf(" : %d", ville->nb_contrat); printf("\n");
+	Locate(130, 11); printf("|");
+	Locate(130, 12); printf("|"); color(4, 0); printf(" POPULATION"); color(15, 0); printf(" : %d", population); printf("\n");
+	Locate(130, 13); printf("|");
+	Locate(130, 14); printf("|"); color(5, 0); printf(" INGENIEURS"); color(15, 0); printf(" : %d", energizer); printf("\n");
+	Locate(130, 15); printf("|");
+	Locate(130, 16); printf("|"); color(2, 0); printf(" TRADERS"); color(15, 0); printf(" : %d", traders); printf("\n");
+	Locate(130, 17); printf("|");
+	Locate(130, 18); printf("|"); color(1, 0); printf(" FERMIERS"); color(15, 0); printf(" : %d", farmers); printf("\n");
+	Locate(130, 19); printf("|");
+	Locate(130, 20); printf("|"); color(12, 0); printf(" CHOMEUR"); color(15, 0); printf(" : %d", population-traders-farmers-energizer); printf("\n");
+	Locate(130, 21); printf("|");
+}
+
+void City::print_ville_name(City * ville)
+{
+	color(10, 0); cout << nom;
+	color(15, 0); cout << "[";
+	color(11, 0); cout << faction->getName();
+	color(15, 0); cout << "]";
 }
 
 void City::working()

@@ -51,6 +51,7 @@ public:
 
 	// Interface
 	void presentation();
+	void print_ville_name(City * ville); // afficher nom de la ville
 	virtual void working(); // affichage des employés
 	virtual void turn() = 0; // tour de jeu
 

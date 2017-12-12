@@ -3,6 +3,7 @@
 using namespace std;
 #include "Player.h"
 #include "Faction.h"
+#include "Display.h"
 
 Player::Player():City::City()
 {
@@ -101,6 +102,36 @@ void Player::buy()
 
 void Player::gererAccords()
 {
+}
+
+int Player::Choix(const char * ch[], int taille, int x, int y)
+{
+	int i, curseur = 0;
+	Locate(x, y);
+	int y_bis = y;
+	for (i = 0; i < taille; i++)
+	{
+		++y;
+		printf("  %s\n", ch[i]);
+		Locate(x, y);
+	}
+
+	while (1) // gauche 0x4B   droite 0x77 haut 0x50  bas 0x48
+	{
+		int touche = _getch();
+		Locate(x, y_bis + curseur);
+		printf(" ");
+		if (touche == 0x50 && curseur < taille - 1)
+			curseur++;
+		if (touche == 0x48 && curseur > 0)
+			curseur--;
+		if (touche == 0x0D)
+			return curseur + 1;
+		Locate(x, y_bis + curseur);
+		printf(">");
+		Locate(189, 0);
+	}
+	return 0;
 }
 
 void Player::victory()
