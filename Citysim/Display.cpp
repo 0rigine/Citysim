@@ -4,6 +4,8 @@
 #include <iostream>
 #include <conio.h>
 
+#include <string>
+
 #include "Display.h"
 #include "City.h"
 #include "Faction.h"
@@ -45,10 +47,11 @@ void locate(SHORT x, SHORT y) // placement du curseur
 // FONCTIONS UTILISATEUR
 void Firstscreen() // accueil
 {
-	printf("\n");
+	string temp("=====> Bienvenue dans Citysim <=====");
+	cout << endl;
 	color(2, 0);
-	locate(70, 15);
-	printf("====> Bienvenue dans Citysim <=====");
+	locate(CONSOLE_X/2-(int)temp.size(), 15);
+	cout << temp;
 	color(15, 0);
 }
 
