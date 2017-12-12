@@ -104,34 +104,54 @@ void Player::gererAccords()
 {
 }
 
-int Player::Choix(const char * ch[], int taille, int x, int y)
+void Player::racheter_ville()
 {
-	int i, curseur = 0;
-	Locate(x, y);
-	int y_bis = y;
-	for (i = 0; i < taille; i++)
+	Locate(100, 26);
+	const char* tab_reponse_oui_non[] = { "Oui !","Non, je prefere attendre..." };
+	int d = choix(tab_reponse_oui_non, 2, 105, 28);
+	switch (d)
 	{
-		++y;
-		printf("  %s\n", ch[i]);
-		Locate(x, y);
-	}
+	case 1: our_faction(); break;
 
+	default: break;
+	}
+}
+
+void Player::choice(int * x, int * y, int taille_x, int taille_y)
+{
+	int curseur_x = 0, curseur_y = 0;
 	while (1) // gauche 0x4B   droite 0x77 haut 0x50  bas 0x48
 	{
 		int touche = _getch();
-		Locate(x, y_bis + curseur);
+		Locate(0 + curseur_x * 8, 2 + curseur_y * 4);
 		printf(" ");
-		if (touche == 0x50 && curseur < taille - 1)
-			curseur++;
-		if (touche == 0x48 && curseur > 0)
-			curseur--;
+
+		if (touche == 0x50 && curseur_y < taille_y - 1) // haut
+		{
+			curseur_y++;
+		}
+		if (touche == 0x48 && curseur_y > 0) // bas
+			curseur_y--;
+
+		if (touche == 0x4D && curseur_x < taille_x - 1) // droite
+		{
+			curseur_x++;
+		}
+		if (touche == 0x4B && curseur_x > 0) // gauche
+			curseur_x--;
+
 		if (touche == 0x0D)
-			return curseur + 1;
-		Locate(x, y_bis + curseur);
+		{
+			(*x) = 2 + curseur_x * 8;
+			(*y) = 1 + curseur_y * 4;
+			return;
+		}
+
+		Locate(0 + curseur_x * 8, 2 + curseur_y * 4);
 		printf(">");
 		Locate(189, 0);
 	}
-	return 0;
+	return;
 }
 
 void Player::victory()
