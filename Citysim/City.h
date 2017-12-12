@@ -83,7 +83,7 @@ public:
 	bool signerContrat(City* with, float marchandises[][3][3]); // envoyer une demande pour signer le contrat proposé par la ville "with"
 	bool accorderContrat(City* with, float marchandises[][3][3]); // valider le contrat pour la ville cliente
 	void contratsVoisine(City* voisine); // lister les contrats de la ville indiquées
-	virtual void gererAccords() = 0;
+	virtual void gererAccords() = 0; // signer accords avec les autres villes
 	vector<vector<vector<float>>> get_Contracts(); // récupère la liste des contrats proposés par la ville
 	vector<vector<vector<float>>> neighboorContracts(); // récupère la liste des contrats proposés par les villes voisines
 
