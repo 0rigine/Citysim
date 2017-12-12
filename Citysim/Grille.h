@@ -39,6 +39,7 @@ public:
 
 	// Accesseurs
 	vector<vector<City*>>* getMap();
+	int numberContractsByCity(City* ville); // nombre de contrats pour la ville
 
 private:
 	vector<vector<City*>> grid;

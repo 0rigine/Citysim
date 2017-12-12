@@ -243,3 +243,9 @@ vector<vector<City*>>* Grille::getMap()
 {
 	return &grid;
 }
+
+int Grille::numberContractsByCity(City * ville)
+{
+	if(contractList != NULL) return contractList->numberByCity(ville);
+	return 0;
+}
