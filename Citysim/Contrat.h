@@ -30,6 +30,10 @@ public:
 	// Présentation
 	vector<vector<float>> presentate(); // retourne une copie de marchandises
 
+	// Accesseurs
+	City* getCityA() const; // retourne la ville A
+	City* getCityB() const; // retourne la ville B
+
 private:
 	int timeLeft;
 	float marchandises[3][3]; /* grille de contrat :

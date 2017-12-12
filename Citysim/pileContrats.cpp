@@ -125,6 +125,17 @@ Contrat * pileContrats::findContract(float arg_marchandises[][MERCHANDISES_LINES
 	return temp;
 }
 
+int pileContrats::numberByCity(City * ville)
+{
+	int result(0);
+	if (localContract != NULL)
+	{
+		if (ville == localContract->getCityA() || ville == localContract->getCityB()) result = 1;
+	}
+	if (next != NULL) return result + next->numberByCity(ville);
+	return result;
+}
+
 pileContrats * pileContrats::getNext() const
 {
 	return next;

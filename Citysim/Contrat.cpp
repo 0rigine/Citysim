@@ -111,3 +111,13 @@ vector<vector<float>> Contrat::presentate()
 	}
 	return temp;
 }
+
+City * Contrat::getCityA() const
+{
+	return villeA;
+}
+
+City * Contrat::getCityB() const
+{
+	return villeB;
+}

@@ -18,9 +18,9 @@ int main()
 
 	adjustWindowSize();
 	Firstscreen();
-	const char* tab_menu_principale[] = { "Jouer","Credit","Quitter" };
+	const char* tab_menu_principal[] = { "Jouer","Credit","Quitter" };
 	const char* tab_actions[] = { "Racheter une ville","Inspecter","Modification des ressources","Contrats","Fin du tour" };
-	int c = choix(tab_menu_principale, 3, 80, 20);
+	int c = choix(tab_menu_principal, 3, 80, 20);
 	int d = 0;
 	int x_choice = 0, y_choice = 0;
 	int x_search = 0, y_search = 0;

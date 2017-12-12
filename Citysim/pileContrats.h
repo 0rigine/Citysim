@@ -22,6 +22,7 @@ public:
 	void addNext(Contrat* arg_contrat); // ajout d'un maillon
 	bool isPresent(float arg_marchandises[][MERCHANDISES_LINES][MERCHANDISES_COLUMNS]); // vérification de la présence d'un contrat
 	Contrat* findContract(float arg_marchandises[][MERCHANDISES_LINES][MERCHANDISES_COLUMNS]); // trouver un contrat
+	int numberByCity(City* ville); // retourne le nombre total de contrats d'une ville donnée
 
 	// Accesseurs
 	pileContrats* getNext() const;
