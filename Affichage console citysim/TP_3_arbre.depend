@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1512317474 source:c:\users\julien\desktop\efrei\l2 - 17-18\prog\tp_3_arbre\main.c
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1513092038 source:c:\users\julien\desktop\efrei\l2 - 17-18\prog\affichage console citysim\main.c
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
