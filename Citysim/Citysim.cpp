@@ -25,7 +25,7 @@ int main()
 	int x_choice = 0, y_choice = 0;
 	int x_search = 0, y_search = 0;
 
-	lancerPartie(5, 16);
+	//lancerPartie(5, 16);
 
 	system("pause");
     return 0;

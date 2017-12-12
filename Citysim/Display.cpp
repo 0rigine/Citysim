@@ -1,4 +1,9 @@
 #include "stdafx.h"
+
+#include <windows.h>
+#include <iostream>
+#include <conio.h>
+
 #include "Display.h"
 #include "City.h"
 #include "Faction.h"
@@ -12,27 +17,23 @@ void color(int t, int f) // Fonction de changement de couleur
 
 void adjustWindowSize() // Reajustement de la fenêtre
 {
-	struct SMALL_RECT test;
+	_COORD coord;
+	int Width(CONSOLE_Y), Height(CONSOLE_X);
+	coord.X = Width;
+	coord.Y = Height;
 
-	HANDLE hStdout;
-	COORD coord;
-	BOOL ok;
+	_SMALL_RECT Rect;
+	Rect.Top = 0;
+	Rect.Left = 0;
+	Rect.Bottom = Height - 1;
+	Rect.Right = Width - 1;
 
-	hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
-	coord.X = 190;
-	coord.Y = 48;
-	ok = SetConsoleScreenBufferSize(hStdout, coord);
-
-	test.Left = 0;
-	test.Top = 0;
-	test.Right = coord.X - 1;
-	test.Bottom = coord.Y - 1;
-
-	SetConsoleWindowInfo(hStdout, ok, &test);
-
+	HANDLE Handle = GetStdHandle(STD_OUTPUT_HANDLE);      // Get Handle 
+	SetConsoleScreenBufferSize(Handle, coord);            // Set Buffer Size 
+	SetConsoleWindowInfo(Handle, TRUE, &Rect);            // Set Window Size 
 }
 
-void Locate(SHORT x, SHORT y) // placement du curseur
+void locate(SHORT x, SHORT y) // placement du curseur
 {
 	HANDLE hmenu = GetStdHandle(STD_OUTPUT_HANDLE);
 	COORD Pos;
@@ -46,14 +47,14 @@ void Firstscreen() // accueil
 {
 	printf("\n");
 	color(2, 0);
-	Locate(70, 15);
+	locate(70, 15);
 	printf("====> Bienvenue dans Citysim <=====");
 	color(15, 0);
 }
 
 void erase(int x, int y, int x_bis, int y_bis)
 {
-	Locate(x, y);
+	locate(x, y);
 	for (int i = y; i < y_bis; i++)
 	{
 		for (int j = 0; j < x_bis; j++)
@@ -65,19 +66,19 @@ void erase(int x, int y, int x_bis, int y_bis)
 int choix(const char* ch[], int taille, int x, int y) // Creation d'un menu
 {
 	int i, curseur = 0;
-	Locate(x, y);
+	locate(x, y);
 	int y_bis = y;
 	for (i = 0; i < taille; i++)
 	{
 		++y;
 		printf("  %s\n", ch[i]);
-		Locate(x, y);
+		locate(x, y);
 	}
 
 	while (1) // gauche 0x4B   droite 0x77 haut 0x50  bas 0x48
 	{
-		int touche = getch();
-		Locate(x, y_bis + curseur);
+		int touche = _getch();
+		locate(x, y_bis + curseur);
 		printf(" ");
 		if (touche == 0x50 && curseur < taille - 1)
 			curseur++;
@@ -85,9 +86,9 @@ int choix(const char* ch[], int taille, int x, int y) // Creation d'un menu
 			curseur--;
 		if (touche == 0x0D)
 			return curseur + 1;
-		Locate(x, y_bis + curseur);
+		locate(x, y_bis + curseur);
 		printf(">");
-		Locate(189, 0);
+		locate(189, 0);
 	}
 	return 0;
 }
@@ -95,8 +96,8 @@ int choix(const char* ch[], int taille, int x, int y) // Creation d'un menu
 void our_faction(int x, int y)
 {
 	color(12, 0);
-	Locate(x, y); printf("_/-\\_");
-	Locate(x, y + 1); printf("| o |");
-	Locate(x, y + 2); printf("|_n_|");
+	locate(x, y); printf("_/-\\_");
+	locate(x, y + 1); printf("| o |");
+	locate(x, y + 2); printf("|_n_|");
 	color(15, 0);
 }

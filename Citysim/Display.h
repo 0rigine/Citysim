@@ -3,10 +3,13 @@
 #include <iostream>
 #include <conio.h>
 
+#define CONSOLE_X 190
+#define CONSOLE_Y 48
+
 // FONCTIONS CONSOLE
 void color(int t, int f); // Fonction de changement de couleur
 void adjustWindowSize(); // Reajustement de la fenêtre
-void Locate(SHORT x, SHORT y); // placement du curseur
+void locate(SHORT x, SHORT y); // placement du curseur
 
 // FONCTIONS UTILISATEUR
 void Firstscreen(); // accueil

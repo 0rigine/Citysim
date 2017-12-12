@@ -16,7 +16,6 @@ public:
 	void buy(); // acheter une ville
 	virtual void gererAccords(); // interface de passage d'accords
 	void racheter_ville(); // rachat de ville
-	void choice(int * x, int * y, int taille_x, int taille_y); // parcours de la grille
 
 	// Fin de partie
 	virtual void victory(); // victoire

@@ -233,16 +233,16 @@ bool Grille::isPlayable()
 
 void Grille::print_map(int sizex, int sizey)
 {
-	for (int i = 2; i<125 && i<(2 + sizex * 8); i += 8)
+	/*for (int i = 2; i<125 && i<(2 + sizex * 8); i += 8)
 	{
 		for (int j = 1; j<20 && j<(1 + sizey * 4); j += 4)
 		{
-			Locate(i, j); printf("_/-\\_");
-			Locate(i, j + 1); printf("| o |");
-			Locate(i, j + 2); printf("|_n_|");
+			locate(i, j); printf("_/-\\_");
+			locate(i, j + 1); printf("| o |");
+			locate(i, j + 2); printf("|_n_|");
 
 		}
-	}
+	}*/
 }
 
 vector<vector<City*>>* Grille::getMap()

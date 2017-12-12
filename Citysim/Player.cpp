@@ -106,7 +106,7 @@ void Player::gererAccords()
 
 void Player::racheter_ville()
 {
-	Locate(100, 26);
+	/*locate(100, 26);
 	const char* tab_reponse_oui_non[] = { "Oui !","Non, je prefere attendre..." };
 	int d = choix(tab_reponse_oui_non, 2, 105, 28);
 	switch (d)
@@ -114,44 +114,7 @@ void Player::racheter_ville()
 	case 1: our_faction(); break;
 
 	default: break;
-	}
-}
-
-void Player::choice(int * x, int * y, int taille_x, int taille_y)
-{
-	int curseur_x = 0, curseur_y = 0;
-	while (1) // gauche 0x4B   droite 0x77 haut 0x50  bas 0x48
-	{
-		int touche = _getch();
-		Locate(0 + curseur_x * 8, 2 + curseur_y * 4);
-		printf(" ");
-
-		if (touche == 0x50 && curseur_y < taille_y - 1) // haut
-		{
-			curseur_y++;
-		}
-		if (touche == 0x48 && curseur_y > 0) // bas
-			curseur_y--;
-
-		if (touche == 0x4D && curseur_x < taille_x - 1) // droite
-		{
-			curseur_x++;
-		}
-		if (touche == 0x4B && curseur_x > 0) // gauche
-			curseur_x--;
-
-		if (touche == 0x0D)
-		{
-			(*x) = 2 + curseur_x * 8;
-			(*y) = 1 + curseur_y * 4;
-			return;
-		}
-
-		Locate(0 + curseur_x * 8, 2 + curseur_y * 4);
-		printf(">");
-		Locate(189, 0);
-	}
-	return;
+	}*/
 }
 
 void Player::victory()
