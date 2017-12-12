@@ -21,6 +21,12 @@ Grille::Grille(int sizex, int sizey):
 	initialize_Grid(sizex, sizey);
 }
 
+Grille::Grille(string playerName, float food, float energy, float wallet, int sizex, int sizey):
+	contractList(NULL)
+{
+	initialize_Grid(sizex, sizey);
+}
+
 
 Grille::~Grille()
 {
@@ -143,6 +149,33 @@ void Grille::addContract(Contrat * arg_accord)
 }
 
 int Grille::initialize_Grid(int sizex, int sizey)
+{
+	int row(0), column(0), len(sizex*sizey); // colonnes et lignes pour la taille limite ainsi que le nombre de villes devant être créées
+	towns.push_back(new Player()); // on crée la ville du joueur
+	for (int i = 1; i < len; ++i) towns.push_back(new Autonomy()); // on ajoute à la liste les villes IA
+
+	random_shuffle(towns.begin(), towns.end()); // on mélange la liste des villes
+
+	grid.push_back(vector<City*>(0));
+	for each (City* town in towns) // on distribue dans la grille la liste, leur position est aléatoire
+	{
+		factionsList.push_back(town->getFaction()); // ajout de la faction à la liste des factions présentes
+		if (column == sizey)
+		{
+			++row;
+			column = 0;
+			grid.push_back(vector<City*>(0));
+		}
+		town->set_Coord(row, column);
+		town->set_Game(this);
+		grid[row].push_back(town);
+		++column;
+	}
+
+	return GENERATION_OK;
+}
+
+int Grille::initialize_Grid(int sizex, int sizey, string name, float food, float energy, float wallet)
 {
 	int row(0), column(0), len(sizex*sizey); // colonnes et lignes pour la taille limite ainsi que le nombre de villes devant être créées
 	towns.push_back(new Player()); // on crée la ville du joueur

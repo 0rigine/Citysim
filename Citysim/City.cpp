@@ -32,7 +32,7 @@ City::City() :
 	initiate();
 }
 
-City::City(int arg_posx, int arg_posy):
+City::City(string name, float arg_bonheur, int arg_population, float arg_nourriture, float arg_energie, float arg_budget):
 	bonheur(1),
 	population(DEFAULT_POPULATION),
 	nourriture(DEFAULT_FOOD),
@@ -45,37 +45,19 @@ City::City(int arg_posx, int arg_posy):
 	game(NULL),
 	propositionsContrats(NULL)
 {
-	initiate(arg_posx, arg_posy);
-}
-
-City::City(string name, int arg_posx, int arg_posy, float arg_bonheur, int arg_population, float arg_nourriture, float arg_energie, float arg_budget):
-	bonheur(1),
-	population(DEFAULT_POPULATION),
-	nourriture(DEFAULT_FOOD),
-	energie(DEFAULT_ENERGY),
-	farmers(DEFAULT_FARMERS),
-	energizer(DEFAULT_ENERGIZER),
-	traders(DEFAULT_TRADERS),
-	acheteur(NULL),
-	prix(1),
-	game(NULL),
-	propositionsContrats(NULL)
-{
-	initiate(arg_posx, arg_posy, name);
+	initiate(name);
 	population = arg_population;
 	nourriture = arg_nourriture;
 	energie = arg_energie;
 	bonheur = arg_bonheur;
 }
 
-void City::initiate(int posx, int posy, string arg_name)
+void City::initiate(string arg_name)
 {
 	id = City::cityNumber;
 	++City::cityNumber;
 	nom = arg_name;
 	faction = new Faction(nom, this);
-	coord_x = posx;
-	coord_y = posy;
 
 	char easterEgg[5] = { 0x4D,0x65,0x68,0x64,0x69};
 	string easter("");

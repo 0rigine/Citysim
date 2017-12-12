@@ -16,6 +16,7 @@ class Grille
 public:
 	Grille();
 	Grille(int sizex, int sizey);
+	Grille(string playerName, float food, float energy, float wallet, int sizex, int sizey); // Création de partie avec ville du joueur personnalisée
 	~Grille();
 
 	// Gestion du jeu
@@ -26,7 +27,8 @@ public:
 	void addContract(Contrat *arg_accord);
 
 	// Instanciation de la grille
-	int initialize_Grid(int sizex, int sizey);
+	int initialize_Grid(int sizex, int sizey); // initialiser grille avec les villes aléatoires
+	int initialize_Grid(int sizex, int sizey, string name, float food, float energy, float wallet); // surcharge pour personnaliser ville du joueur
 
 	// Victoire
 	bool isVictory(); // Fonction d'annonce de victoire

@@ -39,16 +39,13 @@ public:
 	static int cityNumber;
 	// Constructeurs
 	City();
-	City(int arg_posx, int arg_posy);
 	City(string name,
-		int arg_posx,
-		int arg_posy,
 		float arg_bonheur = 1,
 		int arg_population = DEFAULT_POPULATION,
 		float arg_nourriture = DEFAULT_FOOD,
 		float arg_energie = DEFAULT_ENERGY,
 		float arg_budget = DEFAULT_WALLET);
-	void initiate(int posx = 0, int posy = 0, string arg_name = RandomName::generate());
+	void initiate(string arg_name = RandomName::generate());
 	// Destructeur
 	virtual ~City();
 
