@@ -11,19 +11,25 @@ using namespace std;
 #include "Display.h"
 
 Grille::Grille():
-	contractList(NULL)
+	contractList(NULL),
+	dim_x(DEFAULT_X),
+	dim_y(DEFAULT_Y)
 {
-	initialize_Grid(2, 2); // initialisation d'une grille avec une taille de 2x2 par défaut
+	initialize_Grid(); // initialisation d'une grille avec une taille de 2x2 par défaut
 }
 
 Grille::Grille(int sizex, int sizey):
-	contractList(NULL)
+	contractList(NULL),
+	dim_x(sizex),
+	dim_y(sizey)
 {
 	initialize_Grid(sizex, sizey);
 }
 
 Grille::Grille(string playerName, float food, float energy, float wallet, int sizex, int sizey):
-	contractList(NULL)
+	contractList(NULL),
+	dim_x(sizex),
+	dim_y(sizey)
 {
 	initialize_Grid(sizex, sizey);
 }

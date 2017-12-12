@@ -50,8 +50,9 @@ public:
 	virtual ~City();
 
 	// Interface
-	void presentation();
-	void print_ville_name(City * ville); // afficher nom de la ville
+	void presentation(); // fiche technique de la ville (caractéristiques)
+	void print_ville_name(); // afficher nom de la ville
+	void drawMyBuilding(int x, int y); // dessine la ville
 	virtual void working(); // affichage des employés
 	virtual void turn() = 0; // tour de jeu
 

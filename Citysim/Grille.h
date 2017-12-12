@@ -10,6 +10,9 @@ using namespace std;
 #define GENERATION_OK 0
 #define GENERATION_FAILED 1
 
+#define DEFAULT_X 2
+#define DEFAULT_Y 2
+
 /* Classe régissant le jeu */
 class Grille
 {
@@ -27,7 +30,7 @@ public:
 	void addContract(Contrat *arg_accord);
 
 	// Instanciation de la grille
-	int initialize_Grid(int sizex, int sizey); // initialiser grille avec les villes aléatoires
+	int initialize_Grid(int sizex = DEFAULT_X, int sizey = DEFAULT_Y); // initialiser grille avec les villes aléatoires
 	int initialize_Grid(int sizex, int sizey, string name, float food, float energy, float wallet); // surcharge pour personnaliser ville du joueur
 
 	// Victoire
@@ -42,6 +45,7 @@ public:
 	int numberContractsByCity(City* ville); // nombre de contrats pour la ville
 
 private:
+	int dim_x, dim_y; // dimensions de la grille
 	vector<vector<City*>> grid;
 	vector<City*> towns;
 	vector<Faction*> factionsList;

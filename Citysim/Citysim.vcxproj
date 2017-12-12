@@ -149,6 +149,7 @@
     <ClInclude Include="Autonomy.h" />
     <ClInclude Include="City.h" />
     <ClInclude Include="Contrat.h" />
+    <ClInclude Include="Display.h" />
     <ClInclude Include="Faction.h" />
     <ClInclude Include="Grille.h" />
     <ClInclude Include="pileContrats.h" />
@@ -164,6 +165,7 @@
     <ClCompile Include="City.cpp" />
     <ClCompile Include="Citysim.cpp" />
     <ClCompile Include="Contrat.cpp" />
+    <ClCompile Include="Display.cpp" />
     <ClCompile Include="Faction.cpp" />
     <ClCompile Include="Grille.cpp" />
     <ClCompile Include="pileContrats.cpp" />

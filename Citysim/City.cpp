@@ -109,12 +109,17 @@ void City::presentation()
 	Locate(130, 21); printf("|");
 }
 
-void City::print_ville_name(City * ville)
+void City::print_ville_name()
 {
 	color(10, 0); cout << nom;
 	color(15, 0); cout << "[";
 	color(11, 0); cout << faction->getName();
 	color(15, 0); cout << "]";
+}
+
+void City::drawMyBuilding(int x, int y)
+{
+
 }
 
 void City::working()
