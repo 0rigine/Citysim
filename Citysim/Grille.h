@@ -37,9 +37,6 @@ public:
 	bool isVictory(); // Fonction d'annonce de victoire
 	bool isPlayable(); // Test de jouabilité
 
-	// Affichage
-	void print_map(int sizex, int sizey); // affichage de la map
-
 	// Accesseurs
 	vector<vector<City*>>* getMap();
 	int numberContractsByCity(City* ville); // nombre de contrats pour la ville

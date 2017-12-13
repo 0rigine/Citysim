@@ -1,18 +1,21 @@
 #pragma once
-#include <windows.h>
-#include <iostream>
-#include <conio.h>
+#include <Windows.h>
 
-#define CONSOLE_X 190
-#define CONSOLE_Y 48
+class Console
+{
+public:
+	// FONCTIONS CONSOLE
+	static void color(int t, int f); // Fonction de changement de couleur
+	static void locate(SHORT x, SHORT y); // placement du curseur
+	static void adjustWindowSize(); // redimension en plein écran de la console
+	static void showConsoleCursor(bool showBool = false); // afficher / masquer curseur console
 
-// FONCTIONS CONSOLE
-void color(int t, int f); // Fonction de changement de couleur
-void adjustWindowSize(); // Reajustement de la fenêtre
-void locate(SHORT x, SHORT y); // placement du curseur
+	// FONCTIONS UTILISATEUR
+	static void Firstscreen(); // accueil
+	static void erase(int x, int y, int x_bis, int y_bis); // supprime affichage dans les coordonnees envoyees
+	static int choix(const char* ch[], int taille, int x, int y); // Creation d'un menu
 
-// FONCTIONS UTILISATEUR
-void Firstscreen(); // accueil
-void erase(int x, int y, int x_bis, int y_bis); // supprime affichage dans les coordonnees envoyees
-int choix(const char* ch[], int taille, int x, int y); // Creation d'un menu
-void our_faction(); // affichage ville joueur
+private:
+	static COORD dim;
+	static HANDLE console;
+};

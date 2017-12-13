@@ -6,6 +6,8 @@ using namespace std;
 
 #include "City.h"
 
+#define BASIC_COLOR 15
+
 class Faction
 {
 public:
@@ -45,6 +47,7 @@ private:
 	static int factionNumber;
 	string name;
 	int id;
+	int colori[2];
 	float budget; // argent disponible
 	float temporaryBudget; // argent disponible sur le tour
 	float price;

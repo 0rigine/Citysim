@@ -10,97 +10,31 @@
 #include "City.h"
 #include "Faction.h"
 
-// FONCTIONS CONSOLE
-void color(int t, int f) // Fonction de changement de couleur
+HANDLE Console::console = GetStdHandle(STD_OUTPUT_HANDLE);
+COORD Console::dim = GetLargestConsoleWindowSize(Console::console);
+
+void Console::color(int t, int f)
 {
-	HANDLE H = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(H, f * 16 + t);
+	SetConsoleTextAttribute(console, f * 16 + t);
 }
 
-void adjustWindowSize() // Reajustement de la fenêtre
+void Console::locate(SHORT x, SHORT y)
 {
-	_COORD coord;
-	int Width(CONSOLE_Y), Height(CONSOLE_X);
-	coord.X = Width;
-	coord.Y = Height;
-
-	_SMALL_RECT Rect;
-	Rect.Top = 0;
-	Rect.Left = 0;
-	Rect.Bottom = Height - 1;
-	Rect.Right = Width - 1;
-
-	HANDLE Handle = GetStdHandle(STD_OUTPUT_HANDLE);      // Get Handle 
-	SetConsoleScreenBufferSize(Handle, coord);            // Set Buffer Size 
-	SetConsoleWindowInfo(Handle, TRUE, &Rect);            // Set Window Size 
-}
-
-void locate(SHORT x, SHORT y) // placement du curseur
-{
-	HANDLE hmenu = GetStdHandle(STD_OUTPUT_HANDLE);
 	COORD Pos;
 	Pos.X = x;
 	Pos.Y = y;
-	SetConsoleCursorPosition(hmenu, Pos);
+	SetConsoleCursorPosition(console, Pos);
 }
 
-// FONCTIONS UTILISATEUR
-void Firstscreen() // accueil
+void Console::adjustWindowSize()
 {
-	string temp("=====> Bienvenue dans Citysim <=====");
-	cout << endl;
-	color(2, 0);
-	locate(CONSOLE_X/2-(int)temp.size(), 15);
-	cout << temp;
-	color(15, 0);
+	SetConsoleDisplayMode(console, CONSOLE_FULLSCREEN_MODE, &dim);
 }
 
-void erase(int x, int y, int x_bis, int y_bis)
+void Console::showConsoleCursor(bool showBool)
 {
-	locate(x, y);
-	for (int i = y; i < y_bis; i++)
-	{
-		for (int j = 0; j < x_bis; j++)
-		{
-			printf(" ");
-		}
-	}
-}
-int choix(const char* ch[], int taille, int x, int y) // Creation d'un menu
-{
-	int i, curseur = 0;
-	locate(x, y);
-	int y_bis = y;
-	for (i = 0; i < taille; i++)
-	{
-		++y;
-		printf("  %s\n", ch[i]);
-		locate(x, y);
-	}
-
-	while (1) // gauche 0x4B   droite 0x77 haut 0x50  bas 0x48
-	{
-		int touche = _getch();
-		locate(x, y_bis + curseur);
-		printf(" ");
-		if (touche == 0x50 && curseur < taille - 1)
-			curseur++;
-		if (touche == 0x48 && curseur > 0)
-			curseur--;
-		if (touche == 0x0D)
-			return curseur + 1;
-		locate(x, y_bis + curseur);
-		printf(">");
-		locate(189, 0);
-	}
-	return 0;
-}
-
-void our_faction(int x, int y)
-{
-	color(12, 0);
-	locate(x, y); printf("_/-\\_");
-	locate(x, y + 1); printf("| o |");
-	locate(x, y + 2); printf("|_n_|");
-	color(15, 0);
+	CONSOLE_CURSOR_INFO cursorInfo;
+	GetConsoleCursorInfo(console, &cursorInfo);
+	cursorInfo.bVisible = showBool;
+	SetConsoleCursorInfo(console, &cursorInfo);
 }

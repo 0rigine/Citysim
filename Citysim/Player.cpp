@@ -16,7 +16,7 @@ Player::~Player()
 
 void Player::turn()
 {
-	/*presentation();
+	presentation();
 	working();
 	
 	if (ask("Changer les employes (o/n) ?"))
@@ -25,7 +25,7 @@ void Player::turn()
 	}
 	working();
 
-	buy();*/
+	buy();
 }
 
 int Player::setEmployes(string jobName)

@@ -12,6 +12,7 @@ Faction::Faction():
 	id(factionNumber)
 {
 	++factionNumber;
+	colori[0] = BASIC_COLOR; colori[1] = 0;
 }
 
 Faction::Faction(string arg_name, City* capitale):
@@ -22,6 +23,7 @@ Faction::Faction(string arg_name, City* capitale):
 	name = arg_name;
 	cities.push_back(capitale);
 	++factionNumber;
+	colori[0] = BASIC_COLOR; colori[1] = 0;
 }
 
 

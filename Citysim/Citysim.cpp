@@ -2,10 +2,10 @@
 #include <random>
 #include <time.h>
 #include <iostream>
+#include <Windows.h>
 using namespace std;
 #include "Grille.h"
 #include "Display.h"
-
 
 // PROTOTYPES
 void lancerPartie(int sizex = 2, int sizey = 2); // lancement d'une partie
@@ -16,14 +16,14 @@ int main()
 {
 	srand(time(NULL));
 
-	adjustWindowSize();
-	Firstscreen();
+	Console::adjustWindowSize();
+	/*Firstscreen();
 	const char* tab_menu_principal[] = { "Jouer","Credit","Quitter" };
 	const char* tab_actions[] = { "Racheter une ville","Inspecter","Modification des ressources","Contrats","Fin du tour" };
 	int c = choix(tab_menu_principal, 3, 80, 20);
 	int d = 0;
 	int x_choice = 0, y_choice = 0;
-	int x_search = 0, y_search = 0;
+	int x_search = 0, y_search = 0;*/
 
 	//lancerPartie(5, 16);
 
