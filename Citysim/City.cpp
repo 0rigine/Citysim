@@ -50,6 +50,7 @@ City::City(string name, float arg_bonheur, int arg_population, float arg_nourrit
 	nourriture = arg_nourriture;
 	energie = arg_energie;
 	bonheur = arg_bonheur;
+	faction->setBudget(arg_budget);
 }
 
 void City::initiate(string arg_name, int arg_color)
@@ -81,7 +82,7 @@ void City::presentation()
 {
 	int alignement_x(110);
 	Console::erase(alignement_x+1, 0, Console::dim.X+45, 22);
-	for (int i = 0; i < 22; i++)
+	for (int i = 0; i < 24; i++)
 	{
 		Console::locate(alignement_x, i);
 		cout << "|";
@@ -93,56 +94,62 @@ void City::presentation()
 		case 4 :
 			Console::color(14, 0);
 			cout << " BUDGET : ";
-			Console::color(15, 0);
+			Console::color(DEFAULT_COLOR, 0);
 			printf("   : %2.2f", faction->getBudget());
 			break;
 		case 6 :
 			Console::color(12, 0);
 			cout << " NOURRITURE : ";
-			Console::color(15, 0);
+			Console::color(DEFAULT_COLOR, 0);
 			printf(" : %2.2f", nourriture);
 			break;
 		case 8 :
 			Console::color(9, 0);
 			cout << " ENERGIE : ";
-			Console::color(15, 0);
+			Console::color(DEFAULT_COLOR, 0);
 			printf(" : %2.2f", energie);
 			break;
 		case 10 :
 			Console::color(13, 0);
 			cout << " NOMBRE DE CONTRATS : ";
-			Console::color(15, 0);
+			Console::color(DEFAULT_COLOR, 0);
 			printf(" : %d", game->numberContractsByCity(this));
 			break;
 		case 12 :
 			Console::color(4, 0);
 			cout << " POPULATION : ";
-			Console::color(15, 0);
+			Console::color(DEFAULT_COLOR, 0);
 			cout << population;
 			break;
 		case 14 :
 			Console::color(5, 0);
 			cout << " INGENIEURS : ";
-			Console::color(15, 0);
+			Console::color(DEFAULT_COLOR, 0);
 			cout << energizer;
 			break;
 		case 16 :
 			Console::color(2, 0);
 			cout << " TRADERS : ";
-			Console::color(15, 0);
+			Console::color(DEFAULT_COLOR, 0);
 			cout << traders;
 			break;
 		case 18 :
 			Console::color(1, 0);
 			cout << " FERMIERS : ";
-			Console::color(15, 0);
+			Console::color(DEFAULT_COLOR, 0);
 			cout << farmers;
 			break;
 		case 20 :
 			Console::color(12, 0);
 			cout << " CHOMEURS : ";
-			Console::color(15, 0);
+			Console::color(DEFAULT_COLOR, 0);
 			cout << population - traders - farmers - energizer;
+			break;
+		case 22 :
+			Console::color(8, 0);
+			cout << " Prix : ";
+			Console::color(DEFAULT_COLOR, 0);
+			cout << prix;
 			break;
 		default:
 			break;

@@ -31,7 +31,7 @@ Grille::Grille(string playerName, float food, float energy, float wallet, int si
 	dim_x(sizex),
 	dim_y(sizey)
 {
-	initialize_Grid(sizex, sizey,playerName,food,energy,wallet);
+	initialize_Grid(sizex,sizey,playerName,food,energy,wallet);
 }
 
 

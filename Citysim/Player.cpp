@@ -17,8 +17,9 @@ Player::Player():City::City()
 }
 
 Player::Player(string name, float food, float energy, float wallet) :
-	City::City(name, 1, food, energy, wallet)
+	City::City(name, 1,300, food, energy, wallet)
 {
+	setColor(PLAYER_COLOR);
 }
 
 
@@ -53,6 +54,8 @@ void Player::turn()
 			break;
 		case 2 :
 			buy();
+			break;
+		case 3 :
 			break;
 		case 4 :
 			return;
