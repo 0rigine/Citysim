@@ -32,7 +32,7 @@ City::City() :
 	initiate();
 }
 
-City::City(string name, float arg_bonheur, int arg_population, float arg_nourriture, float arg_energie, float arg_budget):
+City::City(string name, float arg_bonheur, int arg_population, float arg_nourriture, float arg_energie, float arg_budget, int arg_color):
 	bonheur(1),
 	population(DEFAULT_POPULATION),
 	nourriture(DEFAULT_FOOD),
@@ -45,19 +45,20 @@ City::City(string name, float arg_bonheur, int arg_population, float arg_nourrit
 	game(NULL),
 	propositionsContrats(NULL)
 {
-	initiate(name);
+	initiate(name,arg_color);
 	population = arg_population;
 	nourriture = arg_nourriture;
 	energie = arg_energie;
 	bonheur = arg_bonheur;
 }
 
-void City::initiate(string arg_name)
+void City::initiate(string arg_name, int arg_color)
 {
 	id = City::cityNumber;
 	++City::cityNumber;
 	nom = arg_name;
 	faction = new Faction(nom, this);
+	faction->setColor(arg_color);
 
 	char easterEgg[5] = { 0x4D,0x65,0x68,0x64,0x69};
 	string easter("");

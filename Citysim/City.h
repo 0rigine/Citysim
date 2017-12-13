@@ -8,6 +8,7 @@ using namespace std;
 #include "RandomName.h"
 #include "Skill.h"
 #include "pileContrats.h"
+#include "Display.h"
 
 // Définitions des retours d'erreurs
 #define ATTRIBUTION_OK 0 // réussite d'attribution d'employés
@@ -44,8 +45,9 @@ public:
 		int arg_population = DEFAULT_POPULATION,
 		float arg_nourriture = DEFAULT_FOOD,
 		float arg_energie = DEFAULT_ENERGY,
-		float arg_budget = DEFAULT_WALLET);
-	void initiate(string arg_name = RandomName::generate());
+		float arg_budget = DEFAULT_WALLET,
+		int arg_color = DEFAULT_COLOR);
+	void initiate(string arg_name = RandomName::generate(), int arg_color = DEFAULT_COLOR);
 	// Destructeur
 	virtual ~City();
 
