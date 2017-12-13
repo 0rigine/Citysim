@@ -75,9 +75,7 @@ int Player::setEmployes(string jobName)
 		cout << "Saisir le nombre " << jobName << " (-1 pour ignorer) : ";
 		cin.clear();
 		cin.ignore(INT_MAX,'\n');
-		Console::showConsoleCursor(true);
 		cin >> assigned;
-		Console::showConsoleCursor(false);
 	} while (cin.fail() || assigned < -1);
 	Console::erase(0, 25, 100, 40);
 	return assigned;
