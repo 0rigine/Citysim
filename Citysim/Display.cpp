@@ -29,6 +29,7 @@ void Console::locate(SHORT x, SHORT y)
 void Console::adjustWindowSize()
 {
 	SetConsoleDisplayMode(console, CONSOLE_FULLSCREEN_MODE, &dim);
+	dim.Y /= 100;
 }
 
 void Console::showConsoleCursor(bool showBool)
@@ -41,9 +42,10 @@ void Console::showConsoleCursor(bool showBool)
 
 void Console::erase(int x, int y, int x_bis, int y_bis)
 {
-	for (int i = 0; i < 30; i++)
+	for (int i = y; i <= y_bis; i++)
 	{
-		for (int j = 0; j < y - y_bis; j++)
+		locate(x, i);
+		for (int j = x; j <= x_bis; j++)
 		{
 			cout << " ";
 		}
@@ -61,36 +63,37 @@ void Console::firstscreen()
 	locate(dim.X / 2, 20);
 }
 
-int Console::choix(const char * ch[], int taille, int x, int y)
+int Console::choix(vector<string> ch, int x, int y)
 {
-	int choix(0),
-		y_bis(y);
+	int curseur(0),
+		y_bis(y),
+		taille(ch.size());
 	showConsoleCursor();
-	locate(x, y);
+	locate(x+2, y);
 	for (int i = 0; i < taille; i++)
 	{
 		++y;
 		cout << ch[i] << endl;
-		locate(x, y);
+		locate(x+2, y);
 	}
 	while (true)
 	{
 		int touche = _getch();
-		locate(x, y + choix);
+		locate(x, y_bis + curseur);
 		cout << " ";
-		if (touche == 0x50 && choix < taille - 1)
+		if (touche == 0x50 && curseur < taille - 1)
 		{
-			choix++;
+			curseur++;
 		}
-		else if (touche == 0x48 && choix > 0)
+		else if (touche == 0x48 && curseur > 0)
 		{
-			choix--;
+			curseur--;
 		}
 		else if (touche == 0x0D)
 		{
-			return choix;
+			return curseur;
 		}
-		locate(x, y_bis + choix);
+		locate(x, y_bis + curseur);
 		cout << ">";
 	}
 }

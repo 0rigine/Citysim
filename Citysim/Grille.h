@@ -23,7 +23,7 @@ public:
 	~Grille();
 
 	// Gestion du jeu
-	void afficherVilles(); // Affichage de toutes les villes
+	void afficherVilles(); // Affichage de toutes les villes A MODIFIER
 	void playATurn(); // Lancement du tour en cours
 	void playAGame(); // Partie en cours
 	void launchMulti(void (City::*function)());

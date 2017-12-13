@@ -73,49 +73,90 @@ void City::initiate(string arg_name, int arg_color)
 
 City::~City()
 {
-	propositionsContrats->removeAll(&propositionsContrats);
+	if (propositionsContrats != NULL) propositionsContrats->removeAll(&propositionsContrats);
 }
 
 // Affichages
 void City::presentation()
 {
-	/*cout << "[" << faction->getName() << "] " << nom << "\n" << endl;
-	cout << "Prix : " << prix << endl;
-	cout << "Population : " << population << endl;
-	cout << "Nourriture : " << nourriture << endl;
-	cout << "Energie : " << energie << endl;
-	cout << "Budget : " << faction->getBudget() << endl;
-	cout << endl;*/
-	//locate(130, 0); printf("|");
-	//locate(130, 1); printf("|\t RESSOURCES DE LA VILLE : "); print_ville_name(this); printf("\n");
-	//locate(130, 2); printf("|");
-	//locate(130, 3); printf("|");
-	//locate(130, 4); printf("|"); color(14, 0); printf(" GOLD"); color(15, 0); printf("   : %2.2f", faction->getBudget()); printf("\n");
-	//locate(130, 5); printf("|");
-	//locate(130, 6); printf("|"); color(12, 0); printf(" BOUFFE"); color(15, 0); printf(" : %2.2f", nourriture); printf("\n");
-	//locate(130, 7); printf("|");
-	//locate(130, 8); printf("|"); color(9, 0); printf(" ENERGIE"); color(15, 0); printf(" : %2.2f", energie); printf("\n");
-	//locate(130, 9); printf("|");
-	//locate(130, 10); printf("|"); //color(13, 0); printf(" NOMBRE DE CONTRATS"); color(15, 0); printf(" : %d", ville->nb_contrat); printf("\n");
-	//locate(130, 11); printf("|");
-	//locate(130, 12); printf("|"); color(4, 0); printf(" POPULATION"); color(15, 0); printf(" : %d", population); printf("\n");
-	//locate(130, 13); printf("|");
-	//locate(130, 14); printf("|"); color(5, 0); printf(" INGENIEURS"); color(15, 0); printf(" : %d", energizer); printf("\n");
-	//locate(130, 15); printf("|");
-	//locate(130, 16); printf("|"); color(2, 0); printf(" TRADERS"); color(15, 0); printf(" : %d", traders); printf("\n");
-	//locate(130, 17); printf("|");
-	//locate(130, 18); printf("|"); color(1, 0); printf(" FERMIERS"); color(15, 0); printf(" : %d", farmers); printf("\n");
-	//locate(130, 19); printf("|");
-	//locate(130, 20); printf("|"); color(12, 0); printf(" CHOMEUR"); color(15, 0); printf(" : %d", population-traders-farmers-energizer); printf("\n");
-	//locate(130, 21); printf("|");
+	int alignement_x(110);
+	Console::erase(alignement_x+1, 0, Console::dim.X+45, 22);
+	for (int i = 0; i < 22; i++)
+	{
+		Console::locate(alignement_x, i);
+		cout << "|";
+		switch (i)
+		{
+		case 1 :
+			cout << "\t RESSOURCES DE LA VILLE : "; print_ville_name();
+			break;
+		case 4 :
+			Console::color(14, 0);
+			cout << " BUDGET : ";
+			Console::color(15, 0);
+			printf("   : %2.2f", faction->getBudget());
+			break;
+		case 6 :
+			Console::color(12, 0);
+			cout << " NOURRITURE : ";
+			Console::color(15, 0);
+			printf(" : %2.2f", nourriture);
+			break;
+		case 8 :
+			Console::color(9, 0);
+			cout << " ENERGIE : ";
+			Console::color(15, 0);
+			printf(" : %2.2f", energie);
+			break;
+		case 10 :
+			Console::color(13, 0);
+			cout << " NOMBRE DE CONTRATS : ";
+			Console::color(15, 0);
+			printf(" : %d", game->numberContractsByCity(this));
+			break;
+		case 12 :
+			Console::color(4, 0);
+			cout << " POPULATION : ";
+			Console::color(15, 0);
+			cout << population;
+			break;
+		case 14 :
+			Console::color(5, 0);
+			cout << " INGENIEURS : ";
+			Console::color(15, 0);
+			cout << energizer;
+			break;
+		case 16 :
+			Console::color(2, 0);
+			cout << " TRADERS : ";
+			Console::color(15, 0);
+			cout << traders;
+			break;
+		case 18 :
+			Console::color(1, 0);
+			cout << " FERMIERS : ";
+			Console::color(15, 0);
+			cout << farmers;
+			break;
+		case 20 :
+			Console::color(12, 0);
+			cout << " CHOMEURS : ";
+			Console::color(15, 0);
+			cout << population - traders - farmers - energizer;
+			break;
+		default:
+			break;
+		}
+	}
+	Console::locate(Console::dim.X, 20);
 }
 
 void City::print_ville_name()
 {
-	/*color(10, 0); cout << nom;
-	color(15, 0); cout << "[";
-	color(11, 0); cout << faction->getName();
-	color(15, 0); cout << "]";*/
+	Console::color(10, 0); cout << nom;
+	Console::color(15, 0); cout << "[";
+	Console::color(11, 0); cout << faction->getName();
+	Console::color(15, 0); cout << "]";
 }
 
 void City::drawMyBuilding(int x, int y)

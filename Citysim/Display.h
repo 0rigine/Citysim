@@ -1,5 +1,8 @@
 #pragma once
 #include <Windows.h>
+#include <vector>
+#include <string>
+using namespace std;
 
 #define DEFAULT_COLOR 15
 
@@ -15,7 +18,10 @@ public:
 
 	// FONCTIONS UTILISATEUR
 	static void firstscreen(); // accueil
-	static int choix(const char* ch[], int taille, int x, int y); // Creation d'un menu
+	static int choix(vector<string> ch, int x, int y); // Creation d'un menu
+
+
+	// Variables Console
 	static COORD dim;
 	static HANDLE console;
 };

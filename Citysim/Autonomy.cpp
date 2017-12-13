@@ -12,9 +12,9 @@ Autonomy::~Autonomy()
 
 void Autonomy::turn()
 {
-	set_Farmers(50);
-	set_Energize(40);
-	set_Traders(10);
+	set_Farmers(getPopulation()/3);
+	set_Energize(getPopulation()/3);
+	set_Traders(getPopulation()/3);
 }
 
 void Autonomy::gererAccords()
