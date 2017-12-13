@@ -393,6 +393,11 @@ void City::set_Game(Grille * grid)
 	game = grid;
 }
 
+void City::setColor(int arg_color)
+{
+	faction->setColor(arg_color);
+}
+
 
 int City::generalSettingEmployees(int arg_farmers, int arg_traders, int arg_energizer)
 {

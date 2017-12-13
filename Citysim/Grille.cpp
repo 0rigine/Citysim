@@ -46,12 +46,16 @@ void Grille::afficherVilles()
 {
 	vector<vector<City*>>::iterator it;
 	vector<City*>::iterator jt;
-	for (it = grid.begin(); it != grid.end(); ++it)
+	int x(2), y(2);
+	for (it = grid.begin(); it != grid.end(); it++)
 	{
-		for (jt = it->begin(); jt != it->end(); ++jt)
+		for (jt = it->begin(); jt != it->end(); jt++)
 		{
-			(*jt)->presentation();
+			(*jt)->drawMyBuilding(x,y);
+			x += 8;
 		}
+		x = 2;
+		y += 4;
 	}
 }
 
@@ -85,7 +89,6 @@ void Grille::playATurn()
 	launchMulti(&City::estimate);
 
 	afficherVilles();
-	system("pause & cls");
 
 	// Tour de jeu
 	launchMulti(&City::turn);

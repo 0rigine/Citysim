@@ -7,6 +7,7 @@ using namespace std;
 
 Player::Player():City::City()
 {
+	setColor(PLAYER_COLOR);
 }
 
 
@@ -16,6 +17,12 @@ Player::~Player()
 
 void Player::turn()
 {
+	vector<string> menu(
+		{
+			"Inspecter",
+
+		}
+	);
 	/*presentation();
 	working();
 	

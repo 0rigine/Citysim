@@ -109,6 +109,7 @@ public:
 	void set_Coord(int posx, int posy); // setter de position
 	void set_Faction(Faction *newFaction); // setter de la faction
 	void set_Game(Grille *grid); // setter de game
+	void setColor(int arg_color); // set la couleur
 
 	// Fin de partie
 	virtual void victory() = 0;

@@ -97,3 +97,38 @@ int Console::choix(vector<string> ch, int x, int y)
 		cout << ">";
 	}
 }
+
+void Console::choiceTown(int * choice_x, int * choice_y, int taille_x, int taille_y)
+{
+	int curseur_x(0),
+		curseur_y(0),
+		touche(0);
+	while (true)
+	{
+		touche = _getch();
+		Console::locate(0 + curseur_x * 8, 2 + curseur_y * 4);
+		cout << " ";
+		if (touche == 0x50 && curseur_y < taille_y - 1) // haut
+		{
+			curseur_y++;
+		}
+		if (touche == 0x48 && curseur_y > 0) // bas
+			curseur_y--;
+
+		if (touche == 0x4D && curseur_x < taille_x - 1) // droite
+		{
+			curseur_x++;
+		}
+		if (touche == 0x4B && curseur_x > 0) // gauche
+			curseur_x--;
+
+		if (touche == 0x0D)
+		{
+			(*choice_x) = 2 + curseur_x * 8;
+			(*choice_y) = 1 + curseur_y * 4;
+			return;
+		}
+		Console::locate(0 + curseur_x * 8, 2 + curseur_y * 4);
+		cout << ">";
+	}
+}
