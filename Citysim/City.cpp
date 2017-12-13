@@ -161,7 +161,11 @@ void City::print_ville_name()
 
 void City::drawMyBuilding(int x, int y)
 {
-
+	Console::color(faction->getColori(), 0);
+	Console::locate(x, y); cout << "_/-\\_";
+	Console::locate(x, ++y); cout << "| o |";
+	Console::locate(x, ++y); cout << "|_n_|";
+	Console::color(DEFAULT_COLOR, 0);
 }
 
 void City::working()
