@@ -19,9 +19,8 @@ public:
 
 	// FONCTIONS UTILISATEUR
 	static void firstscreen(); // accueil
-	static int choix(vector<string> ch, int x, int y); // Creation d'un menu
+	static int choix(vector<string> ch, int x, int y, vector<int> values = {}); // Creation d'un menu
 	static void choiceTown(int * choice_x, int * choice_y, int taille_x, int taille_y); // sélection ville
-
 
 	// Variables Console
 	static COORD dim;

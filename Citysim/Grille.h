@@ -39,7 +39,10 @@ public:
 
 	// Accesseurs
 	vector<vector<City*>>* getMap();
+	City* getCityAt(int x, int y); // accès ville aux coordonnées indiquées
 	int numberContractsByCity(City* ville); // nombre de contrats pour la ville
+	int getDim_x() const; // accès dimension x
+	int getDim_y() const; // accès dimension y
 
 private:
 	int dim_x, dim_y; // dimensions de la grille

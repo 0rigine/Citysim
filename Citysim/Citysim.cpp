@@ -27,7 +27,7 @@ int main()
 void lancerPartie(int sizex, int sizey)
 {
 	system("cls");
-	Grille game = Grille(sizex, sizey);
+	Grille game = Grille("CityBoss",50000,50000,200000,sizex, sizey);
 	game.playAGame();
 }
 

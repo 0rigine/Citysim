@@ -377,6 +377,11 @@ int City::getPopulation() const
 	return population;
 }
 
+Grille * City::getGame() const
+{
+	return game;
+}
+
 void City::set_Coord(int posx, int posy)
 {
 	coord_x = posx;

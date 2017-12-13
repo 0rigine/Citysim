@@ -104,6 +104,7 @@ public:
 	float getPrice() const; // Accesseur de prix de vente
 	Faction* getAcheteur() const; // Accesseur d'acheteur
 	int getPopulation() const; // Accesseur de la population
+	Grille* getGame() const; // accès grille
 
 	// Setters
 	void set_Coord(int posx, int posy); // setter de position

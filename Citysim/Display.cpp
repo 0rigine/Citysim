@@ -29,7 +29,7 @@ void Console::locate(SHORT x, SHORT y)
 void Console::adjustWindowSize()
 {
 	SetConsoleDisplayMode(console, CONSOLE_FULLSCREEN_MODE, &dim);
-	dim.Y /= 10000;
+	dim.Y /= 1000000;
 }
 
 void Console::showConsoleCursor(bool showBool)
@@ -63,17 +63,20 @@ void Console::firstscreen()
 	locate(dim.X / 2, 20);
 }
 
-int Console::choix(vector<string> ch, int x, int y)
+int Console::choix(vector<string> ch, int x, int y, vector<int> values)
 {
 	int curseur(0),
 		y_bis(y),
-		taille(ch.size());
+		taille(ch.size()),
+		sizeValue(values.size());
 	showConsoleCursor();
 	locate(x+2, y);
 	for (int i = 0; i < taille; i++)
 	{
 		++y;
-		cout << ch[i] << endl;
+		cout << ch[i];
+		if (sizeValue == taille) cout << " " << values[i];
+		cout << endl;
 		locate(x+2, y);
 	}
 	while (true)

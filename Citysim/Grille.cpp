@@ -31,7 +31,7 @@ Grille::Grille(string playerName, float food, float energy, float wallet, int si
 	dim_x(sizex),
 	dim_y(sizey)
 {
-	initialize_Grid(sizex, sizey);
+	initialize_Grid(sizex, sizey,playerName,food,energy,wallet);
 }
 
 
@@ -52,11 +52,13 @@ void Grille::afficherVilles()
 		for (jt = it->begin(); jt != it->end(); jt++)
 		{
 			(*jt)->drawMyBuilding(x,y);
-			x += 8;
+			x += 6;
 		}
 		x = 2;
 		y += 4;
 	}
+	Console::locate(0, y);
+	for (int i = 0; i < Console::dim.X*2/3+20; i++) cout << "-";
 }
 
 void do_join(thread& process)
@@ -188,7 +190,7 @@ int Grille::initialize_Grid(int sizex, int sizey)
 int Grille::initialize_Grid(int sizex, int sizey, string name, float food, float energy, float wallet)
 {
 	int row(0), column(0), len(sizex*sizey); // colonnes et lignes pour la taille limite ainsi que le nombre de villes devant être créées
-	towns.push_back(new Player()); // on crée la ville du joueur
+	towns.push_back(new Player(name,food,energy,wallet)); // on crée la ville du joueur
 	for (int i = 1; i < len; ++i) towns.push_back(new Autonomy()); // on ajoute à la liste les villes IA
 
 	random_shuffle(towns.begin(), towns.end()); // on mélange la liste des villes
@@ -239,8 +241,25 @@ vector<vector<City*>>* Grille::getMap()
 	return &grid;
 }
 
+City * Grille::getCityAt(int x, int y)
+{
+	vector<vector<City*>>::iterator i(grid.begin()+x);
+	vector<City*>::iterator j((*i).begin() + y);
+	return *j;
+}
+
 int Grille::numberContractsByCity(City * ville)
 {
 	if(contractList != NULL) return contractList->numberByCity(ville);
 	return 0;
+}
+
+int Grille::getDim_x() const
+{
+	return dim_x;
+}
+
+int Grille::getDim_y() const
+{
+	return dim_y;
 }
