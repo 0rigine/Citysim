@@ -105,6 +105,7 @@ public:
 	Faction* getAcheteur() const; // Accesseur d'acheteur
 	int getPopulation() const; // Accesseur de la population
 	Grille* getGame() const; // accès grille
+	pileContrats** getPile(); // accès pile
 
 	// Setters
 	void set_Coord(int posx, int posy); // setter de position

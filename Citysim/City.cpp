@@ -389,6 +389,11 @@ Grille * City::getGame() const
 	return game;
 }
 
+pileContrats ** City::getPile()
+{
+	return &propositionsContrats;
+}
+
 void City::set_Coord(int posx, int posy)
 {
 	coord_x = posx;
@@ -492,6 +497,7 @@ bool City::accorderContrat(City * with, float marchandises[][3][3])
 
 void City::contratsVoisine(City * voisine)
 {
+
 }
 
 vector<vector<vector<float>>> City::get_Contracts()

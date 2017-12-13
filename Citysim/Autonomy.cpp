@@ -19,6 +19,8 @@ void Autonomy::turn()
 
 void Autonomy::gererAccords()
 {
+	//vector<vector<vector<float>>> contratsProposes(neighboorContracts());
+
 }
 
 void Autonomy::victory()

@@ -48,7 +48,7 @@ void menu()
 		switch (choice)
 		{
 		case 0:
-			lancerPartie(5, 16);
+			lancerPartie(5, 12);
 			break;
 		case 1:
 			system("cls");

@@ -52,7 +52,7 @@ void Grille::afficherVilles()
 		for (jt = it->begin(); jt != it->end(); jt++)
 		{
 			(*jt)->drawMyBuilding(x,y);
-			x += 6;
+			x += 8;
 		}
 		x = 2;
 		y += 4;

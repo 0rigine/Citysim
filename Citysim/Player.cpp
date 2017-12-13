@@ -179,7 +179,7 @@ void Player::inspection()
 	while (true)
 	{
 		touche = _getch();
-		Console::locate(0 + curseur_y * 6, 3 + curseur_x * 4);
+		Console::locate(0 + curseur_y * 8, 3 + curseur_x * 4);
 		cout << " ";
 		if (touche == 0x4D && curseur_y < taille_y - 1) // haut 0x50
 		{
@@ -199,46 +199,46 @@ void Player::inspection()
 		{
 			return;
 		}
-		Console::locate(0 + curseur_y * 6, 3 + curseur_x * 4);
+		Console::locate(0 + curseur_y * 8, 3 + curseur_x * 4);
 		cout << ">";
 		temp = getGame()->getCityAt(curseur_x, curseur_y);
 		temp->presentation();
 	}
 }
 
-void Player::choiceTown(int * choice_x, int * choice_y, int taille_x, int taille_y)
+void Player::saisirContrat()
 {
-	int curseur_x(0),
-		curseur_y(0),
-		touche(0);
-	while (true)
-	{
-		touche = _getch();
-		Console::locate(0 + curseur_x * 8, 2 + curseur_y * 4);
-		cout << " ";
-		if (touche == 0x50 && curseur_y < taille_y - 1) // haut
-		{
-			curseur_y++;
-		}
-		if (touche == 0x48 && curseur_y > 0) // bas
-			curseur_y--;
+	float food(0),
+		cost(0),
+		energy(0);
+	int time(0);
 
-		if (touche == 0x4D && curseur_x < taille_x - 1) // droite
-		{
-			curseur_x++;
-		}
-		if (touche == 0x4B && curseur_x > 0) // gauche
-			curseur_x--;
+	Console::erase(0, 25, 100, 40);
+	Console::locate(40, 25);
+	cout << "Saisir le contrat : ";
+	Console::showConsoleCursor(true);
+	Console::erase(0, 25, 100, 40);
+	Console::locate(40, 25);
+	cout << "Prix propose : ";
+	cin >> cost;
 
-		if (touche == 0x0D)
-		{
-			(*choice_x) = 2 + curseur_x * 8;
-			(*choice_y) = 1 + curseur_y * 4;
-			return;
-		}
-		Console::locate(0 + curseur_x * 8, 2 + curseur_y * 4);
-		cout << ">";
-	}
+	Console::erase(0, 25, 100, 40);
+	Console::locate(40, 25);
+	cout << "Nourriture echangee : ";
+	cin >> food;
+
+	Console::erase(0, 25, 100, 40);
+	Console::locate(40, 25);
+	cout << "Energie echangee : ";
+	cin >> energy;
+
+	Console::erase(0, 25, 100, 40);
+	Console::locate(40, 25);
+	cout << "Duree du contrat (en tours) : ";
+	cin >> time;
+
+	Console::showConsoleCursor(false);
+	proposerContrat(time, cost, food, energy);
 }
 
 void Player::victory()

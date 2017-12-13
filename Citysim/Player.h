@@ -18,7 +18,9 @@ public:
 	virtual void gererAccords(); // interface de passage d'accords
 	void racheter_ville(); // rachat de ville
 	void inspection(); // inspecter une ville
-	void choiceTown(int * choice_x, int * choice_y, int taille_x, int taille_y);
+
+	// Contrats
+	void saisirContrat(); // creer un contrat à proposer
 
 	// Fin de partie
 	virtual void victory(); // victoire
