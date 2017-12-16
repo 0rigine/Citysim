@@ -48,6 +48,7 @@ void Player::turn()
 			inspection();
 			break;
 		case 1:
+			presentation();
 			while (generalSettingEmployees(setEmployes("de fermiers"), setEmployes("de traders"), setEmployes("d'ingenieurs")) == ATTRIBUTION_ERROR);
 			presentation();
 			break;
