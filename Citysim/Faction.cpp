@@ -48,6 +48,10 @@ void Faction::vendreVille(City * vendue, float prix)
 void Faction::estimate()
 {
 	price = budget / cities.size();
+	if (cities.size() > 1)
+	{
+		colori = 13;
+	}
 }
 
 bool Faction::canBuyIt(City* aVendre)
