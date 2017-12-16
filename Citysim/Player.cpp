@@ -239,7 +239,7 @@ void Player::saisirContrat()
 
 void Player::victory()
 {
-	Console::erase(0, 0, 100, 40);
+	Console::erase(0, 0, Console::dim.X + 45, 40);
 	Console::locate((Console::dim.X + 14) / 2, 24);
 	cout << "Le monde vous appartient !" << endl;
 	Console::locate((Console::dim.X + 14) / 2, 26);
@@ -248,7 +248,7 @@ void Player::victory()
 
 void Player::defeat()
 {
-	Console::erase(0, 0,100, 40);
+	Console::erase(0, 0,Console::dim.X + 45, 40);
 	Console::locate((Console::dim.X + 14) / 2, 24);
 	cout << "Budget et population insuffisants pour continuer !" << endl;
 	Console::locate((Console::dim.X + 14) / 2, 25);
@@ -261,7 +261,7 @@ void Player::achatFinTour()
 {
 	if (getAcheteur() != NULL)
 	{
-		Console::erase(0, 0, 100, 40);
+		Console::erase(0, 0, Console::dim.X + 45, 40);
 		Console::locate((Console::dim.X + 14) / 2, 24);
 		cout << "Vous avez ete rachete !" << endl;
 		Console::locate((Console::dim.X + 14) / 2, 25);
