@@ -257,16 +257,19 @@ float City::production()
 float City::happinessPart()
 {
 	float foodCons(10), energyCons(20); // besoins par habitant selon la ressource
+	float coeffFinal(0);
 
 	if (nourriture <= 0 || energie <= 0) return 0.0;
 
 	float happyFood = (nourriture / foodCons) / population; // part de population dont les besoins en nourriture sont satisfaits
-	if (happyFood > 1.0) happyFood = 1.0; // controle du pourcentage de population satisfaite en nourriture
 
 	float happyEnergy = (energie / energyCons) / population; // part de population dont les besoins en energie sont satisfaits
-	if (happyEnergy > 1.0) happyEnergy = 1.0; // controle du pourcentage de population satisfaite en énergie
 
-	return happyFood*happyEnergy; // part de population dont tous les besoins sont satisfaits
+	coeffFinal = happyFood * happyEnergy;
+
+	if (coeffFinal > 1.0) coeffFinal = 1.0; // controle du pourcentage de population satisfaite
+	else if (coeffFinal < 0) coeffFinal = 0;
+	return coeffFinal; // part de population dont tous les besoins sont satisfaits
 }
 
 float City::salary()

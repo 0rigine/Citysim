@@ -48,7 +48,7 @@ void Faction::vendreVille(City * vendue, float prix)
 void Faction::estimate()
 {
 	price = budget / cities.size();
-	if (cities.size() > 1)
+	if (cities.size() > 1 && colori != PLAYER_COLOR)
 	{
 		colori = 13;
 	}
