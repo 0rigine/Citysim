@@ -52,11 +52,11 @@ void menu()
 			break;
 		case 1:
 			system("cls");
-			Console::locate(Console::dim.X / 4, 22);
+			Console::locate((Console::dim.X + 14) / 4, 22);
 			cout << "Un projet de Marie-Anne Ferreira, Benjamin Jaulent, Malo Puissant, Julien Bonnet et Mehdi Lekouara" << endl;
-			Console::locate(Console::dim.X / 2, 23);
+			Console::locate((Console::dim.X + 14) / 2, 23);
 			cout << "Comporte des surprises cachees" << endl;
-			Console::locate(Console::dim.X / 2, 25);
+			Console::locate((Console::dim.X + 14)/ 2, 25);
 			system("pause");
 			break;
 		case 2:
