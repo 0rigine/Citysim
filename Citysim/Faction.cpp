@@ -12,6 +12,7 @@ Faction::Faction():
 	id(factionNumber)
 {
 	++factionNumber;
+	colori = BASIC_COLOR;
 }
 
 Faction::Faction(string arg_name, City* capitale):
@@ -22,6 +23,7 @@ Faction::Faction(string arg_name, City* capitale):
 	name = arg_name;
 	cities.push_back(capitale);
 	++factionNumber;
+	colori = BASIC_COLOR;
 }
 
 
@@ -125,6 +127,11 @@ mutex& Faction::getInSetting()
 	return inSetting;
 }
 
+int Faction::getColori() const
+{
+	return colori;
+}
+
 void Faction::setBudget(float arg_budget)
 {
 	budget = arg_budget;
@@ -147,6 +154,11 @@ void Faction::budgetGrowing()
 void Faction::removeFromTemporaryBudget(float arg_temp)
 {
 	temporaryBudget -= arg_temp;
+}
+
+void Faction::setColor(int arg_color)
+{
+	colori = arg_color;
 }
 
 void Faction::getVictory()

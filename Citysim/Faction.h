@@ -6,6 +6,8 @@ using namespace std;
 
 #include "City.h"
 
+#define BASIC_COLOR 15
+
 class Faction
 {
 public:
@@ -32,11 +34,13 @@ public:
 	int getPopulation() const; // Calculateur du total de population
 	float getTempBudget() const; // Accesseur du budget de tour
 	mutex& getInSetting(); // Accesseur du mutex InSetting
+	int getColori() const; // Accesseyr de la couleur de faction
 
 	// Setters
 	void setBudget(float arg_budget); // setter de budget
 	void budgetGrowing(); // Croissance du budget
 	void removeFromTemporaryBudget(float arg_temp); // Différence avec le budget utilisé
+	void setColor(int arg_color); // change la couleur de la faction
 
 	// Victoire
 	void getVictory(); // Victoire
@@ -45,6 +49,7 @@ private:
 	static int factionNumber;
 	string name;
 	int id;
+	int colori;
 	float budget; // argent disponible
 	float temporaryBudget; // argent disponible sur le tour
 	float price;

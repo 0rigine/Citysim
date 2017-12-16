@@ -7,6 +7,8 @@ using namespace std;
 
 #include "RandomName.h"
 #include "Skill.h"
+#include "pileContrats.h"
+#include "Display.h"
 
 // Définitions des retours d'erreurs
 #define ATTRIBUTION_OK 0 // réussite d'attribution d'employés
@@ -38,21 +40,21 @@ public:
 	static int cityNumber;
 	// Constructeurs
 	City();
-	City(int arg_posx, int arg_posy);
 	City(string name,
-		int arg_posx,
-		int arg_posy,
 		float arg_bonheur = 1,
 		int arg_population = DEFAULT_POPULATION,
 		float arg_nourriture = DEFAULT_FOOD,
 		float arg_energie = DEFAULT_ENERGY,
-		float arg_budget = DEFAULT_WALLET);
-	void initiate(int posx = 0, int posy = 0, string arg_name = RandomName::generate());
+		float arg_budget = DEFAULT_WALLET,
+		int arg_color = DEFAULT_COLOR);
+	void initiate(string arg_name = RandomName::generate(), int arg_color = DEFAULT_COLOR);
 	// Destructeur
 	virtual ~City();
 
 	// Interface
-	void presentation();
+	void presentation(); // fiche technique de la ville (caractéristiques)
+	void print_ville_name(); // afficher nom de la ville
+	void drawMyBuilding(int x, int y); // dessine la ville
 	virtual void working(); // affichage des employés
 	virtual void turn() = 0; // tour de jeu
 
@@ -77,8 +79,14 @@ public:
 	int set_Traders(int toSet); // indiquer le nombre de traders actifs
 
 	// Contrats
-	void proposerContrat(int duration, float arg_cost, float *marchandise);
-	void resolveContract(float *resource, float quantity, float cost); // résolution de contrat, modification de la ressource concernée
+	void proposerContrat(int duration, float arg_cost, float arg_nourriture, float arg_energie); // configurer une proposition de contrat
+	void resolveContract(float arg_food, float arg_energia, float arg_cost); // résolution de contrat, modification de la ressource concernée
+	bool signerContrat(City* with, float marchandises[][3][3]); // envoyer une demande pour signer le contrat proposé par la ville "with"
+	bool accorderContrat(City* with, float marchandises[][3][3]); // valider le contrat pour la ville cliente
+	void contratsVoisine(City* voisine); // lister les contrats de la ville indiquées
+	virtual void gererAccords() = 0; // signer accords avec les autres villes
+	vector<vector<vector<float>>> get_Contracts(); // récupère la liste des contrats proposés par la ville
+	vector<vector<vector<float>>> neighboorContracts(); // récupère la liste des contrats proposés par les villes voisines
 
 	// Conquete
 	bool acheterVille(City *achetee, float prix = 10); // fonction d'achat d'une ville
@@ -96,11 +104,14 @@ public:
 	float getPrice() const; // Accesseur de prix de vente
 	Faction* getAcheteur() const; // Accesseur d'acheteur
 	int getPopulation() const; // Accesseur de la population
+	Grille* getGame() const; // accès grille
+	pileContrats** getPile(); // accès pile
 
 	// Setters
 	void set_Coord(int posx, int posy); // setter de position
 	void set_Faction(Faction *newFaction); // setter de la faction
 	void set_Game(Grille *grid); // setter de game
+	void setColor(int arg_color); // set la couleur
 
 	// Fin de partie
 	virtual void victory() = 0;
@@ -129,6 +140,9 @@ private:
 	Faction* acheteur; // faction proposant le prix le plus élevé pour la ville
 
 	Grille *game;
+
+	mutex contractActions;
+	pileContrats *propositionsContrats;
 
 	/*
 	Skill skillFood; // arbre de compétences : nourriture

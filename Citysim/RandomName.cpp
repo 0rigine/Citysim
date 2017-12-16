@@ -11,7 +11,8 @@
 	"bell",
 	"natr",
 	"ev",
-	"gas"
+	"gas",
+	"meh"
 };
 
  vector<string> RandomName::syllabes =
@@ -50,7 +51,8 @@
 	"ory",
 	"one",
 	"ais",
-	"uch"
+	"uch",
+	"di"
 };
 
 RandomName::RandomName()
