@@ -197,21 +197,21 @@ void City::growth()
 
 void City::energyGrowth(float coeffHappy)
 {
-	float coefficient(1); // coefficient bonus
+	float coefficient(2); // coefficient bonus
 	float quantity(50); // energie produite par habitant
 	float consommation(10); // energie consommee par habitant
 	// Production en fonction du bonheur de la population
-	energie += (energizer*coefficient*quantity*coeffHappy)+(energizer*coefficient*(1- coeffHappy))-population*consommation;
+	energie += (energizer*coefficient*quantity*coeffHappy)+(energizer*coefficient*(1-coeffHappy))-population*consommation;
 	if (energie < 0) energie = 0;
 }
 
 void City::foodGrowth(float coeffHappy)
 {
-	float coefficient(1); // coefficient bonus
+	float coefficient(2); // coefficient bonus
 	float quantity(50); // nourriture produite par habitant
 	float consommation(10); // nourriture consommee par habitant
 	// Production en fonction du bonheur de la population
-	nourriture += (farmers*coefficient*quantity*coeffHappy)+(farmers*coefficient*(1- coeffHappy))-population*consommation;
+	nourriture += (farmers*coefficient*quantity*coeffHappy)+(farmers*coefficient*(1-coeffHappy))-population*consommation;
 	if (nourriture < 0) nourriture = 0;
 }
 

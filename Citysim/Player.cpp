@@ -245,10 +245,10 @@ void Player::victory()
 
 void Player::defeat()
 {
-	Console::erase(0, 0, Console::dim.X, 200);
-	Console::locate(Console::dim.X / 2, 24);
+	Console::erase(0, 0, Console::dim.X + 45, 100);
+	Console::locate((Console::dim.X+45) / 2, 24);
 	cout << "Budget et population insuffisants pour continuer !" << endl;
-	Console::locate(Console::dim.X / 2, 25);
+	Console::locate((Console::dim.X + 45) / 2, 25);
 	cout << "Partie terminee" << endl;
 	_getch();
 	exit(EXIT_SUCCESS);
@@ -259,9 +259,9 @@ void Player::achatFinTour()
 	if (getAcheteur() != NULL)
 	{
 		Console::erase(0, 0, Console::dim.X, 200);
-		Console::locate(Console::dim.X / 2, 24);
+		Console::locate((Console::dim.X + 45) / 2, 24);
 		cout << "Vous avez ete rachete !" << endl;
-		Console::locate(Console::dim.X / 2, 25);
+		Console::locate((Console::dim.X + 45) / 2, 25);
 		cout << "Partie terminee" << endl;
 		_getch();
 		exit(EXIT_SUCCESS);
