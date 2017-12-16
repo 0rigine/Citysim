@@ -35,7 +35,6 @@ void Player::turn()
 			"Inspecter",
 			"Assigner les employes",
 			"Acheter une ville",
-			"Contrats",
 			"Fin de tour"
 		}
 	);
@@ -56,8 +55,6 @@ void Player::turn()
 			buy();
 			break;
 		case 3 :
-			break;
-		case 4 :
 			return;
 		default:
 			break;
@@ -94,11 +91,11 @@ bool Player::ask(string question)
 
 void Player::buy()
 {
-	vector<City*> voisines;
 	int i(0);
 	int choice(0);
 	int size(0);
 	float price(0); // prix d'achat proposé
+	vector<City*> voisines;
 	vector<City*> toBuy;
 	vector<string> names({});
 	vector<int> prices({});
