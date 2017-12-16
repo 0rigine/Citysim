@@ -29,7 +29,6 @@ void Console::locate(SHORT x, SHORT y)
 void Console::adjustWindowSize()
 {
 	SetConsoleDisplayMode(console, CONSOLE_FULLSCREEN_MODE, &dim);
-	dim.Y /= 1000000;
 }
 
 void Console::showConsoleCursor(bool showBool)
